@@ -1,0 +1,32 @@
+---
+const { title } = Astro.props
+const profileImageUrl = "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="icon" type="image/x-icon" href={profileImageUrl}>  
+	  <title>{title} | Thulaganyo Mooki | Fullstack Developer | Python Backend Specialist</title>
+	  <meta name="description" content="Thulaganyo Mooki is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.">
+	  <meta name="keywords" content="Thulaganyo Mooki, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio">
+	  <meta name="author" content="Thulaganyo Mooki">
+	  
+	  <!-- Open Graph / Facebook -->
+	  <meta property="og:title" content="Thulaganyo Mooki | Fullstack Developer | Python Backend Specialist">
+	  <meta property="og:description" content="Thulaganyo Mooki is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.">
+	  <meta property="og:type" content="website">
+	  <meta property="og:image" content={profileImageUrl}> 
+	  
+	  <!-- Twitter -->
+	  <meta name="twitter:card" content="summary_large_image">
+	  <meta name="twitter:title" content="Thulaganyo Mooki | Fullstack Developer | Python Backend Specialist">
+	  <meta name="twitter:description" content="Thulaganyo Mooki is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.">
+	  <meta name="twitter:image" content={profileImageUrl}> 
+	</head>
+	<body>
+		<slot/>
+	</body>
+</html>
