@@ -1,6 +1,7 @@
 ---
 import { Header } from "../components/Header/Header"
 import { Footer } from "../components/Footer/Footer"
+import type { SocialLink, FooterProps } from "../components/Footer/types"
 import { SideBar } from "../components/SideBar/SideBar"
 import type { SideBarProps } from "../components/SideBar/types"
 
@@ -21,6 +22,46 @@ const sideBarProps = {
 	donateSlug,
 	donateLink,
 } as SideBarProps;
+
+const sideFooterImg = "https://ik.imagekit.io/fy1b7fw4h/6f40677ae97db11bd2f32dc2670fbe03-removebg-preview.png" 
+const socialLinks = [
+	{
+		icon: "fa-brands fa-linkedin",
+		name: "linkedin",
+		link: "https://www.linkedin.com",
+	},
+	{
+		icon: "fa-solid fa-envelope",
+		name: "email",
+		link: "mailto:your-email@example.com",
+	},
+	{
+		icon: "fa-brands fa-instagram",
+		name: "instagram",
+		link: "https://www.instagram.com",
+	},
+	{
+		icon: "fa-brands fa-facebook",
+		name: "facebook",
+		link: "https://www.facebook.com",
+	},
+	{
+		icon: "fa-brands fa-twitter",
+		name: "twitter",
+		link: "https://twitter.com",
+	},
+	{
+		icon: "fa-brands fa-discord",
+		name: "discord",
+		link: "https://discord.com",
+	},
+] as SocialLink[];
+
+
+const footerProps = {
+	sideFooterImg,
+	socialLinks,
+} as FooterProps;
 ---
 
 <!DOCTYPE html>
@@ -53,7 +94,7 @@ const sideBarProps = {
 				<Header />
 				<slot/>
 			</div>
-			<Footer />
+			<Footer {...footerProps}/>
 		</div>
 	</body>
 </html>
