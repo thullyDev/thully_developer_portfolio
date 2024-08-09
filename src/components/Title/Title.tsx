@@ -3,14 +3,16 @@ export function Title() {
 
 	return (
 		<div className="title-con">
-			<div className="img-con w-full">
-				<img className="w-full" src={titleImageUrl} alt="Fullstack developer ready to code!" />
-			</div>
-			<span className="title-heading-con">
-				<h1 className="title-heading">
-					Fullstack developer ready to code!
-				</h1>
-			</span>
+			<a href="/" className="home-link">
+				<div className="img-con w-full">
+					<img className="w-full" src={titleImageUrl} alt="Fullstack developer ready to code!" />
+				</div>
+				<span className="title-heading-con">
+					<h1 className="title-heading">
+						Fullstack developer ready to code!
+					</h1>
+				</span>
+			</a>
 		</div>
 	)
 }

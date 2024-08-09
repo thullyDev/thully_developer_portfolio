@@ -3,4 +3,5 @@ export type ProjectCardProps = {
 	mainLang: string;
 	desc: string;
 	image_url: string;
+	slug: string;
 }

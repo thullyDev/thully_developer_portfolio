@@ -18,16 +18,15 @@ const fullName = "Thulaganyo Mooki"
 const profileDescription = "🔥 💯 Programmer 👨🏿‍💻 , Weeb 😄 , MangaReader 👀, south african 🇿🇦"
 const donateSlug = "Kowareta"
 const donateLink = "https://buymeacoffee.com/"
-const sideBarProps = {
+const sideBarProps: SideBarProps = {
 	profileImageUrl,
 	userName,
 	fullName,
 	profileDescription,
 	donateSlug,
 	donateLink,
-} as SideBarProps;
-
-const socialLinks = [
+} as const;
+const socialLinks: SocialLink[] = [
 	{
 		icon: "fab fa-linkedin",
 		name: "linkedin",
@@ -58,13 +57,11 @@ const socialLinks = [
 		name: "discord",
 		link: "https://discord.com",
 	},
-] as SocialLink[];
-
-
-const footerProps = {
+] as const;
+const footerProps: FooterProps = {
 	sideFooterImg,
 	socialLinks,
-} as FooterProps;
+} as const;
 ---
 
 <!DOCTYPE html>

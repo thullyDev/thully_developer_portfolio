@@ -1,0 +1,15 @@
+---
+import MainLayout from "../layouts/mainLayout.astro"
+import { getProjects } from "../services/server"
+import { SearchBar } from "../components/SearchBar/SearchBar"
+import { Projects as ProjectsComponet } from "../components/Projects/Projects"
+import { Pagination } from "../components/Pagination/Pagination"
+
+const { projects, pages, page } = getProjects({ page: 1 });
+---
+
+<MainLayout title={"Projects"}>
+	<SearchBar client:load />
+	<ProjectsComponet client:load projects={projects} />
+	<Pagination client:load page={page} pages={pages} />
+</MainLayout>
