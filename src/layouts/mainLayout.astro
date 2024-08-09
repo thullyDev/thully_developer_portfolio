@@ -1,6 +1,7 @@
 ---
 import { Header } from "../components/Header/Header"
 import { Footer } from "../components/Footer/Footer"
+import { Authentication } from "../components/Authentication/Authentication"
 import type { SocialLink, FooterProps } from "../components/Footer/types"
 import { SideBar } from "../components/SideBar/SideBar"
 import type { SideBarProps } from "../components/SideBar/types"
@@ -98,6 +99,7 @@ const footerProps: FooterProps = {
 				</main>
 				<Footer {...footerProps}/>
 			</div>
+			<Authentication />
 		</div>
 	</body>
 </html>

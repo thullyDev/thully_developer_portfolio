@@ -7,7 +7,7 @@ export function SearchBar() {
 				<button className="clear-btn">
 					clear
 				</button>
-				<input type="search" className="search-bar" />
+				<input type="text" className="search-bar" />
 				<button className="search-btn">
 					<Icon icon="fa fa-search" />
 				</button>

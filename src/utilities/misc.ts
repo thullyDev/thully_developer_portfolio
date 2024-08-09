@@ -11,3 +11,9 @@ export function paginateItems<T>({ data, page, limit }: PaginateItems<T>): Pagin
     
     return { items, pagination };
 }
+
+export const titleCase = (str: string) => {
+  return str.toLowerCase().replace(/(^|\s)\S/g, function (firstLetter) {
+    return firstLetter.toUpperCase();
+  });
+};
