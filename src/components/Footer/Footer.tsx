@@ -1,3 +1,4 @@
+import { Icon } from "../Icon/Icon";
 import type { FooterProps } from "./types";
 
 export function Footer({ sideFooterImg, socialLinks }: FooterProps) {
@@ -14,7 +15,7 @@ export function Footer({ sideFooterImg, socialLinks }: FooterProps) {
 							socialLinks.map(({name, link, icon}, index) => {
 								return (
 									<li key={index} className="social-item">
-										{ /* <Icon icon={icon} /> */ }
+										<Icon icon={icon} />  
 										<a href={link} className="social-link">{name}</a>
 									</li>
 								)

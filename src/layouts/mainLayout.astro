@@ -26,32 +26,32 @@ const sideBarProps = {
 const sideFooterImg = "https://ik.imagekit.io/fy1b7fw4h/6f40677ae97db11bd2f32dc2670fbe03-removebg-preview.png" 
 const socialLinks = [
 	{
-		icon: "fa-brands fa-linkedin",
+		icon: "fab fa-linkedin",
 		name: "linkedin",
 		link: "https://www.linkedin.com",
 	},
 	{
-		icon: "fa-solid fa-envelope",
+		icon: "fa fa-envelope",
 		name: "email",
 		link: "mailto:your-email@example.com",
 	},
 	{
-		icon: "fa-brands fa-instagram",
+		icon: "fab fa-instagram",
 		name: "instagram",
 		link: "https://www.instagram.com",
 	},
 	{
-		icon: "fa-brands fa-facebook",
+		icon: "fab fa-facebook",
 		name: "facebook",
 		link: "https://www.facebook.com",
 	},
 	{
-		icon: "fa-brands fa-twitter",
+		icon: "fab fa-twitter",
 		name: "twitter",
 		link: "https://twitter.com",
 	},
 	{
-		icon: "fa-brands fa-discord",
+		icon: "fab fa-discord",
 		name: "discord",
 		link: "https://discord.com",
 	},
@@ -69,7 +69,8 @@ const footerProps = {
 	<head>
 	  <meta charset="UTF-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	  <link rel="icon" type="image/x-icon" href={favicon}>  
+	  <link rel="icon" type="image/x-icon" href={favicon}>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
 	  <title>{title} | {fullName} | Fullstack Developer | Python Backend Specialist</title>
 	  <meta name="description" content="{fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.">
 	  <meta name="keywords" content="{fullName}, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio">
@@ -93,8 +94,8 @@ const footerProps = {
 			<div class="main-side">
 				<Header />
 				<slot/>
+				<Footer {...footerProps}/>
 			</div>
-			<Footer {...footerProps}/>
 		</div>
 	</body>
 </html>
