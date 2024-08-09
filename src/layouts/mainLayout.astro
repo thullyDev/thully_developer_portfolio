@@ -6,9 +6,13 @@ import { SideBar } from "../components/SideBar/SideBar"
 import type { SideBarProps } from "../components/SideBar/types"
 
 const { title } = Astro.props
+// get these images from the backend in the future
 const profileImageUrl = "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg"
+const sideFooterImg = "https://ik.imagekit.io/fy1b7fw4h/6f40677ae97db11bd2f32dc2670fbe03-removebg-preview.png" 
 const favicon = profileImageUrl
 const descImage = profileImageUrl
+// get these images from the backend in the future
+
 const userName = "thullyDev"
 const fullName = "Thulaganyo Mooki"
 const profileDescription = "🔥 💯 Programmer 👨🏿‍💻 , Weeb 😄 , MangaReader 👀, south african 🇿🇦"
@@ -23,7 +27,6 @@ const sideBarProps = {
 	donateLink,
 } as SideBarProps;
 
-const sideFooterImg = "https://ik.imagekit.io/fy1b7fw4h/6f40677ae97db11bd2f32dc2670fbe03-removebg-preview.png" 
 const socialLinks = [
 	{
 		icon: "fab fa-linkedin",
@@ -93,7 +96,9 @@ const footerProps = {
 			<SideBar {...sideBarProps}/>
 			<div class="main-side">
 				<Header />
-				<slot/>
+				<main class="main-content">
+					<slot/>
+				</main>
 				<Footer {...footerProps}/>
 			</div>
 		</div>

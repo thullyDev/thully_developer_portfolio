@@ -1,6 +1,70 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro"
+import { Icon } from "../components/Icon/Icon"
+import { Stack } from "../components/Stack/Stack"
+import type { StackProps } from "../components/Stack/types"
+
+const stacks = [
+	{
+		label: "languages",
+		stacks: "html,css,js,ts,py,bash",
+	},
+	{
+		label: "backend",
+		stacks: "nodejs,express,fastapi,django",
+	},
+	{
+		label: "Fullstack",
+		stacks: "react,astro,tailwind,flutter",
+	},
+	{
+		label: "Databases",
+		stacks: "firebase,postgres,redis",
+	},
+	{
+		label: "Technologies",
+		stacks: "git,linux,googlecloud",
+	},
+	{
+		label: "Dev Tools",
+		stacks: "sublime,vscode,neovim",
+	},
+] as StackProps[];
 ---
 
 <MainLayout title={"Home"}>
+	<div class="github-analytics-con">
+		<div class="left-side">
+			<div class="inner-con">
+				<img height="180em" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=thullyDev&theme=dracula" alt="Top languages" />
+			    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=thullyDev&show_icons=true&include_all_commits=true&count_private=false&theme=dracula" alt="Profile summary" />
+			</div>
+		</div>
+		<div class="right-side">
+			<div class="inner-con">
+				<span class="github-link-con">
+					<a href="https://github.com/thullyDev" class="github-link">
+						<Icon icon="fa-brands fa-github-square" /> My github
+					</a>
+				</span>
+		    	<img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=thullyDev&layout=compact&langs_count=8&theme=dracula" alt="Top languages" />
+			</div>
+		</div>
+	</div>
+	<div class="mytech-stack-con">
+		<div class="inner-con">
+			{
+				stacks.map((item) => {
+					return (
+						<Stack {...item} />
+					)
+				})
+			}
+		</div>
+	</div>
+	<div class="projects-con">
+		<h2>My Projects</h2>
+		<div class="inner-projects-con">
+		</div>
+	</div>
 </MainLayout>
