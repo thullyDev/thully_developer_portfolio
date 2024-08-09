@@ -2,6 +2,8 @@
 import MainLayout from "../layouts/mainLayout.astro"
 import { Icon } from "../components/Icon/Icon"
 import { Stack } from "../components/Stack/Stack"
+import { ProjectCard } from "../components/ProjectCard/ProjectCard"
+import type { ProjectCardProps } from "../components/ProjectCard/types"
 import type { StackProps } from "../components/Stack/types"
 
 const stacks = [
@@ -30,6 +32,27 @@ const stacks = [
 		stacks: "sublime,vscode,neovim",
 	},
 ] as StackProps[];
+
+const projects = [
+  {
+    name: "AnimeHub",
+    mainLang: "TypeScript",
+    desc: "A comprehensive platform for anime enthusiasts, offering real-time updates, episode tracking, and community forums. Built with a TypeScript and React stack, this project integrates with multiple APIs for a seamless user experience.",
+    image_url: "https://example.com/animehub.png"
+  },
+  {
+    name: "MangaWorld",
+    mainLang: "Python",
+    desc: "An online manga reader with a vast library, personalized recommendations, and a sleek, user-friendly interface. Developed with Python and Django, it offers fast and secure access to manga from various sources.",
+    image_url: "https://example.com/mangaworld.png"
+  },
+  {
+    name: "CodeStream",
+    mainLang: "JavaScript",
+    desc: "A live coding platform where developers can stream their coding sessions, interact with viewers, and share their projects. Utilizes a JavaScript-based stack with Node.js and Express for backend services.",
+    image_url: "https://example.com/codestream.png"
+  }
+] as ProjectCardProps[];
 ---
 
 <MainLayout title={"Home"}>
@@ -63,8 +86,13 @@ const stacks = [
 		</div>
 	</div>
 	<div class="projects-con">
-		<h2>My Projects</h2>
+		<span class="label">
+			<a href="/projects">Projects</a>
+		</span>
 		<div class="inner-projects-con">
+			<div class="inner-con">
+				{projects.map((item) => <ProjectCard {...item} />)}
+			</div>
 		</div>
 	</div>
 </MainLayout>
