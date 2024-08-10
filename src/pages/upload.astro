@@ -1,8 +1,18 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro"
 import { UploadInputs } from "../components/UploadInputs/UploadInputs"
+import type { UploadInputsProps } from "../components/UploadInputs/types"
+import { getLangsAndDBs } from "../services/server"
+
+const langsAndDBs = await getLangsAndDBs()
+const uploadInputsProps: UploadInputsProps  = {
+	images: [],
+	keywords: [],
+	langs: [],
+	langsAndDBs,
+} as const 
 ---
 
 <MainLayout title={"Upload Project"}>
-	<UploadInputs />
+	<UploadInputs client:load {...uploadInputsProps} />
 </MainLayout>

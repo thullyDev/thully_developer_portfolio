@@ -1,14 +1,18 @@
-// name, shortDesc, repoLink, demoLink, keywords, langs 
-
-
 export type UploadInputsProps = {
 	name?: string;
 	shortDesc?: string;
+	images: UploadImage[];
 	repoLink?: string;
 	demoLink?: string;
 	keywords: string[];
 	langs: lang[];
-	langsAndDBs: LangsAndDB[]
+	langsAndDBs: LangsAndDBs[]
+}
+
+export type UploadImage = {
+	id: number;
+	url: string;
+	altText: string;
 }
 
 export type lang = {
@@ -16,6 +20,6 @@ export type lang = {
 	icon: string;
 }
 
-export type LangsAndDB = {
+export type LangsAndDBs = {
 	slug: string;
 } & lang

@@ -1,12 +1,13 @@
 import { Keywords } from "../Keywords/Keywords"
 import { Tags } from "../Tags/Tags"
 import type { TextFieldProps } from "../TextField/types"
+import { UploadImages } from "../UploadImages/UploadImages"
 import { UploadTextInputs } from "../UploadTextInputs/UploadTextInputs"
 import type { UploadInputsProps } from "./types"
 
 // 	keywords, langs (checkboxs)
 
-export function UploadInputs({ name, shortDesc, repoLink, demoLink, keywords, langs, langsAndDBs }: UploadInputsProps) {
+export function UploadInputs({ name, shortDesc, images, repoLink, demoLink, keywords, langs, langsAndDBs }: UploadInputsProps) {
 	const textInputs: TextFieldProps[] = [
 		{ value: name ?? "", name: "name", width: "200px", height: "40px" },
 		{ value: shortDesc ?? "", name: "description", width: "400px", height: "40px" },
@@ -21,6 +22,10 @@ export function UploadInputs({ name, shortDesc, repoLink, demoLink, keywords, la
 				<div className="keywords-tags-con">
 					<Keywords keywords={keywords} />
 					<Tags tags={langsAndDBs} selectedTags={langs} />
+				</div>
+				<UploadImages images={images} />
+				<div className="submit-con">
+					<button type="button" className="submit-btn">submit</button>
 				</div>
 			</div>
 		</div>

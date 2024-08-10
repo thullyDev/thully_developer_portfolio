@@ -1,5 +1,7 @@
 import type { Project } from "../components/Projects/types";
-import type { GetProjects, GetProjectsResponse } from "../types/server";
+import type { LangsAndDBs } from "../components/UploadInputs/types";
+import { ApiHandler } from "../handlers/apiHandler";
+import type { GetProjects, GetProjectsResponse } from "../types/serverTypes";
 import { paginateItems } from "../utilities/misc";
 
 const projects: Project[] = [
@@ -210,4 +212,17 @@ export function getProjects({ page }: GetProjects): GetProjectsResponse {
     pages: pages,
     projects: pagenatedProjects,
   };
+}
+
+const dummyApi = new ApiHandler("")
+
+export async function getLangsAndDBs(): Promise<LangsAndDBs[]>  {
+  const url = "https://thullydev.github.io/thullyDevStatics/JSONs/langsAndDBs.json"
+  const data = await dummyApi.get(url) as Record<string, LangsAndDB> | null
+
+  if (!data) {
+    return []
+  }
+
+  return Object.values(data) as LangsAndDBs[]
 }
