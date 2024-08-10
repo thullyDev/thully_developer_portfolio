@@ -1,10 +1,10 @@
 export type SocialLink = {
-	icon: string;
-	name: string;
-	link: string;
-}
+  icon: string;
+  name: string;
+  link: string;
+};
 
 export type FooterProps = {
-	sideFooterImg: string;
-	socialLinks: SocialLink[]
-}
+  sideFooterImg: string;
+  socialLinks: SocialLink[];
+};

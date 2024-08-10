@@ -1,4 +1,4 @@
 export type StackProps = {
-	label: string;
-	stacks: string;
-}
+  label: string;
+  stacks: string;
+};

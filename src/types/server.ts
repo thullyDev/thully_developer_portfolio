@@ -1,11 +1,11 @@
 import type { Project } from "../components/Projects/types";
 
 export type GetProjects = {
-	page: number;
-}
+  page: number;
+};
 
 export type GetProjectsResponse = {
-	page: number,
-	pages: number,
-	projects: Project[],
-}
+  page: number;
+  pages: number;
+  projects: Project[];
+};

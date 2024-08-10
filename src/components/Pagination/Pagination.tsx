@@ -12,5 +12,5 @@ export function Pagination({ pages, page }: PaginationProps) {
         </button>
       </div>
     </div>
-  )
+  );
 }

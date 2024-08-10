@@ -1,4 +1,4 @@
 export type PaginationProps = {
-	page: number;
-	pages: number;
-}
+  page: number;
+  pages: number;
+};

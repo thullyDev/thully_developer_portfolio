@@ -1,7 +1,7 @@
 export type Item = {
-  input: string;
-  label: string;
+  type: string;
+  name: string;
   icon: string;
-}
+};
 
-export type InputProps = { item: Item }
+export type InputProps = { item: Item };

@@ -1,3 +1,3 @@
 export type IconProps = {
-	icon: string;
-}
+  icon: string;
+};

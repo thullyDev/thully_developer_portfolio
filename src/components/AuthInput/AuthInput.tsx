@@ -3,7 +3,7 @@ import { Icon } from "../Icon/Icon";
 import type { InputProps } from "./types";
 
 export const AuthInput = ({ item }: InputProps) => {
-  const { label, input, icon } = item;
+  const { name, type, icon } = item;
 
   return (
     <div className="input-con">
@@ -12,8 +12,11 @@ export const AuthInput = ({ item }: InputProps) => {
           <Icon icon={icon} />
         </div>
         <input
-          type={input}
-          placeholder={titleCase(label)}
+          className="auth-input"
+          type={type}
+          name={name}
+          data-name={name}
+          placeholder={titleCase(name)}
         />
       </div>
     </div>
