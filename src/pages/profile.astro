@@ -1,6 +1,60 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro"
+import { UserInputs } from "../components/UserInputs/UserInputs"
+import type { TextFieldProps } from "../components/TextField/types"
+import type { ImageFieldProps } from "../components/ImageField/types"
+
+const userName = "thullyDev"
+const fullName = "Thulaganyo Mooki"
+const profileDescription = "🔥 💯 Programmer 👨🏿‍💻 , Weeb 😄 , MangaReader 👀, south african 🇿🇦"
+const donateSlug = "Kowareta"
+const donateLink = "https://buymeacoffee.com/"
+const seoDesc = `${fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.`
+const seoTitle = "Fullstack Developer | Python Backend Specialist"
+
+const linkedinLink = "https://www.linkedin.com/in/username";
+const emailLink = "mailto:your-email@example.com";
+const instagramLink = "https://www.instagram.com/username";
+const facebookLink = "https://www.facebook.com/username";
+const twitterLink = "https://twitter.com/username";
+const discordLink = "https://discord.com/invite/username";
+const githubLink = "https://github.com/username";
+const youtubeLink = "https://www.youtube.com/channel/UC-username";
+
+// get these images from the backend in the future
+const profileImageUrl = "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg"
+const sideFooterImg = "https://ik.imagekit.io/fy1b7fw4h/6f40677ae97db11bd2f32dc2670fbe03-removebg-preview.png" 
+const favicon = profileImageUrl
+const descImage = profileImageUrl
+// get these images from the backend in the future
+
+const inputs: TextFieldProps[] = [
+    { value: userName, name: "Username", width: "200px", height: "40px" },
+    { value: fullName, name: "Full Name", width: "300px", height: "40px" },
+    { value: profileDescription, name: "Profile Description", width: "500px", height: "100px" },
+    { value: donateSlug, name: "Donate Slug", width: "200px", height: "40px" },
+    { value: donateLink, name: "Donate Link", width: "400px", height: "40px" },
+    { value: seoDesc, name: "SEO Description", width: "600px", height: "80px" },
+    { value: seoTitle, name: "SEO Title", width: "400px", height: "40px" }
+];
+const imageInputs: ImageFieldProps[] = [
+    { value: profileImageUrl, name: "Profile Image", width: "150px", height: "150px", altText: "Profile Image" },
+    { value: sideFooterImg, name: "Side Footer Image", width: "200px", height: "100px", altText: "Side Footer" },
+    { value: favicon, name: "Favicon", width: "32px", height: "32px", altText: "Favicon" },
+    { value: descImage, name: "Description Image", width: "150px", height: "150px", altText: "Description Image" }
+];
+const socialInputs: TextFieldProps[] = [
+    { value: linkedinLink, name: "LinkedIn", width: "400px", height: "40px" },
+    { value: emailLink, name: "Email", width: "400px", height: "40px" },
+    { value: instagramLink, name: "Instagram", width: "400px", height: "40px" },
+    { value: facebookLink, name: "Facebook", width: "400px", height: "40px" },
+    { value: twitterLink, name: "Twitter", width: "400px", height: "40px" },
+    { value: discordLink, name: "Discord", width: "400px", height: "40px" },
+    { value: githubLink, name: "GitHub", width: "400px", height: "40px" },
+    { value: youtubeLink, name: "YouTube", width: "400px", height: "40px" }
+];
 ---
 
 <MainLayout title={"Profile"}>
+	<UserInputs inputs={inputs} client:load />
 </MainLayout>
