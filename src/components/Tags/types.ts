@@ -1,13 +1,11 @@
 export type TagsProps = {
 	selectedTags: Tag[], 
-	tags: FullTag[], 
+	tags: Tag[], 
 }
 
 export type Tag = {
+	slug: string;
 	name: string;
 	icon: string;
 } 
 
-export type FullTag = {
-	slug: string;
-}
