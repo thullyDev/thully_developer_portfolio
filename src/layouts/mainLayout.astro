@@ -19,6 +19,9 @@ const fullName = "Thulaganyo Mooki"
 const profileDescription = "🔥 💯 Programmer 👨🏿‍💻 , Weeb 😄 , MangaReader 👀, south african 🇿🇦"
 const donateSlug = "Kowareta"
 const donateLink = "https://buymeacoffee.com/"
+const seoDesc = `${fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.`
+const seoTitle = "Fullstack Developer | Python Backend Specialist"
+
 const sideBarProps: SideBarProps = {
 	profileImageUrl,
 	userName,
@@ -63,6 +66,7 @@ const footerProps: FooterProps = {
 	sideFooterImg,
 	socialLinks,
 } as const;
+
 ---
 
 <!DOCTYPE html>
@@ -72,21 +76,21 @@ const footerProps: FooterProps = {
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <link rel="icon" type="image/x-icon" href={favicon}>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
-	  <title>{title} | {fullName} | Fullstack Developer | Python Backend Specialist</title>
-	  <meta name="description" content="{fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.">
+	  <title>{title} | {fullName} | {seoTitle} </title>
+	  <meta name="description" content={seoDesc}>
 	  <meta name="keywords" content="{fullName}, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio">
 	  <meta name="author" content="{fullName}">
 	  
 	  <!-- Open Graph / Facebook -->
-	  <meta property="og:title" content="{fullName} | Fullstack Developer | Python Backend Specialist">
-	  <meta property="og:description" content="{fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.">
+	  <meta property="og:title" content="{fullName} | {seoTitle}">
+	  <meta property="og:description" content={seoDesc}>
 	  <meta property="og:type" content="website">
 	  <meta property="og:image" content={descImage}> 
 	  
 	  <!-- Twitter -->
 	  <meta name="twitter:card" content="summary_large_image">
-	  <meta name="twitter:title" content="{fullName} | Fullstack Developer | Python Backend Specialist">
-	  <meta name="twitter:description" content="{fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.">
+	  <meta name="twitter:title" content="{fullName} | {seoTitle}">
+	  <meta name="twitter:description" content={seoDesc}>
 	  <meta name="twitter:image" content={descImage}> 
 	</head>
 	<body>
