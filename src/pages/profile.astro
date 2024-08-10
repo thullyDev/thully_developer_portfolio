@@ -1,6 +1,8 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro"
 import { UserInputs } from "../components/UserInputs/UserInputs"
+import { ImageInputs } from "../components/ImageInputs/ImageInputs"
+import { SocialsInputs } from "../components/SocialsInputs/SocialsInputs"
 import type { TextFieldProps } from "../components/TextField/types"
 import type { ImageFieldProps } from "../components/ImageField/types"
 
@@ -29,32 +31,34 @@ const descImage = profileImageUrl
 // get these images from the backend in the future
 
 const inputs: TextFieldProps[] = [
-    { value: userName, name: "Username", width: "200px", height: "40px" },
-    { value: fullName, name: "Full Name", width: "300px", height: "40px" },
-    { value: profileDescription, name: "Profile Description", width: "500px", height: "100px" },
-    { value: donateSlug, name: "Donate Slug", width: "200px", height: "40px" },
-    { value: donateLink, name: "Donate Link", width: "400px", height: "40px" },
-    { value: seoDesc, name: "SEO Description", width: "600px", height: "80px" },
-    { value: seoTitle, name: "SEO Title", width: "400px", height: "40px" }
-];
-const imageInputs: ImageFieldProps[] = [
-    { value: profileImageUrl, name: "Profile Image", width: "150px", height: "150px", altText: "Profile Image" },
-    { value: sideFooterImg, name: "Side Footer Image", width: "200px", height: "100px", altText: "Side Footer" },
-    { value: favicon, name: "Favicon", width: "32px", height: "32px", altText: "Favicon" },
-    { value: descImage, name: "Description Image", width: "150px", height: "150px", altText: "Description Image" }
+    { value: userName, name: "username", width: "200px", height: "40px" },
+    { value: fullName, name: "full_name", width: "300px", height: "40px" },
+    { value: profileDescription, name: "profile_description", width: "500px", height: "100px" },
+    { value: donateSlug, name: "donate_slug", width: "200px", height: "40px" },
+    { value: donateLink, name: "donate_link", width: "400px", height: "40px" },
+    { value: seoDesc, name: "seo_description", width: "600px", height: "80px" },
+    { value: seoTitle, name: "seo_title", width: "400px", height: "40px" }
 ];
 const socialInputs: TextFieldProps[] = [
-    { value: linkedinLink, name: "LinkedIn", width: "400px", height: "40px" },
-    { value: emailLink, name: "Email", width: "400px", height: "40px" },
-    { value: instagramLink, name: "Instagram", width: "400px", height: "40px" },
-    { value: facebookLink, name: "Facebook", width: "400px", height: "40px" },
-    { value: twitterLink, name: "Twitter", width: "400px", height: "40px" },
-    { value: discordLink, name: "Discord", width: "400px", height: "40px" },
-    { value: githubLink, name: "GitHub", width: "400px", height: "40px" },
-    { value: youtubeLink, name: "YouTube", width: "400px", height: "40px" }
+    { value: linkedinLink, name: "linkedin", width: "400px", height: "40px" },
+    { value: emailLink, name: "email", width: "400px", height: "40px" },
+    { value: instagramLink, name: "instagram", width: "400px", height: "40px" },
+    { value: facebookLink, name: "facebook", width: "400px", height: "40px" },
+    { value: twitterLink, name: "twitter", width: "400px", height: "40px" },
+    { value: discordLink, name: "discord", width: "400px", height: "40px" },
+    { value: githubLink, name: "github", width: "400px", height: "40px" },
+    { value: youtubeLink, name: "youtube", width: "400px", height: "40px" }
+];
+const imageInputs: ImageFieldProps[] = [
+    { value: profileImageUrl, name: "profile_image" },
+    { value: sideFooterImg, name: "side_footer_image" },
+    { value: favicon, name: "Favicon" },
+    { value: descImage, name: "description_image" }
 ];
 ---
 
 <MainLayout title={"Profile"}>
-	<UserInputs inputs={inputs} client:load />
+    <UserInputs inputs={inputs} client:load />
+    <SocialsInputs inputs={socialInputs} client:load />
+	<ImageInputs inputs={imageInputs} client:load />
 </MainLayout>
