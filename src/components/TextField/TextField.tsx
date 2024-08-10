@@ -12,7 +12,7 @@ export function TextField({ value, name, height = "100px", width = "100px" }: Te
 					{formatText(name)}
 				</span>
 				<span className="field-con">
-					<textarea className="textfield" name={name} id={name} >{value}</textarea>
+					<textarea className="textfield" defaultValue={value} name={name} id={name} ></textarea>
 				</span>
 			</div>
 		</div>
