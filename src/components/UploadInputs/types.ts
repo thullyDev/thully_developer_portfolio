@@ -18,6 +18,7 @@ export type UploadImage = {
 export type lang = {
 	name: string;
 	icon: string;
+	slug: string;
 }
 
 export type LangsAndDBs = {
