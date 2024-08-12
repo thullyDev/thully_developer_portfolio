@@ -44,24 +44,9 @@ const socialLinks: SocialLink[] = [
 		link: "mailto:your-email@example.com",
 	},
 	{
-		icon: "fab fa-instagram",
-		name: "Instagram",
-		link: "https://www.instagram.com/thullydev",
-	},
-	{
-		icon: "fab fa-facebook",
-		name: "Facebook",
-		link: "https://www.facebook.com/thullydev",
-	},
-	{
 		icon: "fab fa-twitter",
 		name: "Twitter",
 		link: "https://twitter.com/thullydev",
-	},
-	{
-		icon: "fab fa-discord",
-		name: "Discord",
-		link: "https://discord.com/invite/thullydev",
 	},
 	{
 		icon: "fab fa-github",
@@ -115,7 +100,7 @@ const footerProps: FooterProps = {
 				<main class="main-content">
 					<slot/>
 				</main>
-				<Footer {...footerProps}/>
+				<Footer {...footerProps} client:load />
 			</div>
 			<Authentication />
 		</div>

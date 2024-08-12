@@ -17,11 +17,13 @@ const loginInputs: AuthInput[] = [
 
 export function Authentication() {
   return (
-    <div className="auth-con">
-      <div className="inner-con">
-        <CloseBtn />
-        <div className="forms-con">
-          <AuthForm name="login" authInputs={loginInputs} />
+    <div className="outer-auth-con">
+      <div className="auth-con">
+        <div className="inner-con">
+          <CloseBtn />
+          <div className="forms-con">
+            <AuthForm name="login" authInputs={loginInputs} />
+          </div>
         </div>
       </div>
     </div>
