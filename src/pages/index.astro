@@ -5,6 +5,7 @@ import { Stack } from "../components/Stack/Stack"
 import { ProjectCard } from "../components/ProjectCard/ProjectCard"
 import type { ProjectCardProps } from "../components/ProjectCard/types"
 import type { StackProps } from "../components/Stack/types"
+import "../styles/pages/home.scss"
 
 const stacks: StackProps[] = [
 	{
@@ -69,7 +70,7 @@ const projects: ProjectCardProps[] = [
 		<div class="left-side">
 			<div class="inner-con">
 				<a href="https://github.com/thullyDev" class="github-link flex flex-col gap-5 items-center">
-					<img class="w-full max-w-96" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=thullyDev&theme=dracula" alt="Top languages" />
+					<img class="w-full max-w-md" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=thullyDev&theme=dracula" alt="Top languages" />
 				  <img class="w-full max-w-96" src="https://github-readme-stats-eight-theta.vercel.app/api?username=thullyDev&show_icons=true&include_all_commits=true&count_private=false&theme=dracula" alt="Profile summary" />
 				</a>
 			</div>
@@ -102,7 +103,7 @@ const projects: ProjectCardProps[] = [
 		</span>
 		<div class="inner-projects-con">
 			<div class="inner-con">
-				<ul class="project-list flex flex-col gap-4">
+				<ul class="project-list flex flex-col gap-4 items-center w-full">
 					{projects.map((item) => { 
 						return (
 							<li class="project-item">

@@ -5,6 +5,7 @@ import { Authentication } from "../components/Authentication/Authentication"
 import type { SocialLink, FooterProps } from "../components/Footer/types"
 import { SideBar } from "../components/SideBar/SideBar"
 import type { SideBarProps } from "../components/SideBar/types"
+import "../styles/global/mainLayout.scss"
 
 const { title } = Astro.props
 // get these images from the backend in the future
@@ -92,7 +93,7 @@ const footerProps: FooterProps = {
 	  <meta name="twitter:description" content={seoDesc}>
 	  <meta name="twitter:image" content={descImage}> 
 	</head>
-	<body>
+	<body class="scrollable">
 		<div class="content dark:bg-gray-900 text-white relative">
 			<SideBar {...sideBarProps} />
 			<div class="main-side">
