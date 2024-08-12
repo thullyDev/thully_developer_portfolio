@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro"
 import { Icon } from "../components/Icon/Icon"
+import { AboutMe } from "../components/AboutMe/AboutMe"
 import { Stack } from "../components/Stack/Stack"
 import { ProjectCard } from "../components/ProjectCard/ProjectCard"
 import type { ProjectCardProps } from "../components/ProjectCard/types"
@@ -116,19 +117,6 @@ const projects: ProjectCardProps[] = [
 			</div>
 		</div>
 	</div>
-	<div id="about_me" class="about-me">
-	  <h2>About Me</h2>
-	  <p>Hey there, I'm <strong>Thulaganyo Mooki</strong>, a <em>full stack developer</em> from <span class="location">South Africa</span>. I've been into coding since high school, starting out in grade 10, and now I focus mostly on backend development. I'm really into <strong>anime</strong> and <strong>games</strong>, so I've combined those passions with my tech skills to create some cool <a href="#projects" class="project-link">manga and anime websites</a>.</p>
 
-	  <p>I'm always looking for new ways to grow and work on exciting projects. If you want to connect or have something in mind, feel free to reach out at <a href="mailto:thulaganyo.mooki.pro@gmail.com" class="email-link">thulaganyo.mooki.pro@gmail.com</a>.</p>
-
-	  <ul class="skills">
-	    <li>Backend Development</li>
-	    <li>frontend Development</li>
-	    <li>Full Stack Developement</li>
-	    <li>Anime, Manga and Game Enthusiast</li>
-	  </ul>
-
-	  <p class="closing-note">Looking forward to connecting!</p>
-	</div>
+	<AboutMe />
 </MainLayout>

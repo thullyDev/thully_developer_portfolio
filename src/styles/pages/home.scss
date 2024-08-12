@@ -2,13 +2,19 @@
 
 
 @include media-xlarge {
+	.github-analytics-con  {
+		margin: 20px 0;
+		justify-content: space-between;
+		flex-direction: row;
+	}
+
 	.project-list {
 		flex-wrap: wrap;
-		flex-direction: row !important;
+		flex-direction: row;
 
 		.project-item {
 			width: calc(50% - 10px);
-			min-width: 50%;
+			// min-width: 50%;
 		}
 	}
 }
