@@ -29,13 +29,13 @@ export function SideBar({
             <span className="name-con flex gap-1 flex-col">
               <h2 className="username font-bold text-4xl">{userName}</h2>
               <span className="fullname-role flex gap-2">
-                <p className="fullname font-bold text-gray-500">{fullName}</p> 
-                <p className="role text-pink-500 capitalize font-bold">{role}</p>
+                <p className="fullname font-bold text-gray-500 text-nowrap">{fullName}</p> 
+                <p className="role text-pink-500 capitalize font-bold text-nowrap">{role}</p>
               </span>
             </span>
             <span className="details-con flex flex-col gap-3">
               <span className="short-desc-con">
-                <p className="short-desc text-sm">{profileDescription}</p>
+                <p className="short-desc text-sm text-center">{profileDescription}</p>
               </span>
             </span>
           </div>
