@@ -22,7 +22,7 @@ export function ProjectCard({
             <span className="main-lang text-xs font-bold text-pink-500">{mainLang}</span>
           </div>
           <div className="right-side">
-            <img src={image_url} alt="" className="project-image" />
+            <img src={image_url} alt={name} className="project-image h-full w-64 object-cover" />
           </div>
         </a>
       </div>
