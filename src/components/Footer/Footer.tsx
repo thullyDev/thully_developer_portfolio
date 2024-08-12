@@ -10,7 +10,7 @@ export function Footer({ sideFooterImg, socialLinks }: FooterProps) {
             <img src={sideFooterImg} alt="side image" className="side-img w-14 h-15 rounded-full border border-zinc-400" />
           </span>
           <div className="social-links-con">
-            <ul className="socials-list flex gap-3">
+            <ul id="contact_me" className="socials-list flex gap-3">
               {socialLinks.map(({ name, link, icon }, index) => {
                 return (
                   <li key={index} className="social-item">

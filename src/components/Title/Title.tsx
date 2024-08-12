@@ -4,16 +4,16 @@ export function Title() {
 
   return (
     <div className="title-con">
-      <a href="/" className="home-link">
-        <div className="img-con w-full">
+      <a href="/" className="home-link flex justify-start">
+        <div className="img-con">
           <img
-            className="w-full"
+            className="w-24"
             src={titleImageUrl}
             alt="Fullstack developer ready to code!"
           />
         </div>
         <span className="title-heading-con">
-          <h1 className="title-heading">Fullstack developer ready to code!</h1>
+          <h1 className="title-heading font-bold text-3xl">Fullstack developer ready to code!</h1>
         </span>
       </a>
     </div>

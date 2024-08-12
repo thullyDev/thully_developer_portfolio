@@ -97,7 +97,7 @@ const footerProps: FooterProps = {
 		<div class="content dark:bg-gray-900 text-white relative">
 			<SideBar {...sideBarProps} />
 			<div class="main-side">
-				<Header />
+				<Header client:load />
 				<main class="main-content p-3">
 					<slot/>
 				</main>
