@@ -1,3 +1,4 @@
+import { trans500, truncate } from "../../utilities/misc";
 import type { ProjectCardProps } from "./types";
 
 export function ProjectCard({
@@ -8,17 +9,17 @@ export function ProjectCard({
   slug,
 }: ProjectCardProps) {
   return (
-    <div className="project-card">
+    <div className={ `project-card p-5 bg-gray-800 border border-gray-600 hover:bg-gray-700 rounded-md ${trans500}` }>
       <div className="inner-con">
-        <a href={`/project/${slug}`} className="project-link">
-          <div className="left-side">
+        <a href={`/project/${slug}`} className="project-link flex">
+          <div className="left-side flex flex-col gap-2">
             <span className="name-con">
-              <h3 className="name">{name}</h3>
+              <h3 className="name font-bold text-xl">{name}</h3>
             </span>
-            <span className="desc">
-              <p className="desc">{desc}</p>
+            <span className="desc-con">
+              <p className="desc text-sm text-gray-400">{truncate(desc, 125)}</p>
             </span>
-            <span className="main-lang">{mainLang}</span>
+            <span className="main-lang text-xs font-bold text-pink-500">{mainLang}</span>
           </div>
           <div className="right-side">
             <img src={image_url} alt="" className="project-image" />

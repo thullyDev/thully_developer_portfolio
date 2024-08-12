@@ -8,27 +8,27 @@ import type { StackProps } from "../components/Stack/types"
 
 const stacks: StackProps[] = [
 	{
-		label: "languages",
+		field: "languages",
 		stacks: "html,css,js,ts,py,bash",
 	},
 	{
-		label: "backend",
+		field: "backend",
 		stacks: "nodejs,express,fastapi,django",
 	},
 	{
-		label: "Fullstack",
+		field: "fullstack",
 		stacks: "react,astro,tailwind,flutter",
 	},
 	{
-		label: "Databases",
+		field: "databases",
 		stacks: "firebase,postgres,redis",
 	},
 	{
-		label: "Technologies",
+		field: "technologies",
 		stacks: "git,linux,googlecloud",
 	},
 	{
-		label: "Dev Tools",
+		field: "dev_tools",
 		stacks: "sublime,vscode,neovim",
 	},
 ] as const;
@@ -65,26 +65,28 @@ const projects: ProjectCardProps[] = [
 ---
 
 <MainLayout title={"Home"}>
-	<div class="github-analytics-con">
+	<div class="github-analytics-con flex flex-col gap-5 mb-5">
 		<div class="left-side">
 			<div class="inner-con">
-				<img height="180em" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=thullyDev&theme=dracula" alt="Top languages" />
-			    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=thullyDev&show_icons=true&include_all_commits=true&count_private=false&theme=dracula" alt="Profile summary" />
+				<a href="https://github.com/thullyDev" class="github-link flex flex-col gap-5">
+					<img height="180em" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=thullyDev&theme=dracula" alt="Top languages" />
+				  <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=thullyDev&show_icons=true&include_all_commits=true&count_private=false&theme=dracula" alt="Profile summary" />
+				</a>
 			</div>
 		</div>
 		<div class="right-side">
 			<div class="inner-con">
-				<span class="github-link-con">
-					<a href="https://github.com/thullyDev" class="github-link">
-						<Icon icon="fa-brands fa-github-square" /> My github
-					</a>
-				</span>
-		    	<img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=thullyDev&layout=compact&langs_count=8&theme=dracula" alt="Top languages" />
+				<a href="https://github.com/thullyDev" class="github-link flex items-center justify-center flex-col">
+					<span class="github-link-con flex justify-center ">
+							<Icon icon="fa-brands fa-github-square" /> My github
+					</span>
+			    <img class="w-80" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=thullyDev&layout=compact&langs_count=8&theme=dracula" alt="Top languages" />
+				</a>
 			</div>
 		</div>
 	</div>
 	<div class="mytech-stack-con">
-		<div class="inner-con">
+		<div class="inner-con flex justify-center flex-col gap-5">
 			{
 				stacks.map((item) => {
 					return (
@@ -94,13 +96,22 @@ const projects: ProjectCardProps[] = [
 			}
 		</div>
 	</div>
-	<div class="projects-con">
-		<span class="label">
-			<a href="/projects">Projects</a>
+	<div class="projects-con flex flex-col gap-5 my-5">
+		<span class="label flex justify-between w-full">
+			My Projects <a href="/projects" class="underline capitalize text-pink-500">more</a>
 		</span>
 		<div class="inner-projects-con">
 			<div class="inner-con">
-				{projects.map((item) => <ProjectCard {...item} />)}
+				<ul class="project-list flex flex-col gap-4">
+					{projects.map((item) => { 
+						return (
+							<li class="project-item">
+								<ProjectCard {...item} />
+							</li>
+						) 
+					})
+					}
+				</ul>
 			</div>
 		</div>
 	</div>

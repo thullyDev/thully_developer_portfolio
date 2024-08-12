@@ -1,3 +1,4 @@
+import { trans500 } from "../../utilities/misc";
 import type { SideBarProps } from "./types";
 
 export function SideBar({
@@ -10,7 +11,7 @@ export function SideBar({
   role,
 }: SideBarProps) {
   return (
-    <div className="side-bar">
+    <div className="side-bar p-5">
       <article>
         <div className="inner-con flex gap-5 flex-col mb-5">
           <div className="profile-con flex justify-center">
@@ -28,8 +29,8 @@ export function SideBar({
             <span className="name-con flex gap-1 flex-col">
               <h2 className="username font-bold text-4xl">{userName}</h2>
               <span className="fullname-role flex gap-2">
-                <p className="fullname font-bold">{fullName}</p> 
-                <p className="role text-zinc-500 capitalize font-bold">{role}</p>
+                <p className="fullname font-bold text-gray-500">{fullName}</p> 
+                <p className="role text-pink-500 capitalize font-bold">{role}</p>
               </span>
             </span>
             <span className="details-con flex flex-col gap-3">
@@ -46,7 +47,7 @@ export function SideBar({
                 className="donate-image w-40"
               />
             </a>
-            <button type="button" className="login-logout-btn bg-gray-700 w-20 text-xs rounded-md text-white capitalize font-bold">
+            <button type="button" className={ `login-logout-btn bg-pink-500 hover:bg-gray-500 w-20 text-xs rounded-md text-white ${trans500} capitalize font-bold` }>
               login
             </button>
           </div>

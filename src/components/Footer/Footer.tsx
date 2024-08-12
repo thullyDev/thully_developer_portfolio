@@ -4,7 +4,7 @@ import type { FooterProps } from "./types";
 export function Footer({ sideFooterImg, socialLinks }: FooterProps) {
   return (
     <footer>
-      <div className="socials-con flex justify-center my-5">
+      <div className="socials-con flex justify-center py-5">
         <div className="inner-con bg-gray-600 flex justify-center items-center gap-5 px-3 py-1 rounded-full">
           <span className="footer-side-img-con">
             <img src={sideFooterImg} alt="side image" className="side-img w-14 h-15 rounded-full border border-zinc-400" />

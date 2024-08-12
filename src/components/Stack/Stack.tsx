@@ -1,13 +1,14 @@
+import { formatText } from "../../utilities/misc";
 import type { StackProps } from "./types";
 
-export function Stack({ label, stacks }: StackProps) {
+export function Stack({ field, stacks }: StackProps) {
   return (
-    <span>
-      <h3>{label}</h3>
+    <a href={ `/projects?field=${field}` } className="flex flex-col justify-center items-center gap-3">
+      <h3>{formatText(field)}</h3>
       <img
-        src={`https://skillicons.dev/icons?i=${stacks}&theme=dark&perline=5`}
+        src={`https://skillicons.dev/icons?i=${stacks}&theme=dark&perline=7`}
         alt="Backend"
       />
-    </span>
+    </a>
   );
 }

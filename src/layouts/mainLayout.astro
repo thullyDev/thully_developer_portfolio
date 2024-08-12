@@ -93,16 +93,16 @@ const footerProps: FooterProps = {
 	  <meta name="twitter:image" content={descImage}> 
 	</head>
 	<body>
-		<div class="content dark:bg-gray-900 text-white p-3">
-			<SideBar {...sideBarProps} client:load/>
+		<div class="content dark:bg-gray-900 text-white relative">
+			<SideBar {...sideBarProps} />
 			<div class="main-side">
 				<Header />
-				<main class="main-content">
+				<main class="main-content p-3">
 					<slot/>
 				</main>
-				<Footer {...footerProps} client:load />
+				<Footer {...footerProps} />
 			</div>
-			<Authentication />
+			<Authentication client:load />
 		</div>
 	</body>
 </html>
