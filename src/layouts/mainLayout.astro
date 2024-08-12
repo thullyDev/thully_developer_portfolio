@@ -16,6 +16,7 @@ const descImage = profileImageUrl
 
 const userName = "thullyDev"
 const fullName = "Thulaganyo Mooki"
+const role = "developer"
 const profileDescription = "🔥 💯 Programmer 👨🏿‍💻 , Weeb 😄 , MangaReader 👀, south african 🇿🇦"
 const donateSlug = "Kowareta"
 const donateLink = "https://buymeacoffee.com/"
@@ -29,6 +30,7 @@ const sideBarProps: SideBarProps = {
 	profileDescription,
 	donateSlug,
 	donateLink,
+	role
 } as const;
 const socialLinks: SocialLink[] = [
 	{
@@ -106,8 +108,8 @@ const footerProps: FooterProps = {
 	  <meta name="twitter:image" content={descImage}> 
 	</head>
 	<body>
-		<div class="content">
-			<SideBar {...sideBarProps}/>
+		<div class="content dark:bg-gray-900 text-white p-3">
+			<SideBar {...sideBarProps} client:load/>
 			<div class="main-side">
 				<Header />
 				<main class="main-content">

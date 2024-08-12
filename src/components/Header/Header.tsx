@@ -3,7 +3,7 @@ import { Title } from "../Title/Title";
 
 export function Header() {
   return (
-    <header className="main-header">
+    <header className="main-header hidden">
       <Title />
       <Nav />
     </header>

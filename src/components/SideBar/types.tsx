@@ -5,4 +5,5 @@ export type SideBarProps = {
   profileDescription: string;
   donateLink: string;
   donateSlug: string;
+  role: string;
 };
