@@ -1,6 +1,7 @@
 import { FilterBox } from "../FilterBox/FilterBox";
 import { Icon } from "../Icon/Icon";
 import type { SearchBarProps } from "./types";
+import "./styles.scss"
 
 export function SearchBar({ tags, checkedBoxes }: SearchBarProps) {
   return (

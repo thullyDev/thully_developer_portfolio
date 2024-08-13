@@ -1,0 +1,13 @@
+@import "../global/mediaQueries.scss";
+
+@include media-xlarge {
+  .project-list {
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .project-item {
+      width: calc(50% - 10px);
+      // min-width: 50%;
+    }
+  }
+}

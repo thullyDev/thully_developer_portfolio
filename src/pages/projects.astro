@@ -5,6 +5,7 @@ import { SearchBar } from "../components/SearchBar/SearchBar"
 import { Projects as ProjectsComponet } from "../components/Projects/Projects"
 import { Pagination } from "../components/Pagination/Pagination"
 import { getLangsAndDBs } from "../services/server"
+import "../styles/pages/projects.scss"
 
 const langsAndDBs = await getLangsAndDBs()
 const { projects, pages, page } = getProjects({ page: 1 });
