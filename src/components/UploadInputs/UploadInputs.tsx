@@ -34,7 +34,7 @@ export function UploadInputs({
     <div className="upload-inputs-con">
       <div className="inner-con flex flex-col gap-5">
         <UploadTextInputs textInputs={textInputs} />
-        <div className="keywords-tags-con flex flex-col gap-5">
+        <div className="keywords-tags-con flex flex-col gap-5 justify-center items-center">
           <Keywords keywords={keywords} />
           <Tags tags={langsAndDBs} selectedTags={langs} />
         </div>
