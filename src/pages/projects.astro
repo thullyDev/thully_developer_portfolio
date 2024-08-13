@@ -4,12 +4,15 @@ import { getProjects } from "../services/server"
 import { SearchBar } from "../components/SearchBar/SearchBar"
 import { Projects as ProjectsComponet } from "../components/Projects/Projects"
 import { Pagination } from "../components/Pagination/Pagination"
+import { getLangsAndDBs } from "../services/server"
 
+const langsAndDBs = await getLangsAndDBs()
 const { projects, pages, page } = getProjects({ page: 1 });
+const checkedBoxes = {}
 ---
 
 <MainLayout title={"Projects"}>
-	<SearchBar client:load />
+	<SearchBar tags={langsAndDBs} checkedBoxes={checkedBoxes} client:load />
 	<ProjectsComponet client:load projects={projects} />
 	<Pagination client:load page={page} pages={pages} />
 </MainLayout>

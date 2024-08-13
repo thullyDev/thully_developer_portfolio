@@ -218,7 +218,7 @@ const dummyApi = new ApiHandler("")
 
 export async function getLangsAndDBs(): Promise<LangsAndDBs[]>  {
   const url = "https://thullydev.github.io/thullyDevStatics/JSONs/langsAndDBs.json"
-  const data = await dummyApi.get(url) as Record<string, LangsAndDB> | null
+  const data = await dummyApi.get(url) as Record<string, LangsAndDBs> | null
 
   if (!data) {
     return []
