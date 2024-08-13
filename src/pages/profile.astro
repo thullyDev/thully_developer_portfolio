@@ -5,6 +5,7 @@ import { ImageInputs } from "../components/ImageInputs/ImageInputs"
 import { SocialsInputs } from "../components/SocialsInputs/SocialsInputs"
 import type { TextFieldProps } from "../components/TextField/types"
 import type { ImageFieldProps } from "../components/ImageField/types"
+import "../styles/pages/profile.scss"
 
 const userName = "thullyDev"
 const fullName = "Thulaganyo Mooki"
@@ -32,24 +33,24 @@ const descImage = profileImageUrl
 // get these images from the backend in the future
 
 const inputs: TextFieldProps[] = [
-    { value: userName, name: "username", width: "200px", height: "40px" },
-    { value: fullName, name: "full_name", width: "300px", height: "40px" },
-    { value: role, name: "role", width: "300px", height: "40px" },
-    { value: profileDescription, name: "profile_description", width: "500px", height: "100px" },
-    { value: donateSlug, name: "donate_slug", width: "200px", height: "40px" },
-    { value: donateLink, name: "donate_link", width: "400px", height: "40px" },
-    { value: seoDesc, name: "seo_description", width: "600px", height: "80px" },
-    { value: seoTitle, name: "seo_title", width: "400px", height: "40px" }
+    { value: userName, name: "username" },
+    { value: fullName, name: "full_name" },
+    { value: role, name: "role" },
+    { value: profileDescription, name: "profile_description" },
+    { value: seoDesc, name: "seo_description" },
+    { value: seoTitle, name: "seo_title" },
+    { value: donateSlug, name: "donate_slug" },
+    { value: donateLink, name: "donate_link" },
 ];
 const socialInputs: TextFieldProps[] = [
-    { value: linkedinLink, name: "linkedin", width: "400px", height: "40px" },
-    { value: emailLink, name: "email", width: "400px", height: "40px" },
-    { value: instagramLink, name: "instagram", width: "400px", height: "40px" },
-    { value: facebookLink, name: "facebook", width: "400px", height: "40px" },
-    { value: twitterLink, name: "twitter", width: "400px", height: "40px" },
-    { value: discordLink, name: "discord", width: "400px", height: "40px" },
-    { value: githubLink, name: "github", width: "400px", height: "40px" },
-    { value: youtubeLink, name: "youtube", width: "400px", height: "40px" }
+    { value: linkedinLink, name: "linkedin" },
+    { value: emailLink, name: "email" },
+    { value: instagramLink, name: "instagram" },
+    { value: facebookLink, name: "facebook" },
+    { value: twitterLink, name: "twitter" },
+    { value: discordLink, name: "discord" },
+    { value: githubLink, name: "github" },
+    { value: youtubeLink, name: "youtube" }
 ];
 const imageInputs: ImageFieldProps[] = [
     { value: profileImageUrl, name: "profile_image" },

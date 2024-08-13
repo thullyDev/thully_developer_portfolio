@@ -40,7 +40,7 @@ export function SideBar({
               </span>
             </span>
             <span className="sidebar-github-link-con text-center">
-              <a href={githubLink} className="text-gray-400 my-5 text-sm underline">
+              <a href={githubLink} target="_blank" className="text-gray-400 my-5 text-sm underline">
                 <Icon icon="fab fa-github" /> {githubLink}
               </a>
             </span>

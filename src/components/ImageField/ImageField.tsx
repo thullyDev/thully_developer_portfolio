@@ -8,12 +8,13 @@ export function ImageField({
 }: ImageFieldProps) {
   return (
     <div className="image-field-con">
-      <div className="inner-con">
-        <span className="label">{formatText(name)}</span>
+      <input id={name} type="file" className="image-inp hidden" />
+      <label htmlFor={name} className="inner-con flex flex-col gap-3 h-full w-full cursor-pointer">
+        <span className="label text-sm font-bold text-center block">{formatText(name)}</span>
         <span className="field-con">
-          <img className="image-field" src={value} alt={altText} />
+          <img className="image-field w-40 h-40 object-cover" src={value} alt={altText} />
         </span>
-      </div>
+      </label>
     </div>
   );
 }

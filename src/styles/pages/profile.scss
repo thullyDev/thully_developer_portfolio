@@ -1,0 +1,14 @@
+@import "../global/mediaQueries.scss";
+
+.textfield {
+  height: 30px;
+
+  &#profile_description,
+  &#seo_description {
+    height: 200px;
+  }
+
+  &#seo_title {
+    height: 100px;
+  }
+}
