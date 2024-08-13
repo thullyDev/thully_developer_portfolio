@@ -6,7 +6,7 @@ export function AuthForm({ name, authInputs }: AuthFormProps) {
   return (
     <div className="auth-form-con">
       <form data-name={name} action="POST" className="auth-form">
-        <div className="inputs-con py-4 flex flex-col gap-4">
+        <div className="inputs-con flex flex-col gap-4 py-4">
           {authInputs.map((item, index) => {
             return <AuthInput item={item} key={index} />;
           })}
@@ -14,7 +14,7 @@ export function AuthForm({ name, authInputs }: AuthFormProps) {
         <div className="save-btn-con flex justify-center">
           <button
             type="button"
-            className={`save-btn text-sm py-1 bg-gray-700 hover:bg-gray-600 w-20 rounded ${trans500}`}
+            className={`save-btn w-20 rounded bg-gray-700 py-1 text-sm hover:bg-gray-600 ${trans500}`}
           >
             submit
           </button>

@@ -10,13 +10,13 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div
-      className={`project-card p-5 bg-gray-800 border border-gray-600 hover:bg-gray-700 rounded-md ${trans500}`}
+      className={`project-card rounded-md border border-gray-600 bg-gray-800 p-5 hover:bg-gray-700 ${trans500}`}
     >
       <div className="inner-con">
         <a href={`/project/${slug}`} className="project-link flex">
           <div className="left-side flex flex-col gap-2">
             <span className="name-con">
-              <h3 className="name font-bold text-xl">{name}</h3>
+              <h3 className="name text-xl font-bold">{name}</h3>
             </span>
             <span className="desc-con">
               <p className="desc text-sm text-gray-400">

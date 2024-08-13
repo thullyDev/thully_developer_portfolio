@@ -5,14 +5,14 @@ export function AboutMe() {
   return (
     <div id="about_me" className="about-me">
       <span role="button" className="text-label">
-        <h3 className="text-pink-500 underline pointer">
+        <h3 className="pointer text-pink-500 underline">
           {" "}
           <Icon icon="fas fa-caret-right" /> About Me
         </h3>
       </span>
-      <div className="layer-1-about-me fixed top-0 left-0 bg-black bg-opacity-70 w-full h-full hidden">
-        <div className="layer-2-about-me w-full h-full flex justify-around items-center">
-          <div className="layer-3-about-me border border-gray-500 bg-gray-800 py-3 px-5 text-sm rounded-sm w-full max-w-96">
+      <div className="layer-1-about-me fixed left-0 top-0 hidden h-full w-full bg-black bg-opacity-70">
+        <div className="layer-2-about-me flex h-full w-full items-center justify-around">
+          <div className="layer-3-about-me w-full max-w-96 rounded-sm border border-gray-500 bg-gray-800 px-5 py-3 text-sm">
             <CloseBtn />
             <p className="text-center">
               Hey there, I'm{" "}

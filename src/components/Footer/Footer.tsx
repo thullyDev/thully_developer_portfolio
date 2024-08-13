@@ -5,12 +5,12 @@ export function Footer({ sideFooterImg, socialLinks }: FooterProps) {
   return (
     <footer>
       <div className="socials-con flex justify-center py-5">
-        <div className="inner-con bg-gray-600 flex justify-center items-center gap-5 px-3 py-1 rounded-full">
+        <div className="inner-con flex items-center justify-center gap-5 rounded-full bg-gray-600 px-3 py-1">
           <span className="footer-side-img-con">
             <img
               src={sideFooterImg}
               alt="side image"
-              className="side-img w-14 h-15 rounded-full border border-zinc-400"
+              className="side-img h-15 w-14 rounded-full border border-zinc-400"
             />
           </span>
           <div className="social-links-con">

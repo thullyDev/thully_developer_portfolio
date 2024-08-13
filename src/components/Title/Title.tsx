@@ -13,7 +13,7 @@ export function Title() {
           />
         </div>
         <span className="title-heading-con">
-          <h1 className="title-heading font-bold text-3xl">
+          <h1 className="title-heading text-3xl font-bold">
             Fullstack developer ready to code!
           </h1>
         </span>

@@ -27,7 +27,7 @@ export function Nav() {
             <li key={index} className="nav-item">
               <a
                 href={link}
-                className="nav-link capitalize font-bold text-gray-400 text-sm flex gap-2 items-center justify-center"
+                className="nav-link flex items-center justify-center gap-2 text-sm font-bold capitalize text-gray-400"
               >
                 <Icon icon={icon} /> {name}
               </a>

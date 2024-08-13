@@ -1,7 +1,7 @@
 import { trans500 } from "../../utilities/misc";
 import { Icon } from "../Icon/Icon";
 import type { CheckBoxProps } from "./types";
-import "./styles.scss"
+import "./styles.scss";
 
 export function CheckBox({ id, checked = false }: CheckBoxProps) {
   const input =
@@ -15,7 +15,7 @@ export function CheckBox({ id, checked = false }: CheckBoxProps) {
     <div className="checkbox">
       {input}
       <label htmlFor={id} className="inline-block cursor-pointer">
-        <div className="outer-box border border-gray-500 w-4 h-4 rounded-sm flex justify-center items-center">
+        <div className="outer-box flex h-4 w-4 items-center justify-center rounded-sm border border-gray-500">
           <span className={`mark opacity-0 hover:opacity-100 ${trans500}`}>
             <Icon icon="fa fa-check" />
           </span>

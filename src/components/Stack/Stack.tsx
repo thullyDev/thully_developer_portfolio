@@ -5,7 +5,7 @@ export function Stack({ field, stacks }: StackProps) {
   return (
     <a
       href={`/projects?field=${field}`}
-      className="flex flex-col justify-center items-center gap-3"
+      className="flex flex-col items-center justify-center gap-3"
     >
       <h3>{formatText(field)}</h3>
       <img

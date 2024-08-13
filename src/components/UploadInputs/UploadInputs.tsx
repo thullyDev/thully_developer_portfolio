@@ -18,33 +18,29 @@ export function UploadInputs({
   langsAndDBs,
 }: UploadInputsProps) {
   const textInputs: TextFieldProps[] = [
-    { value: name ?? "", name: "name", width: "200px", height: "40px" },
-    {
-      value: shortDesc ?? "",
-      name: "description",
-      width: "400px",
-      height: "40px",
-    },
-    { value: repoLink ?? "", name: "repo", width: "300px", height: "40px" },
+    { value: name ?? "", name: "name" },
+    { value: repoLink ?? "", name: "repo_link" },
     {
       value: demoLink ?? "",
       name: "demo_link",
-      width: "300px",
-      height: "40px",
+    },
+    {
+      value: shortDesc ?? "",
+      name: "description",
     },
   ];
 
   return (
     <div className="upload-inputs-con">
-      <div className="inner-con">
+      <div className="inner-con flex flex-col gap-5">
         <UploadTextInputs textInputs={textInputs} />
-        <div className="keywords-tags-con">
+        <div className="keywords-tags-con flex flex-col gap-5">
           <Keywords keywords={keywords} />
           <Tags tags={langsAndDBs} selectedTags={langs} />
         </div>
         <UploadImages images={images} />
-        <div className="submit-con">
-          <button type="button" className="submit-btn">
+        <div className="submit-con flex justify-center">
+          <button type="button" className="submit-btn text-sm bg-pink-500 w-20 py-1 rounded">
             submit
           </button>
         </div>

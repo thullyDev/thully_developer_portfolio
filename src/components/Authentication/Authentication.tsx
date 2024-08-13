@@ -17,9 +17,9 @@ const loginInputs: AuthInput[] = [
 
 export function Authentication() {
   return (
-    <div className="hidden outter-con fixed top-0 w-full h-full">
-      <div className="h-full bg-black bg-opacity-70 flex justify-center items-center">
-        <div className="auth-con bg-gray-800 p-3 rounded-md border border-gray-600 w-full max-w-96">
+    <div className="outter-con fixed top-0 hidden h-full w-full">
+      <div className="flex h-full items-center justify-center bg-black bg-opacity-70">
+        <div className="auth-con w-full max-w-96 rounded-md border border-gray-600 bg-gray-800 p-3">
           <div className="inner-con">
             <CloseBtn />
             <div className="forms-con">
