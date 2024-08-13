@@ -7,4 +7,5 @@ export type SideBarProps = {
   donateSlug: string;
   role: string;
   githubLink: string;
+  email: string;
 };

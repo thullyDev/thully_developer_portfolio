@@ -7,6 +7,7 @@ export function SideBar({
   profileImageUrl,
   fullName,
   githubLink,
+  email,
   profileDescription,
   donateSlug,
   donateLink,
@@ -39,9 +40,12 @@ export function SideBar({
                 </p>
               </span>
             </span>
-            <span className="sidebar-github-link-con text-center">
-              <a href={githubLink} target="_blank" className="text-gray-400 my-5 text-sm underline">
+            <span className="sidebar-github-link-con text-center flex flex-col my-5 gap-2">
+              <a href={githubLink} target="_blank" className="text-gray-400 text-sm underline">
                 <Icon icon="fab fa-github" /> {githubLink}
+              </a>
+              <a href={`mailto:${email}`} target="_blank" className="text-gray-400 text-sm underline">
+                <Icon icon="fa fa-envelope" /> {email}
               </a>
             </span>
             <span className="details-con flex flex-col gap-3">

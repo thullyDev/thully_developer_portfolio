@@ -24,6 +24,7 @@ const donateLink = "https://buymeacoffee.com/"
 const seoDesc = `${fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.`
 const seoTitle = "Fullstack Developer | Python Backend Specialist"
 const githubLink = "https://github.com/thullydev"
+const email = "thulaganyo.mooki.pro@gmail.com"
 
 const sideBarProps: SideBarProps = {
 	profileImageUrl,
@@ -33,6 +34,7 @@ const sideBarProps: SideBarProps = {
 	donateSlug,
 	donateLink,
 	githubLink,
+	email,
 	role
 } as const;
 const socialLinks: SocialLink[] = [
@@ -44,7 +46,7 @@ const socialLinks: SocialLink[] = [
 	{
 		icon: "fa fa-envelope",
 		name: "Email",
-		link: "mailto:your-email@example.com",
+		link: `mailto:${email}`,
 	},
 	{
 		icon: "fab fa-twitter",
