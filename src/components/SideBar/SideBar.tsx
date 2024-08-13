@@ -1,10 +1,12 @@
 import { trans500 } from "../../utilities/misc";
+import { Icon } from "../Icon/Icon";
 import type { SideBarProps } from "./types";
 
 export function SideBar({
   userName,
   profileImageUrl,
   fullName,
+  githubLink,
   profileDescription,
   donateSlug,
   donateLink,
@@ -36,6 +38,11 @@ export function SideBar({
                   {role}
                 </p>
               </span>
+            </span>
+            <span className="sidebar-github-link-con text-center">
+              <a href={githubLink} className="text-gray-400 my-5 text-sm underline">
+                <Icon icon="fab fa-github" /> {githubLink}
+              </a>
             </span>
             <span className="details-con flex flex-col gap-3">
               <span className="short-desc-con">

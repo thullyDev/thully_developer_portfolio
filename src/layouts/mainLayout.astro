@@ -23,6 +23,7 @@ const donateSlug = "thullyDev"
 const donateLink = "https://buymeacoffee.com/"
 const seoDesc = `${fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.`
 const seoTitle = "Fullstack Developer | Python Backend Specialist"
+const githubLink = "https://github.com/thullydev"
 
 const sideBarProps: SideBarProps = {
 	profileImageUrl,
@@ -31,6 +32,7 @@ const sideBarProps: SideBarProps = {
 	profileDescription,
 	donateSlug,
 	donateLink,
+	githubLink,
 	role
 } as const;
 const socialLinks: SocialLink[] = [
@@ -52,7 +54,7 @@ const socialLinks: SocialLink[] = [
 	{
 		icon: "fab fa-github",
 		name: "GitHub",
-		link: "https://github.com/thullydev",
+		link: githubLink,
 	},
 	{
 		icon: "fab fa-youtube",
