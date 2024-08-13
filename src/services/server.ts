@@ -214,15 +214,16 @@ export function getProjects({ page }: GetProjects): GetProjectsResponse {
   };
 }
 
-const dummyApi = new ApiHandler("")
+const dummyApi = new ApiHandler("");
 
-export async function getLangsAndDBs(): Promise<LangsAndDBs[]>  {
-  const url = "https://thullydev.github.io/thullyDevStatics/JSONs/langsAndDBs.json"
-  const data = await dummyApi.get(url) as Record<string, LangsAndDBs> | null
+export async function getLangsAndDBs(): Promise<LangsAndDBs[]> {
+  const url =
+    "https://thullydev.github.io/thullyDevStatics/JSONs/langsAndDBs.json";
+  const data = (await dummyApi.get(url)) as Record<string, LangsAndDBs> | null;
 
   if (!data) {
-    return []
+    return [];
   }
 
-  return Object.values(data) as LangsAndDBs[]
+  return Object.values(data) as LangsAndDBs[];
 }

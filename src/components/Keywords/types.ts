@@ -1,3 +1,3 @@
 export type KeywordsProps = {
-	keywords: string[];
-}
+  keywords: string[];
+};

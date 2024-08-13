@@ -1,4 +1,4 @@
 export type AboutMeProps = {
-	name: string;
-	role: string;
-}
+  name: string;
+  role: string;
+};

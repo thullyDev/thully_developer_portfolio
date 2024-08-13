@@ -12,7 +12,10 @@ export function AuthForm({ name, authInputs }: AuthFormProps) {
           })}
         </div>
         <div className="save-btn-con flex justify-center">
-          <button type="button" className={ `save-btn text-sm py-1 bg-gray-700 hover:bg-gray-600 w-20 rounded ${trans500}` }>
+          <button
+            type="button"
+            className={`save-btn text-sm py-1 bg-gray-700 hover:bg-gray-600 w-20 rounded ${trans500}`}
+          >
             submit
           </button>
         </div>

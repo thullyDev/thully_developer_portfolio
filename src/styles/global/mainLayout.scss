@@ -1,10 +1,11 @@
 @import "mediaQueries.scss";
 
-h2.username, span.fullname-role, span.short-desc-con {
-	display: flex;
-	justify-content: center;
+h2.username,
+span.fullname-role,
+span.short-desc-con {
+  display: flex;
+  justify-content: center;
 }
-
 
 .scrollable::-webkit-scrollbar {
   width: 7px;
@@ -20,34 +21,34 @@ h2.username, span.fullname-role, span.short-desc-con {
   border-radius: 0.25rem;
 }
 
-@include media-large {
-	.content {
-		display: flex;
-		
-		.main-header {
-			display: block;
-		}
 
-		.side-bar {
-			min-width: 300px;
-			position: relative;
-
-			article {
-				position: sticky;
-				top: 0;
-				height: 550px;
-				padding-top: 20px;
-				
-				.login-donate-acts-con {
-					position: relative;
-					top: 50px;
-				}
-
-			}			
-		}
-	}
-
+.scrollable-nobg::-webkit-scrollbar-track {
+  background-color: #00000000;
 }
 
+@include media-large {
+  .content {
+    display: flex;
 
+    .main-header {
+      display: block;
+    }
 
+    .side-bar {
+      min-width: 300px;
+      position: relative;
+
+      article {
+        position: sticky;
+        top: 0;
+        height: 550px;
+        padding-top: 20px;
+
+        .login-donate-acts-con {
+          position: relative;
+          top: 50px;
+        }
+      }
+    }
+  }
+}

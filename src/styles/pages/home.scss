@@ -1,21 +1,19 @@
 @import "../global/mediaQueries.scss";
 
-
 @include media-xlarge {
-	.github-analytics-con  {
-		margin: 20px 0;
-		justify-content: space-evenly;
-		flex-direction: row;
-	}
+  .github-analytics-con {
+    margin: 20px 0;
+    justify-content: space-evenly;
+    flex-direction: row;
+  }
 
-	.project-list {
-		flex-wrap: wrap;
-		flex-direction: row;
+  .project-list {
+    flex-wrap: wrap;
+    flex-direction: row;
 
-		.project-item {
-			width: calc(50% - 10px);
-			// min-width: 50%;
-		}
-	}
+    .project-item {
+      width: calc(50% - 10px);
+      // min-width: 50%;
+    }
+  }
 }
-

@@ -7,6 +7,6 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [react(), tailwind()],
   devToolbar: {
-    enabled: false
-  }
+    enabled: false,
+  },
 });

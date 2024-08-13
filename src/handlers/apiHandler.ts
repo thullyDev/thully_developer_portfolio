@@ -13,8 +13,8 @@ export class ApiHandler {
     const urlInstance = new URL(url);
 
     for (const key in params) {
-        urlInstance.searchParams.set(key, params[key]);
-      }
+      urlInstance.searchParams.set(key, params[key]);
+    }
 
     return urlInstance.href;
   }

@@ -25,8 +25,8 @@ export const titleCase = (str: string) => {
   });
 };
 
-
-export const formatText = (key: string) => key.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+export const formatText = (key: string) =>
+  key.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
 
 export const truncate = (input: string, length: number) => {
   if (input.length > length) {

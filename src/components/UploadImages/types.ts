@@ -1,5 +1,5 @@
 import type { UploadImage } from "../UploadInputs/types";
 
-export type UploadImagesProps {
+export type UploadImagesProps = {
 	images: UploadImage[];	
 }

@@ -25,7 +25,10 @@ export function Nav() {
         {navLinks.map(({ name, link, icon }, index) => {
           return (
             <li key={index} className="nav-item">
-              <a href={link} className="nav-link capitalize font-bold text-gray-400 text-sm flex gap-2 items-center justify-center">
+              <a
+                href={link}
+                className="nav-link capitalize font-bold text-gray-400 text-sm flex gap-2 items-center justify-center"
+              >
                 <Icon icon={icon} /> {name}
               </a>
             </li>

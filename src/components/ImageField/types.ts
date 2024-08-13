@@ -1,5 +1,5 @@
 export type ImageFieldProps = {
-	value: string; 
-	name: string;
-	altText?: string;
-}
+  value: string;
+  name: string;
+  altText?: string;
+};

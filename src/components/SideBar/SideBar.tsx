@@ -29,13 +29,19 @@ export function SideBar({
             <span className="name-con flex gap-1 flex-col">
               <h2 className="username font-bold text-4xl">{userName}</h2>
               <span className="fullname-role flex gap-2">
-                <p className="fullname font-bold text-gray-500 text-nowrap">{fullName}</p> 
-                <p className="role text-pink-500 capitalize font-bold text-nowrap">{role}</p>
+                <p className="fullname font-bold text-gray-500 text-nowrap">
+                  {fullName}
+                </p>
+                <p className="role text-pink-500 capitalize font-bold text-nowrap">
+                  {role}
+                </p>
               </span>
             </span>
             <span className="details-con flex flex-col gap-3">
               <span className="short-desc-con">
-                <p className="short-desc text-sm text-center">{profileDescription}</p>
+                <p className="short-desc text-sm text-center">
+                  {profileDescription}
+                </p>
               </span>
             </span>
           </div>
@@ -47,7 +53,10 @@ export function SideBar({
                 className="donate-image w-40"
               />
             </a>
-            <button type="button" className={ `login-logout-btn bg-pink-500 hover:bg-gray-500 w-20 text-xs rounded-md text-white ${trans500} capitalize font-bold` }>
+            <button
+              type="button"
+              className={`login-logout-btn bg-pink-500 hover:bg-gray-500 w-20 text-xs rounded-md text-white ${trans500} capitalize font-bold`}
+            >
               login
             </button>
           </div>

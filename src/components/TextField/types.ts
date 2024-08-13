@@ -1,6 +1,6 @@
 export type TextFieldProps = {
-	value: string;
-	name: string;
-	width?: string;
-	height?: string;
-}
+  value: string;
+  name: string;
+  width?: string;
+  height?: string;
+};

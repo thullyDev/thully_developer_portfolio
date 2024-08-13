@@ -12,9 +12,8 @@ export function Projects({ projects }: ProjectsProps) {
                 <li className="project-item">
                   <ProjectCard key={index} {...item} />
                 </li>
-                ) 
-            }
-            )}
+              );
+            })}
           </ul>
         </div>
       </div>
