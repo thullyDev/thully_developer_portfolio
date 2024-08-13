@@ -8,7 +8,7 @@ export function SocialsInputs({ inputs }: SocialInputsProps) {
         <h2 className="label text-2xl font-bold text-center">Socials</h2>
       </span>
       <div className="inner-social-inps-con">
-        <form action="POST" className="social-form flex flex-col flex-wrap gap-3">
+        <form action="POST" className="social-form flex flex-col flex-wrap gap-3 items-center">
           {inputs.map((item, index) => (
             <TextField key={index} {...item} />
           ))}
