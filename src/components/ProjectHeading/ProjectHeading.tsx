@@ -13,11 +13,11 @@ export function ProjectHeading({
       </span>
       <span className="links-con">
         <a href={repoLink} className="github-link">
-          <Icon icon="fab fa-github" />
+          <Icon icon="fab fa-github" /> repo
         </a>
         {liveDemo ? (
           <a href={liveDemo} className="github-link">
-            <Icon icon="fa-solid fa-tower-broadcast" />
+            <Icon icon="fa-solid fa-tower-broadcast" /> live demo
           </a>
         ) : (
           <></>

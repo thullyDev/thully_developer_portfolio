@@ -3,6 +3,7 @@ import MainLayout from "../../layouts/mainLayout.astro"
 import { getRepo } from "../../services/github"
 import { getProjectDetails } from "../../services/server"
 import { ProjectDetails } from "../../components/ProjectDetails/ProjectDetails"
+import type { ProjectImage } from "../../components/ProjectImages/types"
 import type { ProjectDetailsProps } from "../../components/ProjectDetails/types"
 
 const { slug } = Astro.params
@@ -13,16 +14,26 @@ const data = await getRepo(slug)
 
 if (!data) return Astro.redirect("/")
 
-const { name, liveDemo, repoLink } = data
+const {  full_name, name, liveDemo, repoLink, description, created_at, updated_at, language, visibility } = data
 
 const response = await getProjectDetails(name)
-let images = null
+let images: ProjectImage[] = []
 
 if (response) {
 	images = response.images
 }
 
-const projectDetailsProps: ProjectDetailsProps = { name, repoLink, liveDemo, images }
+const projectDetailsProps: ProjectDetailsProps = { 
+	name, 
+	repoLink, 
+	liveDemo, 
+	images, 
+	description,
+	language,
+	created_at,
+	updated_at,
+	full_name,
+}
 
 ---
 
