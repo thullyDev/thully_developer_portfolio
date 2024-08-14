@@ -1,6 +1,9 @@
 import axios, { type AxiosResponse } from "axios";
 import { SUCCESSFUL } from "../utilities/errors";
-import { ApiHandlerResponse, PamaterOptions } from "../types/apiHandlersTypes";
+import type {
+  ApiHandlerResponse,
+  PamaterOptions,
+} from "../types/apiHandlersTypes";
 
 export class ApiHandler {
   private BASE: string;

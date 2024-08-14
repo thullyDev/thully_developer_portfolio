@@ -11,9 +11,17 @@ export function UploadImageField({
   return (
     <div className="upload-image-field relative inline-block">
       <div className="image-con">
-        <img src={imageUrl} alt={altText} className="image h-28 w-28 object-cover rounded" />
+        <img
+          src={imageUrl}
+          alt={altText}
+          className="image h-28 w-28 rounded object-cover"
+        />
       </div>
-      <button className={ `remove-field absolute text-xs top-1 right-1 bg-pink-500 hover:bg-gray-500 w-7 h-7 rounded-full ${trans500}` } data-id={id} data-index={index}>
+      <button
+        className={`remove-field absolute right-1 top-1 h-7 w-7 rounded-full bg-pink-500 text-xs hover:bg-gray-500 ${trans500}`}
+        data-id={id}
+        data-index={index}
+      >
         <Icon icon="fa-solid fa-x" />
       </button>
     </div>

@@ -9,3 +9,13 @@ export type GetProjectsResponse = {
   pages: number;
   projects: Project[];
 };
+
+export type Image = {
+  id: number;
+  url: string;
+  altText: string;
+};
+
+export type GetRepoImages = {
+  images: Image[];
+};

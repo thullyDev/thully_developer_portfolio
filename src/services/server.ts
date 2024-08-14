@@ -1,7 +1,11 @@
 import type { Project } from "../components/Projects/types";
 import type { LangsAndDBs } from "../components/UploadInputs/types";
 import { ApiHandler } from "../handlers/apiHandler";
-import type { GetProjects, GetProjectsResponse } from "../types/serverTypes";
+import type {
+  GetProjects,
+  GetProjectsResponse,
+  GetRepoImages,
+} from "../types/serverTypes";
 import { paginateItems } from "../utilities/misc";
 
 const projects: Project[] = [
@@ -226,4 +230,35 @@ export async function getLangsAndDBs(): Promise<LangsAndDBs[]> {
   }
 
   return Object.values(data) as LangsAndDBs[];
+}
+
+export async function getProjectDetails(
+  name: string,
+): Promise<GetRepoImages | null> {
+  const images = [
+    {
+      id: 1,
+      url: "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg",
+      altText: "1",
+    },
+    {
+      id: 2,
+      url: "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg",
+      altText: "2",
+    },
+    {
+      id: 3,
+      url: "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg",
+      altText: "3",
+    },
+    {
+      id: 4,
+      url: "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg",
+      altText: "4",
+    },
+  ];
+
+  return {
+    images,
+  };
 }

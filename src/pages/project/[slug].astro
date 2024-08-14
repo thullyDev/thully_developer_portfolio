@@ -1,0 +1,31 @@
+---
+import MainLayout from "../../layouts/mainLayout.astro"
+import { getRepo } from "../../services/github"
+import { getProjectDetails } from "../../services/server"
+import { ProjectDetails } from "../../components/ProjectDetails/ProjectDetails"
+import type { ProjectDetailsProps } from "../../components/ProjectDetails/types"
+
+const { slug } = Astro.params
+
+if (!slug) return Astro.redirect("/")
+
+const data = await getRepo(slug)
+
+if (!data) return Astro.redirect("/")
+
+const { name, liveDemo, repoLink } = data
+
+const response = await getProjectDetails(name)
+let images = null
+
+if (response) {
+	images = response.images
+}
+
+const projectDetailsProps: ProjectDetailsProps = { name, repoLink, liveDemo, images }
+
+---
+
+<MainLayout title={name}>
+	<ProjectDetails {...projectDetailsProps} client:load />
+</MainLayout>

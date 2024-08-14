@@ -18,7 +18,7 @@ export function ImageField({
         </span>
         <span className="field-con">
           <img
-            className="image-field h-40 w-40 object-cover rounded"
+            className="image-field h-40 w-40 rounded object-cover"
             src={value}
             alt={altText}
           />
