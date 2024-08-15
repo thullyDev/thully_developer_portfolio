@@ -3,16 +3,16 @@ import type { PaginateItems, PaginateItemsResponse } from "./types";
 export const trans1000 = "transition duration-1000 ease-in-out";
 export const trans500 = "transition duration-500 ease-in-out";
 
-export function paginateItems<T>({
+export function paginateItems({
   data,
   page,
   limit,
-}: PaginateItems<T>): PaginateItemsResponse<T> {
+}: PaginateItems): PaginateItemsResponse {
   const start = (page - 1) * limit;
   const end = start + limit;
   const items = data.slice(start, end);
   const pagination = {
-    pages: data.length / limit,
+    pages: Math.ceil(data.length / limit),
     page: page,
   };
 

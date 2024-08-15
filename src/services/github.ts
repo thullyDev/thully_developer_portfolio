@@ -1,44 +1,53 @@
-import { Octokit } from "@octokit/rest";
-import { GITHUB_ACCESS_TOKEN, GITHUB_USER } from "../utilities/config";
+// import { Octokit } from "@octokit/rest";
+import { GITHUB_USER } from "../utilities/config";
 import { ApiHandler } from "../handlers/apiHandler";
-import type { GitRepoResponse } from "../types/githubResponseTypes";
-import type { GetRepo } from "../types/github";
+import type { GitRepoResponse, GitReposResponse } from "../types/githubResponseTypes";
+import type { GetRepoResponse, Pagination, Repo } from "../types/github";
+import { repoParser } from "./githubParsers";
+import { paginateItems } from "../utilities/misc";
 
-const octokit = new Octokit({
-  auth: GITHUB_ACCESS_TOKEN,
-});
-const gitApi = new ApiHandler(`https://api.github.com/repos/${GITHUB_USER}`);
+// const octokit = new Octokit({
+//   auth: GITHUB_ACCESS_TOKEN,
+// });
 
-export async function getRepo(slug: string): Promise<GetRepo | null> {
-  const response = (await gitApi.get(`/${slug}`)) as null | GitRepoResponse;
+const gitApi = new ApiHandler(`https://api.github.com`);
+
+export async function getRepo(slug: string): Promise<Repo | null> {
+  const response = (await gitApi.get(`/repos/${GITHUB_USER}/${slug}`)) as null | GitRepoResponse;
 
   if (!response) return null;
 
-  const {
-    homepage,
-    name,
-    full_name,
-    visibility,
-    description,
-    html_url,
-    clone_url,
-    language,
-    created_at,
-    updated_at,
-    pushed_at,
-  } = response;
-
-  return {
-    name,
-    full_name,
-    visibility,
-    description,
-    html_url,
-    language,
-    created_at,
-    updated_at,
-    pushed_at,
-    liveDemo: homepage,
-    repoLink: clone_url,
-  };
+  return repoParser(response)
 }
+
+export async function getRepos(page: number): Promise<GetRepoResponse> {
+  const response = (await gitApi.get(`/users/${GITHUB_USER}/repos`)) as null | GitReposResponse;
+  if (!response) {
+    return {
+      repos: [],
+      pagination: {
+        page: 1,
+        pages: 1,
+      }
+    }
+  }
+
+  const repos: Repo[] = []
+
+  for (let i = 0; i < response.length; i++) {
+    const item = response[i]
+    const repo = repoParser(item)
+
+    repos.push(repo)
+  }
+
+  const { items, pagination } = paginateItems({ data: repos, page, limit: 8}) as { items: Repo[], pagination: Pagination }
+
+
+  // return repoParser(response)
+  return {
+    repos: items,
+    pagination: pagination,
+  }
+}
+

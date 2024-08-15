@@ -1,11 +1,5 @@
-export type Project = {
-  name: string;
-  slug: string;
-  mainLang: string;
-  desc: string;
-  image_url: string;
-};
+import type { Repo } from "../../types/github";
 
 export type ProjectsProps = {
-  projects: Project[];
+  projects: Repo[];
 };

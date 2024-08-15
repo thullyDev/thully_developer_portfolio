@@ -1,7 +1,3 @@
-export type ProjectCardProps = {
-  name: string;
-  mainLang: string;
-  desc: string;
-  image_url: string;
-  slug: string;
-};
+import type { Repo } from "../../types/github";
+
+export type ProjectCardProps = Repo;

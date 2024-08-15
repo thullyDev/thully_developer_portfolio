@@ -1,19 +1,20 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro"
 import { getProjects } from "../services/server"
-import { SearchBar } from "../components/SearchBar/SearchBar"
+import { getRepos } from "../services/github"
 import { Projects as ProjectsComponet } from "../components/Projects/Projects"
 import { Pagination } from "../components/Pagination/Pagination"
-import { getLangsAndDBs } from "../services/server"
+import type { GetRepoResponse } from "../types/github";
 import "../styles/pages/projects.scss"
 
-const langsAndDBs = await getLangsAndDBs()
-const { projects, pages, page } = getProjects({ page: 1 });
-const checkedBoxes = {}
+const url = Astro.url
+const stringPage = url.searchParams.get('page') || "1";
+const queyPage = parseInt(stringPage)
+const { repos, pagination }  = await getRepos(queyPage) as GetRepoResponse
+const { pages, page } = pagination 
 ---
 
 <MainLayout title={"Projects"}>
-	<SearchBar tags={langsAndDBs} checkedBoxes={checkedBoxes} client:load />
-	<ProjectsComponet client:load projects={projects} />
+	<ProjectsComponet client:load projects={repos} />
 	<Pagination client:load page={page} pages={pages} />
 </MainLayout>

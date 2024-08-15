@@ -1,7 +1,7 @@
-export type PaginateItems<T> = { data: T[]; page: number; limit: number };
+export type PaginateItems = { data: any[]; page: number; limit: number };
 
-export type PaginateItemsResponse<T> = {
-  items: T[];
+export type PaginateItemsResponse = {
+  items: any[];
   pagination: {
     page: number;
     pages: number;

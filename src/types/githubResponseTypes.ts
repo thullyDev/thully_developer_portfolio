@@ -103,3 +103,6 @@ export type GitRepoResponse = {
   network_count: number;
   subscribers_count: number;
 };
+
+
+export type GitReposResponse = GitRepoResponse[]

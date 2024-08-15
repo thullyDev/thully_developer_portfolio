@@ -33,7 +33,7 @@ export function ProjectInfo({
 			<div className="inner-con flex flex-wrap justify-center gap-5">
 				<div className="left-side flex w-96">
 					<p className="description text-gray-300 text-sm text-center">
-						{description}
+						{description || "" }
 					</p>
 				</div>
 				<div className="right-side flex flex-nowrap flex-col gap-2 w-full max-w-52">
