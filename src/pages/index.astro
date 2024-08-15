@@ -6,6 +6,7 @@ import { Stack } from "../components/Stack/Stack"
 import { ProjectCard } from "../components/ProjectCard/ProjectCard"
 import type { ProjectCardProps } from "../components/ProjectCard/types"
 import type { StackProps } from "../components/Stack/types"
+import { getFeatureProjects } from "../services/github"
 import "../styles/pages/home.scss"
 
 const stacks: StackProps[] = [
@@ -34,36 +35,7 @@ const stacks: StackProps[] = [
 		stacks: "sublime,vscode,neovim",
 	},
 ] as const;
-const projects: ProjectCardProps[] = [
-  {
-    name: "AnimeHub",
-    mainLang: "TypeScript",
-    desc: "A comprehensive platform for anime enthusiasts, offering real-time updates, episode tracking, and community forums. Built with a TypeScript and React stack, this project integrates with multiple APIs for a seamless user experience.",
-    image_url: "https://thullydev.github.io/thullyDevStatics/images/mangarealm-logo.png",
-    slug: "animehub"
-  },
-  {
-    name: "MangaWorld",
-    mainLang: "Python",
-    desc: "An online manga reader with a vast library, personalized recommendations, and a sleek, user-friendly interface. Developed with Python and Django, it offers fast and secure access to manga from various sources.",
-    image_url: "https://thullydev.github.io/thullyDevStatics/images/mangarealm-logo.png",
-    slug: "mangaworld"
-  },
-  {
-    name: "CodeStream",
-    mainLang: "JavaScript",
-    desc: "A live coding platform where developers can stream their coding sessions, interact with viewers, and share their projects. Utilizes a JavaScript-based stack with Node.js and Express for backend services.",
-    image_url: "https://thullydev.github.io/thullyDevStatics/images/mangarealm-logo.png",
-    slug: "codestream"
-  },
-  {
-    name: "DevConnect",
-    mainLang: "JavaScript",
-    desc: "A social networking site for developers to connect, share projects, and collaborate on open-source initiatives. Built with a Node.js and Express backend.",
-    image_url: "https://thullydev.github.io/thullyDevStatics/images/mangarealm-logo.png",
-    slug: "devconnect"
-  },
-] as const;
+const projects: ProjectCardProps[] = await getFeatureProjects() as const;
 ---
 
 <MainLayout title={"Home"}>
@@ -107,7 +79,7 @@ const projects: ProjectCardProps[] = [
 				<ul class="project-list flex flex-col gap-4 items-center w-full">
 					{projects.map((item) => { 
 						return (
-							<li class="project-item">
+							<li class="project-item h-44">
 								<ProjectCard {...item} />
 							</li>
 						) 
@@ -117,6 +89,5 @@ const projects: ProjectCardProps[] = [
 			</div>
 		</div>
 	</div>
-
 	<AboutMe />
 </MainLayout>

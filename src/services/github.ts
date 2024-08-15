@@ -22,6 +22,7 @@ export async function getRepo(slug: string): Promise<Repo | null> {
 
 export async function getRepos(page: number): Promise<GetRepoResponse> {
   const response = (await gitApi.get(`/users/${GITHUB_USER}/repos`)) as null | GitReposResponse;
+  
   if (!response) {
     return {
       repos: [],
@@ -51,3 +52,25 @@ export async function getRepos(page: number): Promise<GetRepoResponse> {
   }
 }
 
+
+export async function getFeatureProjects() {
+  const featuredRepos: Record<string, boolean> = { "manganato.api": true, "mangarealm": true, "as2anime.docs": true, "animehoshi": true } 
+  const response = (await gitApi.get(`/users/${GITHUB_USER}/repos`)) as null | GitReposResponse;
+  
+  if (!response) return []
+
+  const repos: Repo[] = []
+
+  for (let i = 0; i < response.length; i++) {
+    const item = response[i]
+    const { name } = item
+    const key = name.toLowerCase()
+
+    if (!featuredRepos[key]) continue
+
+    const repo = repoParser(item)
+    repos.push(repo)
+  }
+
+  return repos
+}
