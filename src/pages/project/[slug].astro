@@ -5,6 +5,7 @@ import { getProjectDetails } from "../../services/server"
 import { ProjectDetails } from "../../components/ProjectDetails/ProjectDetails"
 import type { ProjectImage } from "../../components/ProjectImages/types"
 import type { ProjectDetailsProps } from "../../components/ProjectDetails/types"
+import "../../styles/pages/project.scss"
 
 const { slug } = Astro.params
 
@@ -16,12 +17,8 @@ if (!data) return Astro.redirect("/")
 
 const {  full_name, name, liveDemo, repoLink, description, created_at, updated_at, language, visibility } = data
 
-const response = await getProjectDetails(name)
-let images: ProjectImage[] = []
+const {images} = await getProjectDetails(name)
 
-if (response) {
-	images = response.images
-}
 
 const projectDetailsProps: ProjectDetailsProps = { 
 	name, 
@@ -33,6 +30,7 @@ const projectDetailsProps: ProjectDetailsProps = {
 	created_at,
 	updated_at,
 	full_name,
+	visibility,
 }
 
 ---

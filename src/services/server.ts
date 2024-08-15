@@ -234,7 +234,7 @@ export async function getLangsAndDBs(): Promise<LangsAndDBs[]> {
 
 export async function getProjectDetails(
   name: string,
-): Promise<GetRepoImages | null> {
+): Promise<GetRepoImages> {
   const images = [
     {
       id: 1,

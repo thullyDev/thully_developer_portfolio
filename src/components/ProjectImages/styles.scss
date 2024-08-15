@@ -1,0 +1,20 @@
+.swiper-button-next, .swiper-button-prev {
+	color: #ed64a6 !important;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+	font-size: 30px !important;
+}
+
+.project-images-con {
+	&>.inner-con {
+		width: 100%;
+		max-width: 500px;
+	}
+
+	img.slide-img {
+		width: 100%;
+		max-width: 720px;
+		height: 370px;
+	}
+}

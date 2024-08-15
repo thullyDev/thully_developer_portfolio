@@ -14,12 +14,14 @@ export function ProjectDetails({
   created_at,
   updated_at,
   full_name,
+  visibility,
 }: ProjectDetailsProps) {
   const projectInfoProps = {
     description,
     language,
     created_at,
     updated_at,
+    visibility,
   } as const
   const projectHeadingProps = {
     repoLink,

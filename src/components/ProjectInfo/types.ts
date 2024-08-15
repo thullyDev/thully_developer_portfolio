@@ -3,4 +3,5 @@ export type ProjectInfoProps = {
   language: string,
   created_at: string,
   updated_at: string,
+  visibility: string;
 };
