@@ -1,4 +1,4 @@
-import { trans500 } from "../../utilities/misc";
+import { showCloseEle, trans500 } from "../../utilities/misc";
 import { Icon } from "../Icon/Icon";
 import type { SideBarProps } from "./types";
 
@@ -78,6 +78,9 @@ export function SideBar({
             </a>
             <button
               type="button"
+              onClick={showCloseEle}
+              data-element=".outer-auth-con"
+              data-animate="fade"
               className={`login-logout-btn w-20 rounded-md bg-pink-500 text-xs text-white hover:bg-gray-500 ${trans500} font-bold capitalize`}
             >
               login

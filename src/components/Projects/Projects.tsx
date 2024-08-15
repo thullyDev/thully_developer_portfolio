@@ -1,22 +1,16 @@
-import { ProjectCard } from "../ProjectCard/ProjectCard";
+import { Pagination } from "../Pagination/Pagination";
+import { ProjectsList } from "../ProjectsList/ProjectsList";
 import type { ProjectsProps } from "./types";
 
-export function Projects({ projects }: ProjectsProps) {
+export function Projects({ projects, page, pages }: ProjectsProps) {
   return (
     <div className="projects-con">
       <div className="inner-projects-con">
         <div className="projects-list">
-          <ul className="project-list flex flex-col gap-3">
-            {projects.map((item, index) => {
-              return (
-                <li className="project-item">
-                  <ProjectCard key={index} {...item} />
-                </li>
-              );
-            })}
-          </ul>
+          <ProjectsList projects={projects} />
         </div>
       </div>
+      <Pagination page={page} pages={pages} />
     </div>
   );
 }

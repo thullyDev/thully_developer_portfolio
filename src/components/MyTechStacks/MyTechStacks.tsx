@@ -1,4 +1,5 @@
 import { Stack } from "../Stack/Stack";
+import type { StackProps } from "../Stack/types";
 
 const stacks: StackProps[] = [
 	{
@@ -30,11 +31,11 @@ const stacks: StackProps[] = [
 export function MyTechStacks() {
 	return (
 		<div className="mytech-stack-con">
-			<div className="inner-con flex justify-center flex-col gap-5">
+			<div className="inner-con flex flex-wrap justify-center gap-10">
 				{
-					stacks.map((item) => {
+					stacks.map((item, index) => {
 						return (
-							<Stack {...item} />
+							<Stack key={index} {...item} />
 						)
 					})
 				}

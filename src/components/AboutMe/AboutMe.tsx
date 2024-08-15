@@ -1,19 +1,12 @@
 import { CloseBtn } from "../CloseBtn/CloseBtn";
-import { Icon } from "../Icon/Icon";
 
 export function AboutMe() {
   return (
-    <div id="about_me" className="about-me hidden">
-      <span role="button" className="text-label">
-        <h3 className="pointer text-pink-500 underline">
-          {" "}
-          <Icon icon="fas fa-caret-right" /> About Me
-        </h3>
-      </span>
-      <div className="layer-1-about-me fixed left-0 top-0 hidden h-full w-full bg-black bg-opacity-70">
+    <div id="about_me" data-open="false" className="about-me hidden">
+      <div className="layer-1-about-me fixed left-0 top-0 h-full w-full bg-black bg-opacity-70">
         <div className="layer-2-about-me flex h-full w-full items-center justify-around">
           <div className="layer-3-about-me w-full max-w-96 rounded-sm border border-gray-500 bg-gray-800 px-5 py-3 text-sm">
-            <CloseBtn />
+            <CloseBtn element=".about-me" animate="fade" />
             <p className="text-center">
               Hey there, I'm{" "}
               <strong className="text-pink-500">Thulaganyo Mooki</strong>, a{" "}

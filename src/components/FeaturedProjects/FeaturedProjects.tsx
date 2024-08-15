@@ -10,9 +10,9 @@ export function FeaturedProjects({ projects }:  FeaturedProjectsProps) {
 			<div className="inner-projects-con">
 				<div className="inner-con">
 					<ul className="project-list flex flex-col gap-4 items-center w-full">
-						{projects.map((item) => { 
+						{projects.map((item, index) => { 
 							return (
-								<li className="project-item h-44">
+								<li key={index} className="project-item h-44">
 									<ProjectCard {...item} />
 								</li>
 							) 

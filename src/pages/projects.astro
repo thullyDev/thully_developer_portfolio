@@ -2,7 +2,6 @@
 import MainLayout from "../layouts/mainLayout.astro"
 import { getRepos } from "../services/github"
 import { Projects as ProjectsComponet } from "../components/Projects/Projects"
-import { Pagination } from "../components/Pagination/Pagination"
 import type { GetRepoResponse } from "../types/github";
 import "../styles/pages/projects.scss"
 
@@ -14,6 +13,5 @@ const { pages, page } = pagination
 ---
 
 <MainLayout title={"Projects"}>
-	<ProjectsComponet client:load projects={repos} />
-	<Pagination client:load page={page} pages={pages} />
+	<ProjectsComponet client:load projects={repos} pages={pages} page={page} />
 </MainLayout>

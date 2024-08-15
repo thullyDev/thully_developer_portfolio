@@ -1,5 +1,5 @@
 import type { PaginateItems, PaginateItemsResponse } from "./types";
-
+import $ from "jquery"
 export const trans1000 = "transition duration-1000 ease-in-out";
 export const trans500 = "transition duration-500 ease-in-out";
 
@@ -33,4 +33,26 @@ export const truncate = (input: string, length: number) => {
     return input.substring(0, length) + "...";
   }
   return input;
+};
+
+export const showCloseEle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const $eventElement = $(event.currentTarget);
+  const elementSelector = $eventElement.data("element");
+  const animateType = $eventElement.data("animate");
+  const $targetElement = $(elementSelector);
+  const isOpen = $targetElement.data("open");
+
+  if (animateType === "fade") {
+    if (isOpen) {
+      $targetElement.fadeOut().data("open", false);
+    } else {
+      $targetElement.fadeIn().data("open", true);
+    }
+  } else {
+    if (isOpen) {
+      $targetElement.slideUp().data("open", false);
+    } else {
+      $targetElement.slideDown().data("open", true);
+    }
+  }
 };

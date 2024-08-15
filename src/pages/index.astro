@@ -11,7 +11,7 @@ const projects: ProjectCardProps[] = await getFeatureProjects();
 ---
 
 <MainLayout title={"Home"}>
-	<GithubAnalytics />
+	<GithubAnalytics client:load />
 	<FeaturedProjects projects={projects} />
-	<MyTechStacks />
+	<MyTechStacks client:load/>
 </MainLayout>

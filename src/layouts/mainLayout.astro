@@ -100,7 +100,7 @@ const footerProps: FooterProps = {
 	</head>
 	<body class="scrollable">
 		<div class="content dark:bg-gray-900 text-white relative">
-			<SideBar {...sideBarProps} />
+			<SideBar {...sideBarProps} client:load />
 			<div class="main-side w-full">
 				<Header client:load />
 				<main class="main-content p-3">
@@ -109,7 +109,7 @@ const footerProps: FooterProps = {
 				<Footer {...footerProps} />
 			</div>
 			<Authentication client:load />
-			<AboutMe />
+			<AboutMe client:load />
 		</div>
 	</body>
 </html>
