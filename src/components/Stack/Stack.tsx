@@ -9,7 +9,7 @@ export function Stack({ field, stacks }: StackProps) {
     >
       <h3>{formatText(field)}</h3>
       <img
-        src={`https://skillicons.dev/icons?i=${stacks}&theme=dark&perline=7`}
+        src={`https://skillicons.dev/icons?i=${stacks}&theme=dark&perline=10`}
         alt="Backend"
       />
     </a>

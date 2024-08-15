@@ -3,7 +3,7 @@ import { Icon } from "../Icon/Icon";
 
 export function AboutMe() {
   return (
-    <div id="about_me" className="about-me">
+    <div id="about_me" className="about-me hidden">
       <span role="button" className="text-label">
         <h3 className="pointer text-pink-500 underline">
           {" "}

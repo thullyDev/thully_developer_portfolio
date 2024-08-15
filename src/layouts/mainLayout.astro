@@ -1,6 +1,7 @@
 ---
 import { Header } from "../components/Header/Header"
 import { Footer } from "../components/Footer/Footer"
+import { AboutMe } from "../components/AboutMe/AboutMe"
 import { Authentication } from "../components/Authentication/Authentication"
 import type { SocialLink, FooterProps } from "../components/Footer/types"
 import { SideBar } from "../components/SideBar/SideBar"
@@ -108,6 +109,7 @@ const footerProps: FooterProps = {
 				<Footer {...footerProps} />
 			</div>
 			<Authentication client:load />
+			<AboutMe />
 		</div>
 	</body>
 </html>

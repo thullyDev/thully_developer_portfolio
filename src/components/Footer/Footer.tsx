@@ -20,6 +20,7 @@ export function Footer({ sideFooterImg, socialLinks }: FooterProps) {
                   <li key={index} className="social-item">
                     <a
                       href={link}
+                      target="_blank"
                       className="social-link flex flex-col items-center gap-1 text-sm"
                     >
                       <Icon icon={icon} />

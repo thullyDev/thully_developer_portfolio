@@ -19,7 +19,7 @@ export function SideBar({
         <div className="inner-con mb-5 flex flex-col gap-5">
           <div className="profile-con flex justify-center">
             <div className="inner-con">
-              <a href="/" title="home" className="home-link">
+              <a href="/" target="_blank" title="home" className="home-link">
                 <img
                   src={profileImageUrl}
                   alt={userName}
@@ -31,7 +31,7 @@ export function SideBar({
           <div className="name-details-con flex flex-col justify-center gap-2">
             <span className="name-con flex flex-col gap-1">
               <h2 className="username text-4xl font-bold">
-                <a href="/profile">
+                <a href="/profile" target="_blank">
                   {userName}
                 </a>
               </h2>
