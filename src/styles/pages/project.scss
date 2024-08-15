@@ -1,3 +1,17 @@
+@import "../global/mediaQueries.scss";
+
 .project-details {
 	width: 100%;
+
+	.project-readme {
+		max-width: 500px;
+
+		@include media-xlarge {
+			max-width: 700px;
+		}
+
+		@include media-xxlarge {
+			max-width: 900px;
+		}
+	}
 }
