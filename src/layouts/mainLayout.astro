@@ -8,6 +8,7 @@ import { SideBar } from "../components/SideBar/SideBar"
 import type { SideBarProps } from "../components/SideBar/types"
 import { getSiteData } from "../services/server"
 import { Cache } from '../database/Cache/cache'
+import { SERVER_API_URL } from "../utilities/config"
 import "../styles/global/mainLayout.scss"
 
 const cache = new Cache()
@@ -36,7 +37,7 @@ if (!siteData) {
 
 const { user, socials, images } = siteData
 const { profile_image, side_footer_image, description, favicon } = images
-const { user_name, full_name, profile_description, donate_slug, role, donate_link, seo_description: seoDesc, seo_title: seoTitle } = user
+const { user_name, full_name, profile_description, donate_slug, role, donate_link, seo_decription: seoDesc, seo_title: seoTitle } = user
 const { email, github, linkedin, twitter, youtube } = socials
 
 const sideBarProps: SideBarProps = {
@@ -125,5 +126,6 @@ const footerProps: FooterProps = {
 			<Authentication client:load />
 			<AboutMe client:load />
 		</div>
+    	<div id="server_api_url" data-server-api-url={SERVER_API_URL}></div>
 	</body>
 </html>

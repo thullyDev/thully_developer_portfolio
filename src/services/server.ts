@@ -27,7 +27,7 @@ export async function getSiteData(): Promise<SiteData | null> {
   const { site_data } = response.data
 
   if (!site_data) return await getDefaultSiteData()
-
+    
   return site_data;
 }
 

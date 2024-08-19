@@ -5,58 +5,46 @@ import { ImageInputs } from "../components/ImageInputs/ImageInputs"
 import { SocialsInputs } from "../components/SocialsInputs/SocialsInputs"
 import type { TextFieldProps } from "../components/TextField/types"
 import type { ImageFieldProps } from "../components/ImageField/types"
+import { getSiteData } from "../services/server"
 import "../styles/pages/profile.scss"
 
-const userName = "thullyDev"
-const fullName = "Thulaganyo Mooki"
-const role = "fullStack"
-const profileDescription = "🔥 💯 Programmer 👨🏿‍💻 , Weeb 😄 , MangaReader 👀, south african 🇿🇦"
-const donateSlug = "Kowareta"
-const donateLink = "https://buymeacoffee.com/"
-const seoDesc = `${fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.`
-const seoTitle = "Fullstack Developer | Python Backend Specialist"
+const siteData = await getSiteData()
 
-const linkedinLink = "https://www.linkedin.com/in/username";
-const emailLink = "mailto:your-email@example.com";
-const instagramLink = "https://www.instagram.com/username";
-const facebookLink = "https://www.facebook.com/username";
-const twitterLink = "https://twitter.com/username";
-const discordLink = "https://discord.com/invite/username";
-const githubLink = "https://github.com/username";
-const youtubeLink = "https://www.youtube.com/channel/UC-username";
+if (!siteData) {
+    return { message: "server crash" }
+}
 
-// get these images from the backend in the future
-const profileImageUrl = "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg"
-const sideFooterImg = "https://ik.imagekit.io/fy1b7fw4h/6f40677ae97db11bd2f32dc2670fbe03-removebg-preview.png" 
-const favicon = profileImageUrl
-const descImage = profileImageUrl
-// get these images from the backend in the future
+const { user, socials, images } = siteData
+const { profile_image, side_footer_image, description, favicon } = images
+const { user_name, full_name, profile_description, donate_slug, role, donate_link, seo_decription: seoDesc, seo_title: seoTitle } = user
+const { email, github, linkedin, twitter, youtube, discord, facebook, instagram } = socials
+
 
 const inputs: TextFieldProps[] = [
-    { value: userName, name: "username" },
-    { value: fullName, name: "full_name" },
+    { value: user_name, name: "username" },
+    { value: full_name, name: "full_name" },
     { value: role, name: "role" },
-    { value: profileDescription, name: "profile_description" },
+    { value: profile_description, name: "profile_description" },
     { value: seoDesc, name: "seo_description" },
     { value: seoTitle, name: "seo_title" },
-    { value: donateSlug, name: "donate_slug" },
-    { value: donateLink, name: "donate_link" },
+    { value: donate_slug, name: "donate_slug" },
+    { value: donate_link, name: "donate_link" },
 ];
 const socialInputs: TextFieldProps[] = [
-    { value: linkedinLink, name: "linkedin" },
-    { value: emailLink, name: "email" },
-    { value: instagramLink, name: "instagram" },
-    { value: facebookLink, name: "facebook" },
-    { value: twitterLink, name: "twitter" },
-    { value: discordLink, name: "discord" },
-    { value: githubLink, name: "github" },
-    { value: youtubeLink, name: "youtube" }
+    { value: linkedin, name: "linkedin" },
+    { value: email, name: "email" },
+    { value: instagram, name: "instagram" },
+    { value: facebook, name: "facebook" },
+    { value: twitter, name: "twitter" },
+    { value: discord, name: "discord" },
+    { value: github, name: "github" },
+    { value: youtube, name: "youtube" }
 ];
 const imageInputs: ImageFieldProps[] = [
-    { value: profileImageUrl, name: "profile_image" },
-    { value: sideFooterImg, name: "side_footer_image" },
+    { value: profile_image, name: "profile_image" },
+    { value: side_footer_image, name: "side_footer_image" },
     { value: favicon, name: "Favicon" },
-    { value: descImage, name: "description_image" }
+    { value: description, name: "description_image" }
 ];
 ---
 
@@ -64,4 +52,7 @@ const imageInputs: ImageFieldProps[] = [
     <UserInputs inputs={inputs} client:load />
     <SocialsInputs inputs={socialInputs} client:load />
 	<ImageInputs inputs={imageInputs} client:load />
+    <script define:vars={{ siteData }}>
+        window.siteData = siteData
+    </script>
 </MainLayout>

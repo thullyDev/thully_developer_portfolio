@@ -16,7 +16,7 @@ type User = {
   profile_description: string;
   donate_slug: string;
   donate_link: string;
-  seo_description: string;
+  seo_decription: string;
   seo_title: string;
 }
 
