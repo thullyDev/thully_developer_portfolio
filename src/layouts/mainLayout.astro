@@ -6,43 +6,56 @@ import { Authentication } from "../components/Authentication/Authentication"
 import type { SocialLink, FooterProps } from "../components/Footer/types"
 import { SideBar } from "../components/SideBar/SideBar"
 import type { SideBarProps } from "../components/SideBar/types"
+import { getSiteData } from "../services/server"
+import { Cache } from '../database/Cache/cache'
 import "../styles/global/mainLayout.scss"
 
-const { title } = Astro.props
-// get these images from the backend in the future
-const profileImageUrl = "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg"
-const sideFooterImg = "https://ik.imagekit.io/fy1b7fw4h/6f40677ae97db11bd2f32dc2670fbe03-removebg-preview.png" 
-const favicon = profileImageUrl
-const descImage = profileImageUrl
-// get these images from the backend in the future
+const cache = new Cache()
 
-const userName = "thullyDev"
-const fullName = "Thulaganyo Mooki"
-const role = "fullstack"
-const profileDescription = "🔥 💯 Fullstack Developer 👨🏿‍💻 , Backend Developer  🛠️,  Frontend Developer  🖌️, Weeb 😄 , MangaReader 👀, south african 🇿🇦"
-const donateSlug = "thullyDev"
-const donateLink = "https://buymeacoffee.com/"
-const seoDesc = `${fullName} is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.`
-const seoTitle = "Fullstack Developer | Python Backend Specialist"
-const githubLink = "https://github.com/thullydev"
-const email = "thulaganyo.mooki.pro@gmail.com"
+async function getData() {
+	const cacheID = "main:sidebar-footer*24" 
+	const cacheData = await cache.hget(cacheID)	
+
+	if (cacheData) {
+		return cacheData
+	}
+
+	const siteData = await getSiteData()
+	cache.hset(cacheID, siteData)
+
+	return siteData
+}
+
+
+const { title } = Astro.props
+const siteData = await getData()
+
+if (!siteData) {
+	return { message: "server crash" }
+}
+
+const { user, socials, images } = siteData
+const { profile_image, side_footer_image, description, favicon } = images
+const { user_name, full_name, profile_description, donate_slug, role, donate_link, seo_description: seoDesc, seo_title: seoTitle } = user
+const { email, github, linkedin, twitter, youtube } = socials
 
 const sideBarProps: SideBarProps = {
-	profileImageUrl,
-	userName,
-	fullName,
-	profileDescription,
-	donateSlug,
-	donateLink,
-	githubLink,
+	profileImageUrl: profile_image,
+	userName: user_name,
+	fullName: full_name,
+	profileDescription: profile_description,
+	donateSlug: donate_slug,
+	donateLink: donate_link,
+	githubLink: github,
 	email,
 	role
 } as const;
+
 const socialLinks: SocialLink[] = [
 	{
 		icon: "fab fa-linkedin",
 		name: "LinkedIn",
-		link: "https://www.linkedin.com/in/thullydev",
+		link: linkedin,
 	},
 	{
 		icon: "fa fa-envelope",
@@ -52,22 +65,23 @@ const socialLinks: SocialLink[] = [
 	{
 		icon: "fab fa-twitter",
 		name: "Twitter",
-		link: "https://twitter.com/thullydev",
+		link: twitter,
 	},
 	{
 		icon: "fab fa-github",
 		name: "GitHub",
-		link: githubLink,
+		link: github,
 	},
 	{
 		icon: "fab fa-youtube",
 		name: "YouTube",
-		link: "https://www.youtube.com/channel/UC-thullydev",
+		link: youtube,
 	}
 ] as const;
 
+
 const footerProps: FooterProps = {
-	sideFooterImg,
+	sideFooterImg: side_footer_image,
 	socialLinks,
 } as const;
 
@@ -81,22 +95,22 @@ const footerProps: FooterProps = {
 	  <link rel="icon" type="image/x-icon" href={favicon}>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css" integrity="sha512-BlFCHJWngPEHme4TwlEob6dPLfoNaQBTTISPwr4344nxR353w2vgGZ7GiSadbbeR20cJeeM0u1I2lAZuIZ1aOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
-	  <title>{title} | {fullName} | {seoTitle} </title>
+	  <title>{title} | {full_name} | {seoTitle} </title>
 	  <meta name="description" content={seoDesc}>
-	  <meta name="keywords" content="{fullName}, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio">
-	  <meta name="author" content="{fullName}">
+	  <meta name="keywords" content="{full_name}, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio">
+	  <meta name="author" content="{full_name}">
 	  
 	  <!-- Open Graph / Facebook -->
-	  <meta property="og:title" content="{fullName} | {seoTitle}">
+	  <meta property="og:title" content="{full_name} | {seoTitle}">
 	  <meta property="og:description" content={seoDesc}>
 	  <meta property="og:type" content="website">
-	  <meta property="og:image" content={descImage}> 
+	  <meta property="og:image" content={description}> 
 	  
 	  <!-- Twitter -->
 	  <meta name="twitter:card" content="summary_large_image">
-	  <meta name="twitter:title" content="{fullName} | {seoTitle}">
+	  <meta name="twitter:title" content="{full_name} | {seoTitle}">
 	  <meta name="twitter:description" content={seoDesc}>
-	  <meta name="twitter:image" content={descImage}> 
+	  <meta name="twitter:image" content={description}> 
 	</head>
 	<body class="scrollable">
 		<div class="content dark:bg-gray-900 text-white relative">

@@ -5,9 +5,28 @@ import { MyTechStacks } from "../components/MyTechStacks/MyTechStacks"
 import { FeaturedProjects } from "../components/FeaturedProjects/FeaturedProjects"
 import type { ProjectCardProps } from "../components/ProjectCard/types"
 import { getFeatureProjects } from "../services/github"
+import { Cache } from '../database/Cache/cache'
 import "../styles/pages/home.scss"
 
-const projects: ProjectCardProps[] = await getFeatureProjects();
+const cache = new Cache()
+
+async function getData() {
+	const cacheID = "home:features*24" 
+	const cacheData = await cache.hget(cacheID)	
+
+	if (cacheData) {
+		return cacheData
+	}
+
+	const projects: ProjectCardProps[] = await getFeatureProjects()
+	cache.hset(cacheID, projects)
+
+	return projects
+}
+
+
+
+const projects = await getData();
 ---
 
 <MainLayout title={"Home"}>
