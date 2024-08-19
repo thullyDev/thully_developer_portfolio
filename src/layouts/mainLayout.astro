@@ -1,6 +1,7 @@
 ---
 import { Header } from "../components/Header/Header"
 import { Footer } from "../components/Footer/Footer"
+import { OuterLoader } from "../components/OuterLoader/OuterLoader"
 import { AboutMe } from "../components/AboutMe/AboutMe"
 import { Authentication } from "../components/Authentication/Authentication"
 import type { SocialLink, FooterProps } from "../components/Footer/types"
@@ -125,6 +126,7 @@ const footerProps: FooterProps = {
 			</div>
 			<Authentication client:load />
 			<AboutMe client:load />
+			<OuterLoader />
 		</div>
     	<div id="server_api_url" data-server-api-url={SERVER_API_URL}></div>
 	</body>
