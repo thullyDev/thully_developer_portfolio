@@ -1,14 +1,3 @@
-export type Image = {
-  id: number;
-  url: string;
-  altText: string;
-};
-
-export type GetRepoImages = {
-  images: Image[];
-};
-
-
 type User = {
   user_name: string;
   full_name: string;
@@ -42,4 +31,33 @@ export type SiteData = {
   user: User;
   socials: Socials;
   images: Images;
+}
+
+export type UpdataSiteData = {
+  email: string, session_token: string, siteData: SiteData
+} 
+
+export type UploadProject = {
+  email: string, session_token: string, repo_slug: string, images: string
+}
+
+
+export type GetProject = {
+  repo_slug: string;
+}
+
+export type DeleteProject = {
+  repo_slug: string;
+  email: string;
+  session_token: string;
+}
+
+export type EditProject = {
+  email: string, session_token: string, repo_slug: string, images: string
+} 
+
+
+export type Login = {
+  email: string;
+  password: string;
 }

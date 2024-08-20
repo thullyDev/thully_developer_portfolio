@@ -1,13 +1,31 @@
 import { ApiHandler } from "../handlers/apiHandler";
-import type { GetSiteDataResponse } from "../types/serverResponseTypes";
+import type { GetProjectResponse, GetSiteDataResponse, LoginResponse, ServerProject, UpdateSiteDataResponse, UploadProjectResponse } from "../types/serverResponseTypes";
 import type {
-  GetRepoImages,
+    EditProject,
+    DeleteProject,
+    GetProject,
   SiteData,
+  UpdataSiteData,
+  UploadProject,
+  Login,
 } from "../types/serverTypes";
 import { SERVER_API_URL } from "../utilities/config";
 
 const serverApi = new ApiHandler(SERVER_API_URL);
 const dummyApi = new ApiHandler("");
+
+
+export async function login({ email, password }: Login): Promise<string | null> {
+  const uri = `/login`;
+  const data = { email, password }
+  const response = (await serverApi.post(uri, data)) as LoginResponse | null;
+
+  if (!response) {
+    return null
+  }
+  
+  return response.data.session_token;
+}
 
 export async function getDefaultSiteData(): Promise<SiteData | null> {
   const url = "https://thullydev.github.io/thullyDevStatics/JSONs/siteData.json";
@@ -31,34 +49,73 @@ export async function getSiteData(): Promise<SiteData | null> {
   return site_data;
 }
 
+export async function getProject({ repo_slug }: GetProject): Promise<ServerProject | null> {
+  const uri = `/get_project/${repo_slug}`;
+  const response = (await serverApi.get(uri)) as GetProjectResponse | null;
 
-export async function getProjectDetails(
-  name: string,
-): Promise<GetRepoImages> {
-  const images = [
-    {
-      id: 1,
-      url: "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg",
-      altText: "1",
-    },
-    {
-      id: 2,
-      url: "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg",
-      altText: "2",
-    },
-    {
-      id: 3,
-      url: "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg",
-      altText: "3",
-    },
-    {
-      id: 4,
-      url: "https://i.pinimg.com/564x/f2/b4/e4/f2b4e4f34acc9395e1e0d228c44abd05.jpg",
-      altText: "4",
-    },
-  ];
+  if (!response) {
+    return null
+  }
 
-  return {
-    images,
-  };
+  const { project } = response.data
+
+  return project;
 }
+
+export async function updateSiteData({ email, session_token, siteData }: UpdataSiteData): Promise<string | null> {
+  const uri = "/update_site_data/";
+  const headers = { 'Content-Type': 'application/json', session_token, email }
+  const data = { dataStr: JSON.stringify(siteData) }
+  const response = (await serverApi.post(uri, data, headers)) as UpdateSiteDataResponse | null;
+
+  if (!response) {
+    return null
+  }
+
+  return response.data.session_token
+}
+
+export async function uploadProject({ email, session_token, repo_slug, images }: UploadProject): Promise<string | null> {
+  const uri = `/upload_project/${repo_slug}`;
+  const data = {
+    images,
+  }
+  const headers = { 'Content-Type': 'application/json', session_token, email }
+  const response = (await serverApi.post(uri, data, headers)) as UploadProjectResponse | null;
+
+  if (!response) {
+    return null
+  }
+
+  return response.data.session_token;
+}
+
+export async function editProject({ email, session_token, repo_slug, images }: EditProject): Promise<string | null> {
+  const uri = `/edit_project/${repo_slug}`;
+  const data = {
+    images,
+  }
+  const headers = { 'Content-Type': 'application/json', session_token, email }
+  const response = (await serverApi.post(uri, data, headers)) as UploadProjectResponse | null;
+
+  if (!response) {
+    return null
+  }
+
+  return response.data.session_token;
+}
+
+export async function deleteProject({ repo_slug, email, session_token }: DeleteProject): Promise<ServerProject | null> {
+  const uri = `/delete_project/${repo_slug}`;
+  const headers = { 'Content-Type': 'application/json', session_token, email }
+  const response = (await serverApi.post(uri, {}, headers)) as GetProjectResponse | null;
+
+  if (!response) {
+    return null
+  }
+
+  const { project } = response.data
+
+  return project;
+}
+

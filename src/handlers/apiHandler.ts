@@ -3,6 +3,9 @@ import { SUCCESSFUL } from "../utilities/errors";
 import type {
   ApiHandlerResponse,
   PamaterOptions,
+  HeadersOptions,
+  DataOptions,
+  RequestOptions,
 } from "../types/apiHandlersTypes";
 
 export class ApiHandler {
@@ -22,12 +25,13 @@ export class ApiHandler {
     return urlInstance.href;
   }
 
-  private async request(
-    endpoint: string,
-    method: string = "GET",
-    params: PamaterOptions = {},
-    data?: any,
-  ): Promise<ApiHandlerResponse | null> {
+  private async request({
+    endpoint,
+    method = "GET",
+    params = {},
+    headers = {},
+    data
+  }: RequestOptions): Promise<ApiHandlerResponse | null> {
     const url = this.buildUrl(this.BASE + endpoint, params);
 
     try {
@@ -35,6 +39,7 @@ export class ApiHandler {
         url,
         method,
         data,
+        headers,
       });
 
       if (response.status !== SUCCESSFUL) {
@@ -52,14 +57,23 @@ export class ApiHandler {
     endpoint: string,
     params: PamaterOptions = {},
   ): Promise<ApiHandlerResponse | null> {
-    return await this.request(endpoint, "GET", params);
+      return await this.request({
+          endpoint: endpoint,
+          method: "GET",
+          params: params
+      });
   }
 
   async post(
     endpoint: string,
-    data: any,
-    params: PamaterOptions = {},
+    data: DataOptions = {},
+    headers: HeadersOptions = {},
   ): Promise<ApiHandlerResponse | null> {
-    return await this.request(endpoint, "POST", params, data);
+    return await this.request({
+        endpoint: endpoint,
+        method: "POST",
+        data: data,
+        headers: headers,
+    });
   }
 }

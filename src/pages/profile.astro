@@ -3,9 +3,11 @@ import MainLayout from "../layouts/mainLayout.astro"
 import { UserInputs } from "../components/UserInputs/UserInputs"
 import { ImageInputs } from "../components/ImageInputs/ImageInputs"
 import { SocialsInputs } from "../components/SocialsInputs/SocialsInputs"
+import { ProfileSubmitBtn } from "../components/ProfileSubmitBtn/ProfileSubmitBtn"
 import type { TextFieldProps } from "../components/TextField/types"
 import type { ImageFieldProps } from "../components/ImageField/types"
 import { getSiteData } from "../services/server"
+import axios from "axios";
 import "../styles/pages/profile.scss"
 
 const siteData = await getSiteData()
@@ -14,6 +16,8 @@ if (!siteData) {
     return { message: "server crash" }
 }
 
+const session_token = "fialjtlajlfamflj"
+
 const { user, socials, images } = siteData
 const { profile_image, side_footer_image, description, favicon } = images
 const { user_name, full_name, profile_description, donate_slug, role, donate_link, seo_decription: seoDesc, seo_title: seoTitle } = user
@@ -21,7 +25,7 @@ const { email, github, linkedin, twitter, youtube, discord, facebook, instagram 
 
 
 const inputs: TextFieldProps[] = [
-    { value: user_name, name: "username" },
+    { value: user_name, name: "user_name" },
     { value: full_name, name: "full_name" },
     { value: role, name: "role" },
     { value: profile_description, name: "profile_description" },
@@ -44,15 +48,61 @@ const imageInputs: ImageFieldProps[] = [
     { value: profile_image, name: "profile_image" },
     { value: side_footer_image, name: "side_footer_image" },
     { value: favicon, name: "Favicon" },
-    { value: description, name: "description_image" }
+    { value: description, name: "description" }
 ];
+
 ---
 
 <MainLayout title={"Profile"}>
     <UserInputs inputs={inputs} client:load />
     <SocialsInputs inputs={socialInputs} client:load />
 	<ImageInputs inputs={imageInputs} client:load />
-    <script define:vars={{ siteData }}>
-        window.siteData = siteData
+    <ProfileSubmitBtn client:load />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script define:vars={{ siteData, session_token }}>
+        console.log('Session Token:', session_token);
+
+        const userInputNames = [ 
+            "user_name", 
+            "full_name", 
+            "role", 
+            "profile_description", 
+            "seo_description",
+            "seo_title",
+            "donate_slug",
+            "donate_link",
+        ];
+        const socialInputNames = [ 
+            "linkedin", 
+            "email", 
+            "instagram", 
+            "facebook", 
+            "twitter", 
+            "discord", 
+            "github", 
+            "youtube" 
+        ];
+        const imageInputNames = [ 
+            "profile_image", 
+            "side_footer_image", 
+            "favicon", 
+            "description" 
+        ];
+
+        window.saveInputValue = (name, value) => {
+            if (userInputNames.includes(name)) {
+                siteData.user[name] = value;
+            }
+
+            if (socialInputNames.includes(name)) {
+                siteData.socials[name] = value;
+            }
+
+            if (imageInputNames.includes(name)) {
+                siteData.images[name] = value;
+            }
+
+            updateSiteData();
+        }
     </script>
 </MainLayout>
