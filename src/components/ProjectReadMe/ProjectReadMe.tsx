@@ -1,26 +1,38 @@
-import ReactMarkdown from 'react-markdown';
-import type { ProjectReadMeProps } from './types';
-import { useEffect, useState } from 'react';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
-import rehypeSanitize from 'rehype-sanitize';
+import ReactMarkdown from "react-markdown";
+import type { ProjectReadMeProps } from "./types";
+import { useEffect, useState } from "react";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
 import "./styles.scss";
 
 // Define allowed tags and attributes for rehype-sanitize
-const allowedTags = ['a', 'img', 'p', 'strong', 'em', 'ul', 'ol', 'li', 'h1', 'h2', 'h3'];
+const allowedTags = [
+  "a",
+  "img",
+  "p",
+  "strong",
+  "em",
+  "ul",
+  "ol",
+  "li",
+  "h1",
+  "h2",
+  "h3",
+];
 const allowedAttributes = {
-  a: ['href', 'target', 'rel'],
-  img: ['src', 'alt'],
-  p: ['align'], 
+  a: ["href", "target", "rel"],
+  img: ["src", "alt"],
+  p: ["align"],
 };
 
 export function ProjectReadMe({ full_name }: ProjectReadMeProps) {
-  const [markdown, setMarkdown] = useState('');
+  const [markdown, setMarkdown] = useState("");
 
   useEffect(() => {
     fetch(`https://raw.githubusercontent.com/${full_name}/main/README.md`)
-      .then(response => response.text())
-      .then(text => {
+      .then((response) => response.text())
+      .then((text) => {
         if (text.includes("400: Invalid request")) {
           setMarkdown("No README.md for this project");
         } else {
@@ -35,13 +47,13 @@ export function ProjectReadMe({ full_name }: ProjectReadMeProps) {
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[
-            rehypeRaw, 
+            rehypeRaw,
             // @ts-ignore
             rehypeSanitize({
-            // @ts-ignore
+              // @ts-ignore
               tags: allowedTags,
               attributes: allowedAttributes,
-            })
+            }),
           ]}
         >
           {markdown}

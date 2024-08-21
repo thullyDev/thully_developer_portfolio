@@ -15,9 +15,9 @@ export type Repo = {
 export type GetRepoResponse = {
   repos: Repo[];
   pagination: Pagination;
-}
+};
 
 export type Pagination = {
   page: number;
   pages: number;
-}
+};

@@ -1,3 +1,3 @@
 export type PagerInputProps = {
-	page: string;
-}
+  page: string;
+};

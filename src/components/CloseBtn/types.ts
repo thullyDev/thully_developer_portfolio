@@ -1,4 +1,4 @@
 export type CloseBtnProps = {
-	element: string;
-	animate: string;
-}
+  element: string;
+  animate: string;
+};

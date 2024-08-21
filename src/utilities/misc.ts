@@ -1,5 +1,5 @@
 import type { PaginateItems, PaginateItemsResponse } from "./types";
-import $ from "jquery"
+import $ from "jquery";
 export const trans1000 = "transition duration-1000 ease-in-out";
 export const trans500 = "transition duration-500 ease-in-out";
 

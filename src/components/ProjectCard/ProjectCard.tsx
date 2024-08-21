@@ -7,12 +7,11 @@ export function ProjectCard({
   description,
   updated_at,
 }: ProjectCardProps) {
-
-  const updateAtDate = new Date(updated_at).toDateString()
+  const updateAtDate = new Date(updated_at).toDateString();
 
   return (
     <div
-      className={`project-card rounded-md border border-gray-600 bg-gray-800 p-5 hover:bg-gray-700 h-full ${trans500}`}
+      className={`project-card h-full rounded-md border border-gray-600 bg-gray-800 p-5 hover:bg-gray-700 ${trans500}`}
     >
       <div className="inner-con">
         <a href={`/project/${name}`} className="project-link flex">
@@ -25,11 +24,11 @@ export function ProjectCard({
                 {truncate(description || "", 125)}
               </p>
             </span>
-            <div className="lang-date flex gap-3 items-center">
+            <div className="lang-date flex items-center gap-3">
               <span className="main-lang text-xs font-bold text-pink-500">
                 {language}
               </span>
-              <span className="dot w-1 h-1 bg-white rounded-full"></span>
+              <span className="dot h-1 w-1 rounded-full bg-white"></span>
               <span className="updated text-xs font-bold text-gray-400">
                 {updateAtDate}
               </span>

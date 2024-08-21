@@ -1,6 +1,8 @@
+import { updateSiteData } from "../../services/clientRequests";
+import type { SiteData } from "../../types/serverTypes";
 import { formatText } from "../../utilities/misc";
 import type { TextFieldProps } from "./types";
-import $ from "jquery"
+import $ from "jquery";
 
 export function TextField({ value, name }: TextFieldProps) {
   return (
@@ -24,21 +26,37 @@ export function TextField({ value, name }: TextFieldProps) {
   );
 }
 
-
 let inputTimeout: number | undefined;
-const delay = 2000
+const delay = 2000;
+declare const window: Window &
+  typeof globalThis & {
+    userInputNames: string[];
+    socialInputNames: string[];
+    imageInputNames: string[];
+    siteData: any;
+  };
 
 function onChangeHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
   const $eventElement = $(event.currentTarget);
-  const name = $eventElement.data("name")
-  const value = $eventElement.val()
+  const name = $eventElement.data("name");
+  const value = $eventElement.val() || "";
 
-  function saveValue() {
-    // @ts-ignore 
-    window.saveInputValue(name, value)
-  }
+  const saveInputValue = () => {
+    if (window.userInputNames.includes(name)) {
+      window.siteData.user[name] = value;
+    }
 
+    if (window.socialInputNames.includes(name)) {
+      window.siteData.socials[name] = value;
+    }
 
-  if (inputTimeout != undefined) clearTimeout(inputTimeout)
-  inputTimeout = setTimeout(saveValue, delay)
+    if (window.imageInputNames.includes(name)) {
+      window.siteData.images[name] = value;
+    }
+
+    updateSiteData(window.siteData);
+  };
+
+  if (inputTimeout != undefined) clearTimeout(inputTimeout);
+  inputTimeout = setTimeout(saveInputValue, delay);
 }

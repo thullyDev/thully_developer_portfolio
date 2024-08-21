@@ -1,7 +1,7 @@
 export type ProjectInfoProps = {
-  description: string,
-  language: string,
-  created_at: string,
-  updated_at: string,
+  description: string;
+  language: string;
+  created_at: string;
+  updated_at: string;
   visibility: string;
 };

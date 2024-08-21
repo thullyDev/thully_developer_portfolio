@@ -30,7 +30,7 @@ export class ApiHandler {
     method = "GET",
     params = {},
     headers = {},
-    data
+    data,
   }: RequestOptions): Promise<ApiHandlerResponse | null> {
     const url = this.buildUrl(this.BASE + endpoint, params);
 
@@ -57,23 +57,25 @@ export class ApiHandler {
     endpoint: string,
     params: PamaterOptions = {},
   ): Promise<ApiHandlerResponse | null> {
-      return await this.request({
-          endpoint: endpoint,
-          method: "GET",
-          params: params
-      });
+    return await this.request({
+      endpoint: endpoint,
+      method: "GET",
+      params: params,
+    });
   }
 
   async post(
     endpoint: string,
     data: DataOptions = {},
+    params: PamaterOptions = {},
     headers: HeadersOptions = {},
   ): Promise<ApiHandlerResponse | null> {
     return await this.request({
-        endpoint: endpoint,
-        method: "POST",
-        data: data,
-        headers: headers,
+      endpoint: endpoint,
+      method: "POST",
+      data: data,
+      params: params,
+      headers: headers,
     });
   }
 }

@@ -8,7 +8,12 @@ export function ImageField({
 }: ImageFieldProps) {
   return (
     <div className="image-field-con">
-      <input id={name} type="file" data-name={name} className="image-inp hidden" />
+      <input
+        id={name}
+        type="file"
+        data-name={name}
+        className="image-inp hidden"
+      />
       <label
         htmlFor={name}
         className="inner-con flex h-full w-full cursor-pointer flex-col gap-3"

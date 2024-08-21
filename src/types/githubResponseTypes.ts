@@ -104,5 +104,4 @@ export type GitRepoResponse = {
   subscribers_count: number;
 };
 
-
-export type GitReposResponse = GitRepoResponse[]
+export type GitReposResponse = GitRepoResponse[];

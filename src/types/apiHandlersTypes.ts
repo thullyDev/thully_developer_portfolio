@@ -15,10 +15,9 @@ export interface DataOptions {
 }
 
 export interface RequestOptions {
-    endpoint: string;
-    method?: string;
-    params?: PamaterOptions;
-    headers?: HeadersOptions;
-    data?: DataOptions;
+  endpoint: string;
+  method?: string;
+  params?: PamaterOptions;
+  headers?: HeadersOptions;
+  data?: DataOptions;
 }
-

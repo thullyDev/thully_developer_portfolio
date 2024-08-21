@@ -22,12 +22,12 @@ export function ProjectDetails({
     created_at,
     updated_at,
     visibility,
-  } as const
+  } as const;
   const projectHeadingProps = {
     repoLink,
     liveDemo,
     name,
-  }
+  };
 
   return (
     <div className="project-details">

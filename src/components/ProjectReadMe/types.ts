@@ -1,3 +1,3 @@
 export type ProjectReadMeProps = {
-	full_name: string;
-}
+  full_name: string;
+};
