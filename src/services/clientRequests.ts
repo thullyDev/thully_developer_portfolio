@@ -1,7 +1,7 @@
 import { ApiHandler } from "../handlers/apiHandler";
 import type { SiteData } from "../types/serverTypes";
 
-declare const window: Window & typeof globalThis
+declare const window: Window & typeof globalThis;
 
 const serverApi = new ApiHandler(`${window.location.origin}/api`);
 
@@ -15,8 +15,6 @@ export async function updateSiteData(siteData: SiteData): Promise<boolean> {
   if (!response) {
     return false;
   }
-
-  console.log({ response });
 
   return true;
 }

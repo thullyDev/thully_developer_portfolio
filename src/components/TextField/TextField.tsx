@@ -1,6 +1,6 @@
 import { updateSiteData } from "../../services/clientRequests";
 import type { SiteData } from "../../types/serverTypes";
-import { formatText } from "../../utilities/misc";
+import { formatText, ShowAlert } from "../../utilities/misc";
 import type { TextFieldProps } from "./types";
 import $ from "jquery";
 
@@ -41,7 +41,7 @@ function onChangeHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
   const name = $eventElement.data("name");
   const value = $eventElement.val() || "";
 
-  const saveInputValue = () => {
+  const saveInputValue = async () => {
     if (window.userInputNames.includes(name)) {
       window.siteData.user[name] = value;
     }
@@ -50,11 +50,10 @@ function onChangeHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
       window.siteData.socials[name] = value;
     }
 
-    if (window.imageInputNames.includes(name)) {
-      window.siteData.images[name] = value;
-    }
+    const result = await updateSiteData(window.siteData);
 
-    updateSiteData(window.siteData);
+    if (result == true) ShowAlert("updated");
+    else ShowAlert("failed");
   };
 
   if (inputTimeout != undefined) clearTimeout(inputTimeout);

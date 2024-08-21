@@ -3,7 +3,7 @@ import MainLayout from "../layouts/mainLayout.astro"
 import { UserInputs } from "../components/UserInputs/UserInputs"
 import { ImageInputs } from "../components/ImageInputs/ImageInputs"
 import { SocialsInputs } from "../components/SocialsInputs/SocialsInputs"
-import { ProfileSubmitBtn } from "../components/ProfileSubmitBtn/ProfileSubmitBtn"
+// import { ProfileSubmitBtn } from "../components/ProfileSubmitBtn/ProfileSubmitBtn"
 import type { TextFieldProps } from "../components/TextField/types"
 import type { ImageFieldProps } from "../components/ImageField/types"
 import { getSiteData } from "../services/server"
@@ -21,7 +21,7 @@ if (!siteData) {
 
 const { user, socials, images } = siteData
 const { profile_image, side_footer_image, description, favicon } = images
-const { user_name, full_name, profile_description, donate_slug, role, donate_link, seo_decription: seoDesc, seo_title: seoTitle } = user
+const { user_name, full_name, profile_description, donate_slug, role, donate_link, seo_description: seoDesc, seo_title: seoTitle } = user
 const { email, github, linkedin, twitter, youtube, discord, facebook, instagram } = socials
 
 

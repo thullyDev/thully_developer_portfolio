@@ -3,13 +3,13 @@ import { Header } from "../components/Header/Header"
 import { Footer } from "../components/Footer/Footer"
 import { OuterLoader } from "../components/OuterLoader/OuterLoader"
 import { AboutMe } from "../components/AboutMe/AboutMe"
+import { AlertBox } from "../components/AlertBox/AlertBox"
 import { Authentication } from "../components/Authentication/Authentication"
 import type { SocialLink, FooterProps } from "../components/Footer/types"
 import { SideBar } from "../components/SideBar/SideBar"
 import type { SideBarProps } from "../components/SideBar/types"
 import { getSiteData } from "../services/server"
 import { Cache } from '../database/Cache/cache'
-import { SERVER_API_URL } from "../utilities/config"
 import "../styles/global/mainLayout.scss"
 
 const cache = new Cache()
@@ -126,6 +126,7 @@ const footerProps: FooterProps = {
 			</div>
 			<Authentication client:load />
 			<AboutMe client:load />
+			<AlertBox />
 			<OuterLoader />
 		</div>
 	</body>

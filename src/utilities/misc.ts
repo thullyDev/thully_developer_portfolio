@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import type { PaginateItems, PaginateItemsResponse } from "./types";
 import $ from "jquery";
 export const trans1000 = "transition duration-1000 ease-in-out";
@@ -56,3 +57,31 @@ export const showCloseEle = (event: React.MouseEvent<HTMLButtonElement>) => {
     }
   }
 };
+
+export const ShowAlert = (rawMessage: string, noTitle: boolean = false) => {
+  const message = DOMPurify.sanitize(rawMessage);
+  const alertbox = document.querySelector(".alertbox");
+  const msgEle = document.querySelector(".alertbox .msg");
+
+  if (!msgEle || !alertbox) return;
+
+  // @ts-ignore
+  msgEle.textContent = noTitle == true ? message : titleCase(message);
+  // @ts-ignore
+  alertbox.style.display = "block";
+  const fiveSecs = 5000;
+  setTimeout(() => {
+    msgEle.textContent = "";
+    // @ts-ignore
+    alertbox.style.display = "none";
+  }, fiveSecs);
+};
+
+
+export function processImage(image: string, name: string): [string, string] {
+    const currentTime = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-');
+    const newName = `${name}-${currentTime}`;
+    const cleanImage = image.replace(/^data:image\/jpeg;base64,/, "").replace(/^data:image\/png;base64,/, "");
+    
+    return [newName, cleanImage];
+}

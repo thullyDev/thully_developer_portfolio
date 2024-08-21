@@ -5,7 +5,7 @@ type User = {
   profile_description: string;
   donate_slug: string;
   donate_link: string;
-  seo_decription: string;
+  seo_description: string;
   seo_title: string;
 };
 
@@ -20,7 +20,7 @@ type Socials = {
   youtube: string;
 };
 
-type Images = {
+export type Images = {
   profile_image: string;
   side_footer_image: string;
   favicon: string;
@@ -30,7 +30,7 @@ type Images = {
 export type SiteData = {
   user: User;
   socials: Socials;
-  images: Images[];
+  images: Images;
 };
 
 export type UpdataSiteData = {
