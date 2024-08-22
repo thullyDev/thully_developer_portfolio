@@ -29,6 +29,11 @@ span.short-desc-con {
   .content {
     display: flex;
 
+    .main-side {
+      height: 100vh;
+    }
+
+
     .main-header {
       display: block;
     }

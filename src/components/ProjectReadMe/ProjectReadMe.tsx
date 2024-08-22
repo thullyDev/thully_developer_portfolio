@@ -26,11 +26,12 @@ const allowedAttributes = {
   p: ["align"],
 };
 
-export function ProjectReadMe({ full_name }: ProjectReadMeProps) {
+export function ProjectReadMe({ full_name, default_branch }: ProjectReadMeProps) {
   const [markdown, setMarkdown] = useState("");
+  const README_URL = `https://raw.githubusercontent.com/${full_name}/${default_branch}/README.md`
 
   useEffect(() => {
-    fetch(`https://raw.githubusercontent.com/${full_name}/main/README.md`)
+    fetch(README_URL)
       .then((response) => response.text())
       .then((text) => {
         if (text.includes("400: Invalid request")) {

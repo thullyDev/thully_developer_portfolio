@@ -14,6 +14,7 @@ export function repoParser(data: GitRepoResponse): Repo {
     created_at,
     updated_at,
     pushed_at,
+    default_branch,
   } = data;
 
   return {
@@ -26,6 +27,7 @@ export function repoParser(data: GitRepoResponse): Repo {
     created_at,
     updated_at,
     pushed_at,
+    default_branch,
     liveDemo: homepage,
     repoLink: clone_url,
   };

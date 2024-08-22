@@ -10,6 +10,7 @@ export type Repo = {
   pushed_at: string;
   liveDemo: string | null;
   repoLink: string;
+  default_branch: string;
 };
 
 export type GetRepoResponse = {

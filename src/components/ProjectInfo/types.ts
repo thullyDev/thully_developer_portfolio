@@ -1,5 +1,5 @@
 export type ProjectInfoProps = {
-  description: string;
+  description: string | null;
   language: string;
   created_at: string;
   updated_at: string;

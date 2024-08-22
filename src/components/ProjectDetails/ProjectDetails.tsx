@@ -15,6 +15,7 @@ export function ProjectDetails({
   updated_at,
   full_name,
   visibility,
+  default_branch,
 }: ProjectDetailsProps) {
   const projectInfoProps = {
     description,
@@ -34,7 +35,7 @@ export function ProjectDetails({
       <ProjectHeading {...projectHeadingProps} />
       <ProjectImages images={images} />
       <ProjectInfo {...projectInfoProps} />
-      <ProjectReadMe full_name={full_name} />
+      <ProjectReadMe default_branch={default_branch} full_name={full_name} />
     </div>
   );
 }
