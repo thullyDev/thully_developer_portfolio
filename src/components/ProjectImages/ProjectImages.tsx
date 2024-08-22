@@ -15,14 +15,13 @@ export function ProjectImages({ images }: ProjectImagesProps) {
           slidesPerView={1}
           navigation
         >
-          {images.map((imageItem: ProjectImage, index) => {
-            const { url, altText } = imageItem;
+          {images.map((image: string, index) => {
             return (
               <SwiperSlide key={index}>
                 <img
                   className="slide-img rounded object-cover"
-                  src={url}
-                  alt={altText}
+                  src={image}
+                  alt={JSON.stringify(index + 1)}
                 />
               </SwiperSlide>
             );

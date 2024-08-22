@@ -62,7 +62,7 @@ export async function getSiteData(): Promise<SiteData | null> {
 export async function getProject({
   repo_slug,
 }: GetProject): Promise<ServerProject | null> {
-  const uri = `/get_project/${repo_slug}`;
+  const uri = `/get_project/${repo_slug.toLowerCase()}`;
   const response = (await serverApi.get(uri)) as GetProjectResponse | null;
 
   if (!response) {
@@ -102,7 +102,7 @@ export async function uploadProject({
   repo_slug,
   images,
 }: UploadProject): Promise<string | null> {
-  const uri = `/upload_project/${repo_slug}`;
+  const uri = `/upload_project/${repo_slug.toLowerCase()}`;
   const data = {
     images,
   };

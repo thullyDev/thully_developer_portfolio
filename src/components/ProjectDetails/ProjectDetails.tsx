@@ -17,6 +17,7 @@ export function ProjectDetails({
   visibility,
   default_branch,
 }: ProjectDetailsProps) {
+
   const projectInfoProps = {
     description,
     language,

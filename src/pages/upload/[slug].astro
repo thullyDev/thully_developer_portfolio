@@ -1,0 +1,15 @@
+---
+import MainLayout from "../../layouts/mainLayout.astro"
+import { UploadInputs } from "../../components/UploadInputs/UploadInputs"
+import type { UploadInputsProps } from "../../components/UploadInputs/types"
+// import { getLangsAndDBs } from "../services/server"
+import "../../styles/pages/upload.scss"
+
+const uploadInputsProps: UploadInputsProps  = {
+	images: [],
+} as const 
+---
+
+<MainLayout title={"Upload Project"}>
+	<UploadInputs client:only="react" {...uploadInputsProps} />
+</MainLayout>
