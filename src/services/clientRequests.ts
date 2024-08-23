@@ -18,3 +18,35 @@ export async function updateSiteData(siteData: SiteData): Promise<boolean> {
 
   return true;
 }
+
+export async function uploadProject(images: string[], repoSlug: string): Promise<boolean> {
+  const uri = `/upload_project/`;
+  const params = {
+    images: JSON.stringify(images),
+    repo_slug: repoSlug,
+  };
+
+  const response = await serverApi.get(uri, params);
+
+  if (!response) {
+    return false;
+  }
+
+  return true;
+}
+
+export async function uploadImage(image: string, name: string): Promise<string|null> {
+  const uri = `/upload_image/`;
+  const params = {
+    base64Image: image,
+    name,
+  };
+
+  const response = await serverApi.get(uri, params) as { imageUrl: string } | null;
+
+  if (!response) {
+    return null;
+  }
+
+  return response.imageUrl;
+}

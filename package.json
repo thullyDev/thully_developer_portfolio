@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "node --max-http-header-size=26214400 ./node_modules/.bin/astro dev",
+    "dev": "node --max-http-header-size=104857600 ./node_modules/.bin/astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
@@ -36,6 +36,7 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
     "@types/jquery": "^3.5.30",
     "install": "^0.13.0",
     "prettier": "^3.3.3",

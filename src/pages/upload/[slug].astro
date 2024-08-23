@@ -2,11 +2,15 @@
 import MainLayout from "../../layouts/mainLayout.astro"
 import { UploadInputs } from "../../components/UploadInputs/UploadInputs"
 import type { UploadInputsProps } from "../../components/UploadInputs/types"
-// import { getLangsAndDBs } from "../services/server"
 import "../../styles/pages/upload.scss"
+
+const { slug } = Astro.params
+
+if (!slug) return Astro.redirect("/")
 
 const uploadInputsProps: UploadInputsProps  = {
 	images: [],
+	repo_slug: slug,
 } as const 
 ---
 

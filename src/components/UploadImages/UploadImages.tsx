@@ -3,20 +3,28 @@ import { trans1000 } from "../../utilities/misc";
 import { Icon } from "../Icon/Icon";
 import { UploadImageField } from "../UploadImageField/UploadImageField";
 import type { UploadImagesProps } from "./types";
+import { uploadImage } from "../../services/clientRequests";
 
 declare const window: Window & typeof globalThis & {
   images: string[];
 }
 
 
-export function UploadImages({ images }: UploadImagesProps) {
+export function UploadImages({ images, repoSlug }: UploadImagesProps) {
     const [prevImages, setPrevImages] = useState(images);
 
   const uploadHandlerEvent = async (event: any) => {
     if (event.type != "load") return;
 
     const source = event.target.result;
-    setPrevImages([...prevImages, source]);
+    const name = `${repoSlug}-image-${JSON.stringify(prevImages.length + 1)}`
+    const imageUrl = await uploadImage(source, name)
+
+    if (!imageUrl) {
+      return 
+    }
+
+    setPrevImages([...prevImages, imageUrl]);
   };
 
   const handleChange = (event: any) => {

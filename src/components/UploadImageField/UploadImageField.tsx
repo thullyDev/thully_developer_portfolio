@@ -24,8 +24,6 @@ export function UploadImageField({
         });
   }
 
-
-
   return (
     <div className="upload-image-field relative inline-block border border-gray-600 rounded">
       <div data-index={index} className="image-loader hidden">

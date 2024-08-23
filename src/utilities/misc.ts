@@ -1,6 +1,7 @@
 import DOMPurify from "dompurify";
 import type { PaginateItems, PaginateItemsResponse } from "./types";
 import $ from "jquery";
+import type { ShowCloseEle } from "../types/misc";
 export const trans1000 = "transition duration-1000 ease-in-out";
 export const trans500 = "transition duration-500 ease-in-out";
 
@@ -36,10 +37,24 @@ export const truncate = (input: string, length: number) => {
   return input;
 };
 
-export const showCloseEle = (event: React.MouseEvent<HTMLButtonElement>) => {
-  const $eventElement = $(event.currentTarget);
-  const elementSelector = $eventElement.data("element");
-  const animateType = $eventElement.data("animate");
+
+
+export const showCloseEle = ({ event, element, animate }: ShowCloseEle) => {
+  let elementSelector;
+  let animateType;
+
+  if (!event && !elementSelector && !animate) return  
+
+
+  if (event) {
+    const $eventElement = $(event.currentTarget);
+    elementSelector = $eventElement.data("element");
+    animateType = $eventElement.data("animate");
+  } else {
+    elementSelector = element
+    animateType = animate
+  }
+
   const $targetElement = $(elementSelector);
   const isOpen = $targetElement.data("open");
 
@@ -84,4 +99,8 @@ export function processImage(image: string, name: string): [string, string] {
     const cleanImage = image.replace(/^data:image\/jpeg;base64,/, "").replace(/^data:image\/png;base64,/, "");
     
     return [newName, cleanImage];
+}
+
+export function response(code: number) {
+  return new Response(JSON.stringify({ status_code: code }));
 }

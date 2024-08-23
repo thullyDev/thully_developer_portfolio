@@ -9,7 +9,7 @@ import { updateSiteData } from "../../services/server";
 import type { Images, SiteData } from "../../types/serverTypes";
 import { setCookie } from "../../utilities/cookies";
 import { Cache } from "../../database/Cache/cache";
-import { processImage } from "../../utilities/misc";
+import { processImage, response } from "../../utilities/misc";
 import { uploadBase64Image } from "../../handlers/storage";
 
 const cache = new Cache();
@@ -48,9 +48,6 @@ export const GET: APIRoute = async ({ request, cookies }) => {
   return response(SUCCESSFUL);
 };
 
-function response(code: number) {
-  return new Response(JSON.stringify({ status_code: code }));
-}
 
 async function processUploadProfileImages(profileImages: Images): Promise<Images> {
     const images: any = {};
