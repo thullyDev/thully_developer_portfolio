@@ -19,11 +19,12 @@ export async function updateSiteData(siteData: SiteData): Promise<boolean> {
   return true;
 }
 
-export async function uploadProject(images: string[], repoSlug: string): Promise<boolean> {
+export async function uploadProject(images: string[], repoSlug: string, isForEdit: boolean = false): Promise<boolean> {
   const uri = `/upload_project/`;
   const params = {
     images: JSON.stringify(images),
     repo_slug: repoSlug,
+    isForEdit,
   };
 
   const response = await serverApi.get(uri, params);

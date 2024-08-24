@@ -17,11 +17,22 @@ export function UploadInputs({
     const animate="fade"
 
     showCloseEle({ element, animate })
-    const response = await uploadProject(window.images, repo_slug)
+    let response = false
+    const urlChunks = window.location.pathname.split("/")
+
+    if (urlChunks[1] == "upload") {
+      response = await uploadProject(window.images, repo_slug)
+    }
+
+    if (urlChunks[1] == "edit") {
+      response = await uploadProject(window.images, repo_slug, true)
+    }
+
     showCloseEle({ element, animate })
 
     if (response == true) {
       ShowAlert("updated")
+      window.location.replace(`/project/${repo_slug}`)
     } else {
       ShowAlert("failed")
     }

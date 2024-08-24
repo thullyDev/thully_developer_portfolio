@@ -101,15 +101,17 @@ export async function uploadProject({
   session_token,
   repo_slug,
   images,
+  isForEdit,
 }: UploadProject): Promise<string | null> {
-  const uri = `/upload_project/${repo_slug.toLowerCase()}`;
-  const data = {
+  const uri = isForEdit == false ? `/upload_project/${repo_slug.toLowerCase()}` : `/edit_project/${repo_slug.toLowerCase()}`;
+  const params = {
     images,
   };
   const headers = { "Content-Type": "application/json", session_token, email };
   const response = (await serverApi.post(
     uri,
-    data,
+    {},
+    params,
     headers,
   )) as UploadProjectResponse | null;
 

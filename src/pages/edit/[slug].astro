@@ -1,0 +1,26 @@
+---
+import MainLayout from "../../layouts/mainLayout.astro"
+import { UploadInputs } from "../../components/UploadInputs/UploadInputs"
+import { getProject } from "../../services/server"
+import type { UploadInputsProps } from "../../components/UploadInputs/types"
+import "../../styles/pages/upload.scss"
+
+const { slug } = Astro.params
+
+if (!slug) return Astro.redirect("/")
+
+const project = await getProject({ repo_slug: slug })
+
+if (project == null) return Astro.redirect("/")
+
+const { images } = project
+
+const uploadInputsProps: UploadInputsProps  = {
+	images,
+	repo_slug: slug,
+} as const 
+---
+
+<MainLayout title={"Upload Project"}>
+	<UploadInputs client:only="react" {...uploadInputsProps} />
+</MainLayout>

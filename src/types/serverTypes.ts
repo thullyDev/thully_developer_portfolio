@@ -44,6 +44,7 @@ export type UploadProject = {
   session_token: string;
   repo_slug: string;
   images: string;
+  isForEdit: boolean;
 };
 
 export type GetProject = {
