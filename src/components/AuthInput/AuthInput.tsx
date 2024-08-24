@@ -10,7 +10,7 @@ export const AuthInput = ({ item }: InputProps) => {
       <div className="inner-con flex items-center gap-3 rounded-sm border border-gray-400 bg-gray-700 p-1 text-gray-400">
         <Icon icon={icon + " text-xs"} />
         <input
-          className="auth-input w-full max-w-96 bg-inherit"
+          className="auth-input w-full max-w-96 bg-inherit outline-none border-none"
           type={type}
           name={name}
           data-name={name}
