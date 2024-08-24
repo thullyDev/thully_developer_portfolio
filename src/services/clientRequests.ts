@@ -5,6 +5,22 @@ declare const window: Window & typeof globalThis;
 
 const serverApi = new ApiHandler(`${window.location.origin}/api`);
 
+export async function login(email: string, password: string): Promise<boolean> {
+  const uri = `/login/`;
+  const data = {
+    email,
+    password,
+  };
+
+  const response = await serverApi.post(uri, data);
+
+  if (!response) {
+    return false;
+  }
+
+  return true;
+}
+
 export async function updateSiteData(siteData: SiteData): Promise<boolean> {
   const uri = `/update_site_data/`;
   const params = {
