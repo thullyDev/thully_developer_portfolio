@@ -36,6 +36,21 @@ export async function uploadProject(images: string[], repoSlug: string, isForEdi
   return true;
 }
 
+export async function deleteProject(repoSlug: string): Promise<boolean> {
+  const uri = `/delete_project/`;
+  const params = {
+    repo_slug: repoSlug,
+  };
+
+  const response = await serverApi.get(uri, params);
+
+  if (!response) {
+    return false;
+  }
+
+  return true;
+}
+
 export async function uploadImage(image: string, name: string): Promise<string|null> {
   const uri = `/upload_image/`;
   const params = {

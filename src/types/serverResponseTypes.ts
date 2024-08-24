@@ -35,6 +35,10 @@ export type UploadProjectResponse = Response & {
   data: SessionTokenResponse;
 };
 
+export type DeleteProjectResponse = Response & {
+  data: SessionTokenResponse;
+};
+
 export type LoginResponse = Response & {
   data: {
     email: string;

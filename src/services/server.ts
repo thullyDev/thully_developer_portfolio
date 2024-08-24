@@ -1,5 +1,6 @@
 import { ApiHandler } from "../handlers/apiHandler";
 import type {
+    DeleteProjectResponse,
   GetProjectResponse,
   GetSiteDataResponse,
   LoginResponse,
@@ -122,48 +123,23 @@ export async function uploadProject({
   return response.data.session_token;
 }
 
-export async function editProject({
-  email,
-  session_token,
-  repo_slug,
-  images,
-}: EditProject): Promise<string | null> {
-  const uri = `/edit_project/${repo_slug}`;
-  const data = {
-    images,
-  };
-  const headers = { "Content-Type": "application/json", session_token, email };
-  const response = (await serverApi.post(
-    uri,
-    data,
-    headers,
-  )) as UploadProjectResponse | null;
-
-  if (!response) {
-    return null;
-  }
-
-  return response.data.session_token;
-}
-
 export async function deleteProject({
   repo_slug,
   email,
   session_token,
-}: DeleteProject): Promise<ServerProject | null> {
-  const uri = `/delete_project/${repo_slug}`;
+}: DeleteProject): Promise<string | null> {
+  const uri = `/delete_project/${repo_slug.toLowerCase()}`;
   const headers = { "Content-Type": "application/json", session_token, email };
   const response = (await serverApi.post(
     uri,
     {},
+    {},
     headers,
-  )) as GetProjectResponse | null;
+  )) as DeleteProjectResponse | null;
 
   if (!response) {
     return null;
   }
-
-  const { project } = response.data;
-
-  return project;
+  
+  return response.data.session_token;
 }
