@@ -7,7 +7,7 @@ export function CloseBtn({ element, animate }: CloseBtnProps) {
     <div className="close-con flex justify-end text-sm">
       <button
         className="close-btn"
-        onClick={showCloseEle}
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => showCloseEle({event})}
         data-element={element}
         data-animate={animate}
       >

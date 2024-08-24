@@ -27,8 +27,8 @@ export async function login({
   password,
 }: Login): Promise<string | null> {
   const uri = `/login`;
-  const data = { email, password };
-  const response = (await serverApi.post(uri, data)) as LoginResponse | null;
+  const headers = { email, password };
+  const response = (await serverApi.post(uri, {}, {}, headers)) as LoginResponse | null;
 
   if (!response) {
     return null;

@@ -125,7 +125,7 @@ const footerProps: FooterProps = {
 				</main>
 				<Footer {...footerProps} />
 			</div>
-			<Authentication client:load />
+			<Authentication client:only="react" />
 			<AboutMe client:load />
 			<AlertBox />
 			<OuterLoader />

@@ -78,7 +78,7 @@ export function SideBar({
             </a>
             <button
               type="button"
-              onClick={showCloseEle}
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => showCloseEle({event})}
               data-element=".outer-auth-con"
               data-animate="fade"
               className={`login-logout-btn w-20 rounded-md bg-pink-500 text-xs text-white hover:bg-gray-500 ${trans500} font-bold capitalize`}

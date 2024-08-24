@@ -48,7 +48,7 @@ export class ApiHandler {
 
       return response.data;
     } catch (error: any) {
-      console.error(error);
+      // console.error(error);
       return null;
     }
   }

@@ -1,5 +1,6 @@
 import { ApiHandler } from "../handlers/apiHandler";
 import type { SiteData } from "../types/serverTypes";
+import { SUCCESSFUL } from "../utilities/errors";
 
 declare const window: Window & typeof globalThis;
 
@@ -14,7 +15,7 @@ export async function login(email: string, password: string): Promise<boolean> {
 
   const response = await serverApi.post(uri, data);
 
-  if (!response) {
+  if (!response || response.status_code != SUCCESSFUL) {
     return false;
   }
 
@@ -28,7 +29,7 @@ export async function updateSiteData(siteData: SiteData): Promise<boolean> {
   };
   const response = await serverApi.get(uri, params);
 
-  if (!response) {
+  if (!response || response.status_code != SUCCESSFUL) {
     return false;
   }
 
@@ -45,7 +46,7 @@ export async function uploadProject(images: string[], repoSlug: string, isForEdi
 
   const response = await serverApi.get(uri, params);
 
-  if (!response) {
+  if (!response || response.status_code != SUCCESSFUL) {
     return false;
   }
 
@@ -60,7 +61,7 @@ export async function deleteProject(repoSlug: string): Promise<boolean> {
 
   const response = await serverApi.get(uri, params);
 
-  if (!response) {
+  if (!response || response.status_code != SUCCESSFUL) {
     return false;
   }
 
@@ -74,9 +75,9 @@ export async function uploadImage(image: string, name: string): Promise<string|n
     name,
   };
 
-  const response = await serverApi.get(uri, params) as { imageUrl: string } | null;
+  const response = await serverApi.get(uri, params) as { imageUrl: string, status_code?: number }  | null;
 
-  if (!response) {
+  if (!response || response.status_code != SUCCESSFUL) {
     return null;
   }
 

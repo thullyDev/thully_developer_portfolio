@@ -19,6 +19,11 @@ const navLinks = [
   },
 ] as const;
 
+
+function aboutApear(event: React.MouseEvent<HTMLButtonElement>) {
+}
+
+
 export function Nav() {
   return (
     <nav className="main-nav my-5">
@@ -28,7 +33,7 @@ export function Nav() {
             return (
               <button
                 key={index}
-                onClick={showCloseEle}
+                onClick={(event: React.MouseEvent<HTMLButtonElement>) => showCloseEle({event})}
                 data-element=".about-me"
                 data-animate="fade"
                 className="nav-link flex items-center justify-center gap-2 text-sm font-bold capitalize text-gray-400"
