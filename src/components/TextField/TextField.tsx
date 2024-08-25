@@ -1,5 +1,4 @@
 import { updateSiteData } from "../../services/clientRequests";
-import type { SiteData } from "../../types/serverTypes";
 import { formatText, ShowAlert } from "../../utilities/misc";
 import type { TextFieldProps } from "./types";
 import $ from "jquery";

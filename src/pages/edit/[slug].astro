@@ -6,6 +6,11 @@ import type { UploadInputsProps } from "../../components/UploadInputs/types"
 import "../../styles/pages/upload.scss"
 
 const { slug } = Astro.params
+const session_token = Astro.cookies.get("session_token")?.value
+
+if (!session_token) {
+    return Astro.redirect("/")
+}
 
 if (!slug) return Astro.redirect("/")
 
