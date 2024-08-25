@@ -9,7 +9,6 @@ import type {
   UploadProjectResponse,
 } from "../types/serverResponseTypes";
 import type {
-  EditProject,
   DeleteProject,
   GetProject,
   SiteData,

@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import type { ProjectImage, ProjectImagesProps } from "./types";
+import type { ProjectImagesProps } from "./types";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./styles.scss";

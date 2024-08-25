@@ -19,11 +19,6 @@ const navLinks = [
   },
 ] as const;
 
-
-function aboutApear(event: React.MouseEvent<HTMLButtonElement>) {
-}
-
-
 export function Nav() {
   return (
     <nav className="main-nav my-5">

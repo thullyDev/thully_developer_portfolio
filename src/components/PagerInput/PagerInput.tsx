@@ -10,7 +10,7 @@ export function PagerInput({ page }: PagerInputProps) {
     setQueryPage(event.target.value);
   };
 
-  const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickHandler = () => {
     window.location.assign(`/projects?page=${queryPage}`);
   };
 

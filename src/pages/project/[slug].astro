@@ -47,7 +47,7 @@ const hasImages = (images.length > 0 ? true : false)
 
 <MainLayout title={name}>
 	<ProjectDetails {...projectDetailsProps} client:only="react" />
-	<script define:vars={{isAuthenticated, hasImages}}>
+	<script is:inline define:vars={{isAuthenticated, hasImages}}>
 		window.isAuthenticated = isAuthenticated
 		window.hasImages = hasImages
 	</script>

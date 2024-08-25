@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { processImage, response } from "../../utilities/misc";
-import { BAD_REQUEST, FORBIDDEN, SUCCESSFUL } from "../../utilities/errors";
+import { BAD_REQUEST, FORBIDDEN } from "../../utilities/errors";
 import { uploadBase64Image } from "../../handlers/storage";
 
 export const GET: APIRoute = async ({ request, cookies }) => {

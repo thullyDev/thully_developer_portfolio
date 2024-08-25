@@ -12,6 +12,10 @@ import "../styles/pages/profile.scss"
 const cookies = Astro.cookies
 const session_token = cookies.get("session_token")?.value
 
+if (!session_token) {
+    return Astro.redirect("/")
+}
+
 
 const siteData = await getSiteData()
 
@@ -58,7 +62,7 @@ const imageInputs: ImageFieldProps[] = [
     <UserInputs inputs={inputs} client:only="react" />
     <SocialsInputs inputs={socialInputs} client:only="react" />
 	<ImageInputs inputs={imageInputs} client:only="react" />
-    <script define:vars={{ siteData }}>
+    <script is:inline define:vars={{ siteData }}>
         window.siteData = siteData
         window.userInputNames = [ 
               "user_name", 
