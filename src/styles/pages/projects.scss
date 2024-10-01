@@ -1,5 +1,19 @@
 @import "../global/mediaQueries.scss";
 
+
+.pagination .inner-con {
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+@include media-xsmall {
+  .pagination .inner-con {
+    flex-direction: row;
+    gap: 5rem;
+  }
+}
+
 @include media-xlarge {
   .project-list {
     flex-wrap: wrap;
@@ -11,3 +25,4 @@
     }
   }
 }
+
