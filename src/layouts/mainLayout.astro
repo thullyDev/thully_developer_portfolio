@@ -101,18 +101,18 @@ const footerProps: FooterProps = {
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
 	  <title>{title} | {full_name} | {seoTitle} </title>
 	  <meta name="description" content={seoDesc}>
-	  <meta name="keywords" content="{full_name}, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio">
-	  <meta name="author" content="{full_name}">
+	  <meta name="keywords" content={ `${full_name}, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio`}>
+	  <meta name="author" content={ `${full_name}` }>
 	  
 	  <!-- Open Graph / Facebook -->
-	  <meta property="og:title" content="{full_name} | {seoTitle}">
+	  <meta property="og:title" content={ `${full_name} | ${seoTitle}` }>
 	  <meta property="og:description" content={seoDesc}>
 	  <meta property="og:type" content="website">
 	  <meta property="og:image" content={description}> 
 	  
 	  <!-- Twitter -->
 	  <meta name="twitter:card" content="summary_large_image">
-	  <meta name="twitter:title" content="{full_name} | {seoTitle}">
+	  <meta name="twitter:title" content={ `${full_name} | ${seoTitle}` }>
 	  <meta name="twitter:description" content={seoDesc}>
 	  <meta name="twitter:image" content={description}> 
 	</head>
@@ -133,3 +133,22 @@ const footerProps: FooterProps = {
 		</div>
 	</body>
 </html>
+<!-- 
+<script>
+	function isAuthRedirect() {
+		const authbox = $(".outer-auth-con")
+		const timeout = 1000
+		setTimeout(() => {
+			console.log("i am here")
+		}, timeout);
+	}
+
+	function checkRedirect() {
+		const url = new URL(window.location.href)
+		const deniedReason = url.searchParams.get("denied")
+		if (deniedReason == "unauthenticated") {
+			isAuthRedirect()
+			return
+		}
+	}
+</script> -->

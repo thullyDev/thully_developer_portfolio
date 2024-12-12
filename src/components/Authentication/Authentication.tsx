@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AuthForm } from "../AuthForm/AuthForm";
 import type { AuthInput } from "../AuthForm/types";
 import { CloseBtn } from "../CloseBtn/CloseBtn";
@@ -16,9 +17,25 @@ const loginInputs: AuthInput[] = [
 ];
 
 export function Authentication() {
+  const [visible, setVisible] = useState("hidden");
+
+  function checkRedirect() {
+    const url = new URL(window.location.href);
+    const deniedReason = url.searchParams.get("denied");
+
+    if (deniedReason == "unauthenticated") {
+      setVisible("block");
+      return;
+    }
+  }
+
+  useEffect(() => {
+    checkRedirect();
+  }, []);
+
   return (
     <div
-      className="outer-auth-con fixed top-0 hidden h-full w-full"
+      className={`outer-auth-con fixed top-0 ${visible} h-full w-full`}
       data-open="false"
     >
       <div className="flex h-full items-center justify-center bg-black bg-opacity-70">
