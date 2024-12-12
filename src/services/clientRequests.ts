@@ -36,7 +36,11 @@ export async function updateSiteData(siteData: SiteData): Promise<boolean> {
   return true;
 }
 
-export async function uploadProject(images: string[], repoSlug: string, isForEdit: boolean = false): Promise<boolean> {
+export async function uploadProject(
+  images: string[],
+  repoSlug: string,
+  isForEdit: boolean = false,
+): Promise<boolean> {
   const uri = `/upload_project/`;
   const params = {
     images: JSON.stringify(images),
@@ -68,14 +72,20 @@ export async function deleteProject(repoSlug: string): Promise<boolean> {
   return true;
 }
 
-export async function uploadImage(image: string, name: string): Promise<string|null> {
+export async function uploadImage(
+  image: string,
+  name: string,
+): Promise<string | null> {
   const uri = `/upload_image/`;
   const params = {
     base64Image: image,
     name,
   };
 
-  const response = await serverApi.get(uri, params) as { imageUrl: string, status_code?: number }  | null;
+  const response = (await serverApi.get(uri, params)) as {
+    imageUrl: string;
+    status_code?: number;
+  } | null;
 
   if (!response || response.status_code != SUCCESSFUL) {
     return null;

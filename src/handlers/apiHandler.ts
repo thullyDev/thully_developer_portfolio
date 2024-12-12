@@ -33,7 +33,7 @@ export class ApiHandler {
     data,
   }: RequestOptions): Promise<ApiHandlerResponse | null> {
     const url = this.buildUrl(this.BASE + endpoint, params);
-
+    console.log({ url });
     try {
       const response: AxiosResponse<any> = await axios.request({
         url,

@@ -1,6 +1,6 @@
 import { ApiHandler } from "../handlers/apiHandler";
 import type {
-    DeleteProjectResponse,
+  DeleteProjectResponse,
   GetProjectResponse,
   GetSiteDataResponse,
   LoginResponse,
@@ -18,7 +18,7 @@ import type {
 } from "../types/serverTypes";
 import { SERVER_API_URL } from "../utilities/config";
 
-const serverApi = new ApiHandler(SERVER_API_URL);
+const serverApi = new ApiHandler(`${SERVER_API_URL}/api`);
 const dummyApi = new ApiHandler("");
 
 export async function login({
@@ -27,7 +27,12 @@ export async function login({
 }: Login): Promise<string | null> {
   const uri = `/login`;
   const headers = { email, password };
-  const response = (await serverApi.post(uri, {}, {}, headers)) as LoginResponse | null;
+  const response = (await serverApi.post(
+    uri,
+    {},
+    {},
+    headers,
+  )) as LoginResponse | null;
 
   if (!response) {
     return null;
@@ -103,7 +108,10 @@ export async function uploadProject({
   images,
   isForEdit,
 }: UploadProject): Promise<string | null> {
-  const uri = isForEdit == false ? `/upload_project/${repo_slug.toLowerCase()}` : `/edit_project/${repo_slug.toLowerCase()}`;
+  const uri =
+    isForEdit == false
+      ? `/upload_project/${repo_slug.toLowerCase()}`
+      : `/edit_project/${repo_slug.toLowerCase()}`;
   const params = {
     images,
   };
@@ -139,6 +147,6 @@ export async function deleteProject({
   if (!response) {
     return null;
   }
-  
+
   return response.data.session_token;
 }
