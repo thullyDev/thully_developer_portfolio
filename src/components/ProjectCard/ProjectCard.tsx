@@ -11,31 +11,22 @@ export function ProjectCard({
 
   return (
     <div
-      className={`project-card h-full rounded-md border border-gray-600 bg-gray-800 p-5 hover:bg-gray-700 ${trans500}`}
+      className={`project-card group h-full rounded-xl border border-white/8 bg-surface-card p-5 shadow-card transition hover:-translate-y-0.5 hover:border-pink-500/25 hover:shadow-glow ${trans500}`}
     >
-      <div className="inner-con">
-        <a href={`/project/${name}`} className="project-link flex">
-          <div className="left-side flex flex-col gap-2">
-            <span className="name-con">
-              <h3 className="name text-xl font-bold">{name}</h3>
-            </span>
-            <span className="desc-con">
-              <p className="desc text-sm text-gray-400">
-                {truncate(description || "", 125)}
-              </p>
-            </span>
-            <div className="lang-date flex items-center gap-3">
-              <span className="main-lang text-xs font-bold text-pink-500">
-                {language}
-              </span>
-              <span className="dot h-1 w-1 rounded-full bg-white"></span>
-              <span className="updated text-xs font-bold text-gray-400">
-                {updateAtDate}
-              </span>
-            </div>
-          </div>
-        </a>
-      </div>
+      <a href={`/project/${name}`} className="project-link flex h-full flex-col">
+        <h3 className="name mb-2 text-lg font-bold tracking-tight text-gray-100 group-hover:text-pink-400">
+          {name}
+        </h3>
+        <p className="desc mb-4 flex-1 text-sm leading-relaxed text-gray-400">
+          {truncate(description || "", 125)}
+        </p>
+        <div className="lang-date mt-auto flex items-center gap-3 border-t border-white/5 pt-3">
+          <span className="main-lang rounded-md bg-pink-500/10 px-2 py-0.5 text-xs font-semibold text-accent">
+            {language?.trim() ? language : "Multi-stack"}
+          </span>
+          <span className="updated text-xs text-gray-500">{updateAtDate}</span>
+        </div>
+      </a>
     </div>
   );
 }

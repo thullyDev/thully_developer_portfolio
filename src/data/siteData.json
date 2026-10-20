@@ -1,0 +1,28 @@
+{
+  "user": {
+    "user_name": "thullyDev",
+    "full_name": "Thulaganyo Mooki",
+    "role": "frontend",
+    "profile_description": "Frontend developer building fast UIs with Astro, React, and TypeScript — and Rust + Tauri for desktop-style apps.",
+    "donate_slug": "thullyDev",
+    "donate_link": "https://buymeacoffee.com/thullyDev",
+    "seo_decription": "Thulaganyo Mooki builds polished frontend experiences with Astro, React, TypeScript, Rust, and Tauri. Explore open-source projects and portfolio work.",
+    "seo_title": "Frontend Developer | Astro, React & Tauri"
+  },
+  "socials": {
+    "linkedin": "https://www.linkedin.com/in/thulaganyo-mooki",
+    "email": "thulaganyo.mooki.pro@gmail.com",
+    "instagram": "https://instagram.com/",
+    "facebook": "https://facebook.com/",
+    "twitter": "https://twitter.com/thullydev",
+    "discord": "https://www.discord.com/",
+    "github": "https://github.com/thullyDev",
+    "youtube": "https://www.youtube.com/channel/UC-thullydev"
+  },
+  "images": {
+    "profile_image": "https://thullydev.github.io/thullyDevStatics/images/profile-2.jpg",
+    "side_footer_image": "https://thullydev.github.io/thullyDevStatics/images/footer.png",
+    "favicon": "https://thullydev.github.io/thullyDevStatics/images/profile.jpg",
+    "description": "https://thullydev.github.io/thullyDevStatics/images/seo_desc.jpg"
+  }
+}

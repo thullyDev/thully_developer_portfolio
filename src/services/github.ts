@@ -15,6 +15,18 @@ import { paginateItems } from "../utilities/misc";
 
 const gitApi = new ApiHandler(`https://api.github.com`);
 
+async function fetchUserRepos(): Promise<GitReposResponse | null> {
+  return (await gitApi.get(
+    `/users/${GITHUB_USER}/repos`,
+  )) as null | GitReposResponse;
+}
+
+export async function listRepoSlugs(): Promise<string[]> {
+  const response = await fetchUserRepos();
+  if (!response) return [];
+  return response.map((repo) => repo.name);
+}
+
 export async function getRepo(slug: string): Promise<Repo | null> {
   const response = (await gitApi.get(
     `/repos/${GITHUB_USER}/${slug}`,
@@ -26,9 +38,7 @@ export async function getRepo(slug: string): Promise<Repo | null> {
 }
 
 export async function getRepos(page: number): Promise<GetRepoResponse> {
-  const response = (await gitApi.get(
-    `/users/${GITHUB_USER}/repos`,
-  )) as null | GitReposResponse;
+  const response = await fetchUserRepos();
 
   if (!response) {
     return {
@@ -69,9 +79,7 @@ export async function getFeatureProjects() {
     "as2anime.docs": true,
     animehoshi: true,
   };
-  const response = (await gitApi.get(
-    `/users/${GITHUB_USER}/repos`,
-  )) as null | GitReposResponse;
+  const response = await fetchUserRepos();
 
   if (!response) return [];
 

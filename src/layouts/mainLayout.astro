@@ -4,37 +4,14 @@ import { Footer } from "../components/Footer/Footer"
 import { OuterLoader } from "../components/OuterLoader/OuterLoader"
 import { AboutMe } from "../components/AboutMe/AboutMe"
 import { AlertBox } from "../components/AlertBox/AlertBox"
-import { Authentication } from "../components/Authentication/Authentication"
 import type { SocialLink, FooterProps } from "../components/Footer/types"
 import { SideBar } from "../components/SideBar/SideBar"
 import type { SideBarProps } from "../components/SideBar/types"
-import { getSiteData } from "../services/server"
-import { Cache } from '../database/Cache/cache'
+import { getSiteData } from "../services/siteData"
 import "../styles/global/mainLayout.scss"
 
-const cache = new Cache()
-
-async function getData() {
-	const cacheID = "main:sidebar-footer*24" 
-	const cacheData = await cache.hget(cacheID)	
-
-	if (cacheData) {
-		return cacheData
-	}
-
-	const siteData = await getSiteData()
-	cache.hset(cacheID, siteData)
-
-	return siteData
-}
-
-
 const { title } = Astro.props
-const siteData = await getData()
-
-if (!siteData) {
-	return { message: "server crash" }
-}
+const siteData = await getSiteData()
 
 const { user, socials, images } = siteData
 const { profile_image, side_footer_image, description, favicon } = images
@@ -95,38 +72,37 @@ const footerProps: FooterProps = {
 	  <meta charset="UTF-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <link rel="icon" type="image/x-icon" href={favicon}>
-	  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76fb221b55cf4cb88a57c457ae527f59"}'></script><!-- End Cloudflare Web Analytics -->
+	  <link rel="preconnect" href="https://fonts.googleapis.com" />
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css" integrity="sha512-BlFCHJWngPEHme4TwlEob6dPLfoNaQBTTISPwr4344nxR353w2vgGZ7GiSadbbeR20cJeeM0u1I2lAZuIZ1aOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
 	  <title>{title} | {full_name} | {seoTitle} </title>
 	  <meta name="description" content={seoDesc}>
-	  <meta name="keywords" content="{full_name}, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio">
-	  <meta name="author" content="{full_name}">
+	  <meta name="keywords" content={ `${full_name}, Fullstack Developer, Backend Developer, Python Developer, Web Development, API Development, JavaScript, TypeScript, React, Node.js, Django, FastAPI, Portfolio`}>
+	  <meta name="author" content={ `${full_name}` }>
 	  
-	  <!-- Open Graph / Facebook -->
-	  <meta property="og:title" content="{full_name} | {seoTitle}">
+	  <meta property="og:title" content={ `${full_name} | ${seoTitle}` }>
 	  <meta property="og:description" content={seoDesc}>
 	  <meta property="og:type" content="website">
 	  <meta property="og:image" content={description}> 
 	  
-	  <!-- Twitter -->
 	  <meta name="twitter:card" content="summary_large_image">
-	  <meta name="twitter:title" content="{full_name} | {seoTitle}">
+	  <meta name="twitter:title" content={ `${full_name} | ${seoTitle}` }>
 	  <meta name="twitter:description" content={seoDesc}>
 	  <meta name="twitter:image" content={description}> 
 	</head>
-	<body class="scrollable">
-		<div class="content bg-gray-900 text-white relative">
+	<body class="scrollable text-gray-100 antialiased">
+		<div class="content relative">
 			<SideBar {...sideBarProps} client:load />
 			<div class="main-side w-full">
 				<Header client:load />
-				<main class="main-content p-3">
+				<main class="main-content px-4 py-6 md:px-8 md:py-8">
 					<slot/>
 				</main>
 				<Footer {...footerProps} />
 			</div>
-			<Authentication client:only="react" />
 			<AboutMe client:load />
 			<AlertBox />
 			<OuterLoader />

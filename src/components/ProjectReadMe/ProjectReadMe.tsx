@@ -6,7 +6,6 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import "./styles.scss";
 
-// Define allowed tags and attributes for rehype-sanitize
 const allowedTags = [
   "a",
   "img",
@@ -19,6 +18,12 @@ const allowedTags = [
   "h1",
   "h2",
   "h3",
+  "table",
+  "thead",
+  "tbody",
+  "tr",
+  "th",
+  "td",
 ];
 const allowedAttributes = {
   a: ["href", "target", "rel"],
@@ -26,9 +31,30 @@ const allowedAttributes = {
   p: ["align"],
 };
 
-export function ProjectReadMe({ full_name, default_branch }: ProjectReadMeProps) {
+function stripDuplicateTitle(markdown: string, projectName?: string): string {
+  if (!projectName) return markdown;
+
+  const lines = markdown.split("\n");
+  const first = lines[0]?.trim() ?? "";
+  const titlePattern = new RegExp(
+    `^#\\s*${projectName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*$`,
+    "i",
+  );
+
+  if (titlePattern.test(first)) {
+    return lines.slice(1).join("\n").trimStart();
+  }
+
+  return markdown;
+}
+
+export function ProjectReadMe({
+  full_name,
+  default_branch,
+  projectName,
+}: ProjectReadMeProps) {
   const [markdown, setMarkdown] = useState("");
-  const README_URL = `https://raw.githubusercontent.com/${full_name}/${default_branch}/README.md`
+  const README_URL = `https://raw.githubusercontent.com/${full_name}/${default_branch}/README.md`;
 
   useEffect(() => {
     fetch(README_URL)
@@ -37,14 +63,25 @@ export function ProjectReadMe({ full_name, default_branch }: ProjectReadMeProps)
         if (text.includes("400: Invalid request")) {
           setMarkdown("No README.md for this project");
         } else {
-          setMarkdown(text);
+          setMarkdown(stripDuplicateTitle(text, projectName));
         }
       });
-  }, [full_name]);
+  }, [full_name, default_branch, projectName]);
+
+  if (!markdown) {
+    return (
+      <div className="project-readme glass-panel rounded-2xl p-6 text-sm text-gray-400">
+        Loading README…
+      </div>
+    );
+  }
 
   return (
-    <div className="project-readme">
-      <div className="inner-con">
+    <section className="project-readme glass-panel rounded-2xl border border-white/8">
+      <div className="inner-con p-6 md:p-8">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-pink-400">
+          README
+        </p>
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[
@@ -60,6 +97,6 @@ export function ProjectReadMe({ full_name, default_branch }: ProjectReadMeProps)
           {markdown}
         </ReactMarkdown>
       </div>
-    </div>
+    </section>
   );
 }

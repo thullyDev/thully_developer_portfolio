@@ -15,13 +15,14 @@
 }
 
 @include media-xlarge {
-  .project-list {
+  .repo-project-list {
+    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    gap: 1rem;
 
     .project-item {
-      width: calc(50% - 10px);
-      // min-width: 50%;
+      width: calc(50% - 0.5rem);
     }
   }
 }

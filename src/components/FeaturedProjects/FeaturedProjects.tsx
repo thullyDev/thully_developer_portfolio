@@ -3,26 +3,30 @@ import type { FeaturedProjectsProps } from "./types";
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
-    <div className="projects-con my-5 flex flex-col gap-5">
-      <span className="label flex w-full justify-between">
-        My Projects{" "}
-        <a href="/projects" className="capitalize text-pink-500 underline">
-          more
-        </a>
-      </span>
-      <div className="inner-projects-con">
-        <div className="inner-con">
-          <ul className="project-list flex w-full flex-col items-center gap-4">
-            {projects.map((item, index) => {
-              return (
-                <li key={index} className="project-item h-44">
-                  <ProjectCard {...item} />
-                </li>
-              );
-            })}
-          </ul>
+    <section className="projects-con my-10 flex flex-col gap-5">
+      <div className="label flex w-full flex-wrap items-end justify-between gap-2">
+        <div>
+          <p className="mb-1 text-sm font-medium uppercase tracking-widest text-accent">
+            Highlights
+          </p>
+          <h2 className="section-heading text-2xl font-bold">Featured projects</h2>
         </div>
+        <a
+          href="/projects"
+          className="text-sm font-semibold text-pink-400 underline-offset-4 hover:underline"
+        >
+          View all →
+        </a>
       </div>
-    </div>
+      <ul className="featured-project-grid grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+        {projects.map((item, index) => {
+          return (
+            <li key={index} className="min-h-[10.5rem]">
+              <ProjectCard {...item} />
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }

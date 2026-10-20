@@ -1,10 +1,8 @@
 import { Nav } from "../Nav/Nav";
-// import { Title } from "../Title/Title";
 
 export function Header() {
   return (
-    <header className="main-header hidden">
-      {/*<Title />*/}
+    <header className="main-header block px-4 pt-2 md:px-8">
       <Nav />
     </header>
   );
