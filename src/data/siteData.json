@@ -2,12 +2,12 @@
   "user": {
     "user_name": "thullyDev",
     "full_name": "Thulaganyo Mooki",
-    "role": "fullstack",
-    "profile_description": "Fullstack developer focused on Python backends and polished web experiences. Backend systems, APIs, and thoughtful UI.",
+    "role": "frontend",
+    "profile_description": "Frontend developer building fast UIs with Astro, React, and TypeScript — and Rust + Tauri for desktop-style apps.",
     "donate_slug": "thullyDev",
     "donate_link": "https://buymeacoffee.com/thullyDev",
-    "seo_decription": "Thulaganyo Mooki is an experienced fullstack developer with a focus on backend development using Python. Explore my portfolio to see my work in web development, backend systems, and more.",
-    "seo_title": "Fullstack Developer | Python Backend Specialist"
+    "seo_decription": "Thulaganyo Mooki builds polished frontend experiences with Astro, React, TypeScript, Rust, and Tauri. Explore open-source projects and portfolio work.",
+    "seo_title": "Frontend Developer | Astro, React & Tauri"
   },
   "socials": {
     "linkedin": "https://www.linkedin.com/in/thulaganyo-mooki",
