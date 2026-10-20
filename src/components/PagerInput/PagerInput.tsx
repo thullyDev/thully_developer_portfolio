@@ -3,7 +3,7 @@ import type { PagerInputProps } from "./types";
 import { trans1000 } from "../../utilities/misc";
 import "./styles.scss";
 
-export function PagerInput({ page }: PagerInputProps) {
+export function PagerInput({ page, maxPage }: PagerInputProps) {
   const [queryPage, setQueryPage] = useState(page);
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -11,7 +11,13 @@ export function PagerInput({ page }: PagerInputProps) {
   };
 
   const onClickHandler = () => {
-    window.location.assign(`/projects?page=${queryPage}`);
+    const parsed = parseInt(queryPage, 10);
+    if (!parsed || parsed < 1) {
+      window.location.assign("/projects/1");
+      return;
+    }
+    const clamped = Math.min(parsed, maxPage);
+    window.location.assign(`/projects/${clamped}`);
   };
 
   return (
@@ -22,6 +28,7 @@ export function PagerInput({ page }: PagerInputProps) {
         value={queryPage}
         placeholder={page}
         min="1"
+        max={maxPage}
         className="page-inp h-full w-10 rounded-l bg-gray-700 text-center text-sm text-white outline-none"
       />
       <button
