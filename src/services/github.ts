@@ -37,6 +37,14 @@ export async function getRepo(slug: string): Promise<Repo | null> {
   return repoParser(response);
 }
 
+const REPOS_PER_PAGE = 8;
+
+export async function getRepoPageCount(): Promise<number> {
+  const response = await fetchUserRepos();
+  if (!response?.length) return 1;
+  return Math.max(1, Math.ceil(response.length / REPOS_PER_PAGE));
+}
+
 export async function getRepos(page: number): Promise<GetRepoResponse> {
   const response = await fetchUserRepos();
 
@@ -62,7 +70,7 @@ export async function getRepos(page: number): Promise<GetRepoResponse> {
   const { items, pagination } = paginateItems({
     data: repos,
     page,
-    limit: 8,
+    limit: REPOS_PER_PAGE,
   }) as { items: Repo[]; pagination: Pagination };
 
   // return repoParser(response)
