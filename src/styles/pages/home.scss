@@ -6,14 +6,4 @@
     justify-content: space-evenly;
     flex-direction: row;
   }
-
-  .project-list {
-    flex-wrap: wrap;
-    flex-direction: row;
-
-    .project-item {
-      width: calc(50% - 10px);
-      // min-width: 50%;
-    }
-  }
 }

@@ -11,25 +11,32 @@ import "../styles/pages/home.scss"
 const cache = new Cache()
 
 async function getData() {
-	const cacheID = "home:features*24" 
-	const cacheData = await cache.hget(cacheID)	
+	const cacheID = "home:features"
+	const cacheData = await cache.hget(cacheID)
 
 	if (cacheData) {
-		return cacheData
+		return cacheData as ProjectCardProps[]
 	}
 
 	const projects: ProjectCardProps[] = await getFeatureProjects()
-	cache.hset(cacheID, projects)
+	await cache.hset(cacheID, projects, 3600)
 
 	return projects
 }
-
-
 
 const projects = await getData();
 ---
 
 <MainLayout title={"Home"}>
+	<section class="home-hero glass-panel mb-8 rounded-2xl p-6 md:p-8">
+		<p class="mb-2 text-sm font-medium uppercase tracking-widest text-accent">Portfolio</p>
+		<h1 class="mb-3 text-3xl font-bold tracking-tight md:text-4xl">
+			Building reliable backends &amp; <span class="section-heading-accent">polished interfaces</span>
+		</h1>
+		<p class="max-w-2xl text-sm leading-relaxed text-gray-400 md:text-base">
+			Selected work from GitHub, open-source projects, and experiments in Python, TypeScript, and modern web stacks.
+		</p>
+	</section>
 	<GithubAnalytics client:load />
 	<FeaturedProjects projects={projects} />
 	<MyTechStacks client:load/>

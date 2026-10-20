@@ -17,7 +17,6 @@ export function ProjectDetails({
   visibility,
   default_branch,
 }: ProjectDetailsProps) {
-
   const projectInfoProps = {
     description,
     language,
@@ -32,11 +31,15 @@ export function ProjectDetails({
   };
 
   return (
-    <div className="project-details">
+    <div className="project-details mx-auto flex w-full max-w-4xl flex-col gap-6">
       <ProjectHeading {...projectHeadingProps} />
-      <ProjectImages images={images} />
       <ProjectInfo {...projectInfoProps} />
-      <ProjectReadMe default_branch={default_branch} full_name={full_name} />
+      <ProjectImages images={images} />
+      <ProjectReadMe
+        default_branch={default_branch}
+        full_name={full_name}
+        projectName={name}
+      />
     </div>
   );
 }

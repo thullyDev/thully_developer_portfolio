@@ -13,5 +13,10 @@ const { pages, page } = pagination
 ---
 
 <MainLayout title={"Projects"}>
+	<header class="mb-8">
+		<p class="mb-2 text-sm font-medium uppercase tracking-widest text-accent">Repository</p>
+		<h1 class="text-3xl font-bold tracking-tight md:text-4xl">All projects</h1>
+		<p class="mt-2 max-w-xl text-sm text-gray-400">Public repositories from GitHub — paginated for easier browsing.</p>
+	</header>
 	<ProjectsComponet client:load projects={repos} pages={pages} page={page} />
 </MainLayout>

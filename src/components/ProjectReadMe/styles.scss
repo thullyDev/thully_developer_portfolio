@@ -1,105 +1,97 @@
 .project-readme {
-  padding: 40px;
-  background-color: #1a202c; /* gray-900 */
-  border-radius: 6px;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    Segoe UI,
-    Roboto,
-    Ubuntu,
-    Cantarell,
-    Fira Sans,
-    Droid Sans,
-    Helvetica Neue,
-    Arial,
-    sans-serif;
-  color: #ffffff; /* white */
-  line-height: 1.6;
+  width: 100%;
+  font-family: Inter, system-ui, sans-serif;
+  color: #f3f4f6;
+  line-height: 1.65;
 }
 
 .project-readme h1,
 .project-readme h2,
 .project-readme h3 {
-  border-bottom: 1px solid #2d3748; /* gray-800 */
-  padding-bottom: 0.3em;
-  margin-bottom: 0.6em;
-  color: #ffffff; /* white */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.35em;
+  margin-bottom: 0.75em;
+  color: #ffffff;
 }
 
 .project-readme h1 {
-  font-size: 2em;
+  font-size: 1.75rem;
   margin-top: 0;
 }
 
 .project-readme h2 {
-  font-size: 1.5em;
+  font-size: 1.35rem;
+  margin-top: 1.5rem;
 }
 
 .project-readme h3 {
-  font-size: 1.2em;
+  font-size: 1.1rem;
 }
 
 .project-readme p {
   margin: 0 0 1em;
+  color: #d1d5db;
 }
 
 .project-readme code {
-  background-color: #2d3748; /* gray-800 */
+  background-color: rgba(0, 0, 0, 0.35);
   padding: 0.2em 0.4em;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 0.85em;
-  color: #f7fafc; /* white */
 }
 
 .project-readme pre {
-  background-color: #2d3748; /* gray-800 */
-  padding: 16px;
-  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.35);
+  padding: 1rem;
+  border-radius: 8px;
   overflow-x: auto;
   font-size: 0.85em;
-  color: #f7fafc; /* white */
 }
 
 .project-readme blockquote {
-  border-left: 4px solid #ed64a6; /* pink-500 */
+  border-left: 3px solid #f472b6;
   padding: 0.5em 1em;
-  margin: 0;
-  color: #e2e8f0; /* gray-200 */
-  background-color: #2d3748; /* gray-800 */
+  margin: 0 0 1em;
+  color: #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 0 8px 8px 0;
 }
 
 .project-readme ul,
 .project-readme ol {
-  margin: 0 0 1em 2em;
-}
-
-.project-readme li {
-  margin: 0.5em 0;
+  margin: 0 0 1em 1.25em;
 }
 
 .project-readme table {
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 1em;
+  font-size: 0.9rem;
 }
 
 .project-readme th,
 .project-readme td {
-  padding: 6px 13px;
-  border: 1px solid #2d3748; /* gray-800 */
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: left;
 }
 
 .project-readme th {
-  background-color: #1a202c; /* gray-900 */
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .project-readme a {
-  color: #ed64a6; /* pink-500 */
+  color: #f472b6;
   text-decoration: none;
 }
 
 .project-readme a:hover {
   text-decoration: underline;
+}
+
+.project-readme img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0.5em 0;
 }

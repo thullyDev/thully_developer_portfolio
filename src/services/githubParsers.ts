@@ -29,6 +29,6 @@ export function repoParser(data: GitRepoResponse): Repo {
     pushed_at,
     default_branch,
     liveDemo: homepage,
-    repoLink: clone_url,
+    repoLink: html_url,
   };
 }

@@ -1,12 +1,13 @@
-import { createClient } from "redis";
-import { REDIS_URL } from "../../utilities/config";
+type CacheEntry = {
+  value: unknown;
+  expiresAt: number;
+};
 
-const client = await createClient({
-  url: REDIS_URL,
-}).connect();
+const store = new Map<string, CacheEntry>();
 
 export class Cache {
   private static _instance: Cache;
+  private defaultExpiry = 86400;
 
   public static getInstance(): Cache {
     if (!Cache._instance) {
@@ -15,10 +16,15 @@ export class Cache {
     return Cache._instance;
   }
 
-  private defaultExpiry: number = 86400; // 24 hours
-
   public async get(name: string): Promise<string | null> {
-    return await client.get(name);
+    const entry = store.get(name);
+    if (!entry || entry.expiresAt <= Date.now()) {
+      store.delete(name);
+      return null;
+    }
+    return typeof entry.value === "string"
+      ? entry.value
+      : JSON.stringify(entry.value);
   }
 
   public async set(
@@ -26,27 +32,33 @@ export class Cache {
     value: string,
     expiry: number = this.defaultExpiry,
   ): Promise<void> {
-    await client.set(name, value, { EX: expiry });
+    store.set(name, {
+      value,
+      expiresAt: Date.now() + expiry * 1000,
+    });
   }
 
-  public async hget(name: string): Promise<any | null> {
-    const data = await client.get(name);
-    return data ? JSON.parse(data) : null;
+  public async hget(name: string): Promise<unknown | null> {
+    const entry = store.get(name);
+    if (!entry || entry.expiresAt <= Date.now()) {
+      store.delete(name);
+      return null;
+    }
+    return entry.value;
   }
 
   public async hset(
     name: string,
-    data: any,
+    data: unknown,
     expiry: number = this.defaultExpiry,
   ): Promise<void> {
-    await this.set(name, JSON.stringify(data), expiry);
+    store.set(name, {
+      value: data,
+      expiresAt: Date.now() + expiry * 1000,
+    });
   }
 
   public delete(name: string): void {
-    client.del(name);
-  }
-
-  public disconnet(): void {
-    client.disconnect();
+    store.delete(name);
   }
 }
