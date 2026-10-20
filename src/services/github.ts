@@ -15,6 +15,28 @@ import { paginateItems } from "../utilities/misc";
 
 const gitApi = new ApiHandler(`https://api.github.com`);
 
+const FEATURED_REPO_ORDER = [
+  "turky",
+  "animehoshi",
+  "as2anime.docs",
+  "manganato.api",
+  "mangarealm",
+] as const;
+
+const PRIORITY_PROJECT_ORDER = ["turky"] as const;
+
+function repoSortRank(name: string, order: readonly string[]): number {
+  const key = name.toLowerCase();
+  const index = order.findIndex((entry) => entry === key);
+  return index === -1 ? order.length : index;
+}
+
+function sortReposByOrder(repos: Repo[], order: readonly string[]): Repo[] {
+  return [...repos].sort(
+    (a, b) => repoSortRank(a.name, order) - repoSortRank(b.name, order),
+  );
+}
+
 async function fetchUserRepos(): Promise<GitReposResponse | null> {
   return (await gitApi.get(
     `/users/${GITHUB_USER}/repos`,
@@ -67,8 +89,10 @@ export async function getRepos(page: number): Promise<GetRepoResponse> {
     repos.push(repo);
   }
 
+  const sortedRepos = sortReposByOrder(repos, PRIORITY_PROJECT_ORDER);
+
   const { items, pagination } = paginateItems({
-    data: repos,
+    data: sortedRepos,
     page,
     limit: REPOS_PER_PAGE,
   }) as { items: Repo[]; pagination: Pagination };
@@ -81,12 +105,9 @@ export async function getRepos(page: number): Promise<GetRepoResponse> {
 }
 
 export async function getFeatureProjects() {
-  const featuredRepos: Record<string, boolean> = {
-    "manganato.api": true,
-    mangarealm: true,
-    "as2anime.docs": true,
-    animehoshi: true,
-  };
+  const featuredSet = new Set(
+    FEATURED_REPO_ORDER.map((name) => name.toLowerCase()),
+  );
   const response = await fetchUserRepos();
 
   if (!response) return [];
@@ -95,14 +116,12 @@ export async function getFeatureProjects() {
 
   for (let i = 0; i < response.length; i++) {
     const item = response[i];
-    const { name } = item;
-    const key = name.toLowerCase();
+    const key = item.name.toLowerCase();
 
-    if (!featuredRepos[key]) continue;
+    if (!featuredSet.has(key)) continue;
 
-    const repo = repoParser(item);
-    repos.push(repo);
+    repos.push(repoParser(item));
   }
 
-  return repos;
+  return sortReposByOrder(repos, FEATURED_REPO_ORDER);
 }
