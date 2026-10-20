@@ -1,3 +1,23 @@
 ---
-return Astro.redirect("/projects/1");
+import MainLayout from "../../layouts/mainLayout.astro"
+import { getRepoPageCount, getRepos } from "../../services/github"
+import { Projects as ProjectsComponet } from "../../components/Projects/Projects"
+import type { GetRepoResponse } from "../../types/github";
+import "../../styles/pages/projects.scss"
+
+const pageNumber = 1
+const totalPages = await getRepoPageCount()
+const { repos, pagination } = await getRepos(pageNumber) as GetRepoResponse
+const { pages, page } = pagination
 ---
+
+<MainLayout title={"Projects"}>
+	<header class="mb-8">
+		<p class="mb-2 text-sm font-medium uppercase tracking-widest text-accent">Repository</p>
+		<h1 class="text-3xl font-bold tracking-tight md:text-4xl">All projects</h1>
+		<p class="mt-2 max-w-xl text-sm text-gray-400">
+			Public repositories from GitHub — page {page} of {pages}.
+		</p>
+	</header>
+	<ProjectsComponet client:load projects={repos} pages={pages} page={page} />
+</MainLayout>

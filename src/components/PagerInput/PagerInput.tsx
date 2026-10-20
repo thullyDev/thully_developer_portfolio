@@ -13,11 +13,13 @@ export function PagerInput({ page, maxPage }: PagerInputProps) {
   const onClickHandler = () => {
     const parsed = parseInt(queryPage, 10);
     if (!parsed || parsed < 1) {
-      window.location.assign("/projects/1");
+      window.location.assign("/projects");
       return;
     }
     const clamped = Math.min(parsed, maxPage);
-    window.location.assign(`/projects/${clamped}`);
+    window.location.assign(
+      clamped <= 1 ? "/projects" : `/projects/${clamped}`,
+    );
   };
 
   return (
