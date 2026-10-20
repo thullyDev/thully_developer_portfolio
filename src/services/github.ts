@@ -38,9 +38,24 @@ function sortReposByOrder(repos: Repo[], order: readonly string[]): Repo[] {
 }
 
 async function fetchUserRepos(): Promise<GitReposResponse | null> {
-  return (await gitApi.get(
-    `/users/${GITHUB_USER}/repos`,
-  )) as null | GitReposResponse;
+  const allRepos: GitReposResponse = [];
+  let page = 1;
+
+  while (page <= 10) {
+    const batch = (await gitApi.get(`/users/${GITHUB_USER}/repos`, {
+      per_page: "100",
+      page: String(page),
+    })) as GitReposResponse | null;
+
+    if (!batch?.length) break;
+
+    allRepos.push(...batch);
+
+    if (batch.length < 100) break;
+    page += 1;
+  }
+
+  return allRepos.length ? allRepos : null;
 }
 
 export async function listRepoSlugs(): Promise<string[]> {

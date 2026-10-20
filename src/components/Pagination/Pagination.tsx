@@ -3,7 +3,7 @@ import { PagerInput } from "../PagerInput/PagerInput";
 import type { PaginationProps } from "./types";
 
 function pagePath(page: number): string {
-  return `/projects/${page}`;
+  return page <= 1 ? "/projects" : `/projects/${page}`;
 }
 
 export function Pagination({ pages, page }: PaginationProps) {
